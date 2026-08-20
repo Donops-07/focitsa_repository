@@ -1,0 +1,19 @@
+{
+  "name": "focitsa-kb",
+  "version": "1.0.0",
+  "description": "FOCITSA Faculty Knowledge Base — crawler and build tooling",
+  "scripts": {
+    "crawl": "node scripts/crawl-drive.js",
+    "crawl:dry": "node scripts/crawl-drive.js --dry-run"
+  },
+  "dependencies": {
+    "googleapis": "^140.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "private": true
+}

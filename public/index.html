@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FOCITSA Knowledge Base — instant access to past questions, lecture notes, and study materials for FOCIT students." />
+  <meta name="theme-color" content="#080C16" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="FOCITSA Knowledge Base" />
+  <meta property="og:description" content="Instant access to past questions, lecture notes, and study materials for all FOCIT levels." />
+  <meta property="og:type"        content="website" />
+
+  <title>FOCITSA Knowledge Base</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       ONBOARDING SCREEN (first-time visitors)
+       ══════════════════════════════════════════════════════════════════ -->
+  <div id="onboarding-screen" role="main" aria-label="Welcome screen">
+    <div class="onboarding-card">
+
+      <!-- Logo -->
+      <div class="onboarding-logo">
+        <div class="logo-mark" aria-hidden="true">📚</div>
+        <div class="logo-text">
+          <span class="logo-name">FOCITSA</span>
+          <span class="logo-sub">Faculty Knowledge Base</span>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="onboarding-heading">
+        Study smarter,<br /><span>find faster.</span>
+      </h1>
+      <p class="onboarding-sub">
+        Instant access to past questions, lecture notes, and study materials — organised by level and course. No Drive folders, no friction.
+      </p>
+
+      <!-- Level Selection -->
+      <div class="onboarding-section">
+        <p class="onboarding-label">Your Level</p>
+        <div class="select-grid four-col" id="level-grid" role="group" aria-label="Select your level">
+          <button class="select-chip" data-level="100" id="chip-level-100" aria-pressed="false">
+            <span class="chip-label">100</span>
+            <span class="chip-sub">Level</span>
+          </button>
+          <button class="select-chip" data-level="200" id="chip-level-200" aria-pressed="false">
+            <span class="chip-label">200</span>
+            <span class="chip-sub">Level</span>
+          </button>
+          <button class="select-chip" data-level="300" id="chip-level-300" aria-pressed="false">
+            <span class="chip-label">300</span>
+            <span class="chip-sub">Level</span>
+          </button>
+          <button class="select-chip" data-level="400" id="chip-level-400" aria-pressed="false">
+            <span class="chip-label">400</span>
+            <span class="chip-sub">Level</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Department Selection -->
+      <div class="onboarding-section">
+        <p class="onboarding-label">Your Department</p>
+        <div class="select-grid" id="dept-grid" role="group" aria-label="Select your department">
+          <button class="select-chip" data-dept="Computer Science" id="chip-dept-cs" aria-pressed="false">
+            <span class="chip-label">🖥️</span>
+            <span class="chip-sub">Computer Science</span>
+          </button>
+          <button class="select-chip" data-dept="Information Technology" id="chip-dept-it" aria-pressed="false">
+            <span class="chip-label">🌐</span>
+            <span class="chip-sub">Information Technology</span>
+          </button>
+          <button class="select-chip" data-dept="Software Engineering" id="chip-dept-se" aria-pressed="false">
+            <span class="chip-label">⚙️</span>
+            <span class="chip-sub">Software Engineering</span>
+          </button>
+          <button class="select-chip" data-dept="All Departments" id="chip-dept-all" aria-pressed="false">
+            <span class="chip-label">🎓</span>
+            <span class="chip-sub">All Departments</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <button id="btn-start" disabled aria-label="Access the knowledge base">
+        Access Repository →
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       APP SCREEN (main application)
+       ══════════════════════════════════════════════════════════════════ -->
+  <div id="app-screen" class="hidden" role="main" aria-label="Knowledge base">
+
+    <!-- Header -->
+    <header class="app-header" role="banner">
+      <div class="header-inner">
+        <div class="header-logo" aria-label="FOCITSA Knowledge Base">
+          <div class="logo-mark" aria-hidden="true">📚</div>
+          <div class="logo-text">
+            <span class="logo-name">FOCITSA</span>
+          </div>
+        </div>
+
+        <div class="header-context" aria-live="polite">
+          <span class="context-badge" id="context-level-label">All Levels</span>
+          <div class="context-divider" aria-hidden="true"></div>
+          <span class="context-badge" id="context-dept-label">All Departments</span>
+          <div class="context-divider" aria-hidden="true"></div>
+          <button id="btn-change-context" aria-label="Change level and department">
+            Change
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Demo Notice -->
+    <div class="demo-banner" role="alert" aria-label="Demo mode notice">
+      <p>
+        📌 <strong>Demo Mode</strong> — This build uses sample data.
+        Connect your Google Drive folder <code>1CjXTm0EW9Z9rGG_f7nfHZva4JIHvp8We</code>
+        and run the crawler to load real files.
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="app-main">
+
+      <!-- Search -->
+      <div class="search-area">
+        <div class="search-wrapper">
+          <!-- Search Icon -->
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Search — try 'COS 201', 'past questions', '2024'…"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+            aria-label="Search resources"
+            disabled
+          />
+
+          <button class="search-clear hidden" id="search-clear" aria-label="Clear search">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" role="group" aria-label="Filter resources">
+
+        <!-- Type filters -->
+        <div class="filter-row">
+          <span class="filter-label">Type</span>
+          <button class="filter-pill active" data-filter="type" data-value="" id="pill-type-all" aria-pressed="true">All</button>
+          <button class="filter-pill" data-filter="type" data-value="Past Question" data-type="Past Question" id="pill-type-pq" aria-pressed="false">📝 Past Questions</button>
+          <button class="filter-pill" data-filter="type" data-value="Lecture Notes" data-type="Lecture Notes" id="pill-type-notes" aria-pressed="false">📖 Lecture Notes</button>
+          <button class="filter-pill" data-filter="type" data-value="Tutorial" data-type="Tutorial" id="pill-type-tutorial" aria-pressed="false">✏️ Tutorials</button>
+          <button class="filter-pill" data-filter="type" data-value="Syllabus" data-type="Syllabus" id="pill-type-syllabus" aria-pressed="false">📋 Syllabus</button>
+          <button class="filter-pill" data-filter="type" data-value="Textbook" data-type="Textbook" id="pill-type-textbook" aria-pressed="false">📗 Textbooks</button>
+        </div>
+
+        <!-- Semester filters -->
+        <div class="filter-row">
+          <span class="filter-label">Semester</span>
+          <button class="filter-pill active" data-filter="semester" data-value="" id="pill-sem-all" aria-pressed="true">All</button>
+          <button class="filter-pill" data-filter="semester" data-value="1" id="pill-sem-1" aria-pressed="false">Semester 1</button>
+          <button class="filter-pill" data-filter="semester" data-value="2" id="pill-sem-2" aria-pressed="false">Semester 2</button>
+        </div>
+
+        <!-- Year filters -->
+        <div class="filter-row" id="year-filter-row">
+          <span class="filter-label">Year</span>
+          <button class="filter-pill active" data-filter="year" data-value="" id="pill-year-all" aria-pressed="true">All</button>
+          <!-- Year pills injected dynamically from manifest -->
+        </div>
+
+      </div>
+
+      <!-- Status Bar -->
+      <div class="status-bar" aria-live="polite">
+        <div class="status-indicator">
+          <div class="status-dot loading" id="status-dot" aria-hidden="true"></div>
+          <span id="status-text">Building search index…</span>
+        </div>
+        <span class="result-count" id="result-count" aria-live="polite"></span>
+      </div>
+
+      <!-- Results -->
+      <div id="results-grid" aria-label="Resource results" aria-live="polite">
+        <!-- Skeleton cards shown while index loads -->
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skel-row"><div class="skel h-5 w-20"></div><div class="skel h-5 w-30"></div></div>
+          <div class="skel h-4 w-70"></div>
+          <div class="skel h-4 w-50"></div>
+          <div class="skel-row"><div class="skel h-10 w-full"></div><div class="skel h-10 w-full"></div></div>
+        </div>
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skel-row"><div class="skel h-5 w-20"></div><div class="skel h-5 w-40"></div></div>
+          <div class="skel h-4 w-60"></div>
+          <div class="skel h-4 w-40"></div>
+          <div class="skel-row"><div class="skel h-10 w-full"></div><div class="skel h-10 w-full"></div></div>
+        </div>
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skel-row"><div class="skel h-5 w-20"></div><div class="skel h-5 w-30"></div></div>
+          <div class="skel h-4 w-70"></div>
+          <div class="skel h-4 w-50"></div>
+          <div class="skel-row"><div class="skel h-10 w-full"></div><div class="skel h-10 w-full"></div></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       PDF PREVIEW MODAL
+       ══════════════════════════════════════════════════════════════════ -->
+  <div
+    id="preview-modal"
+    class="modal-overlay hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div class="modal-container">
+
+      <div class="modal-header">
+        <div class="modal-info">
+          <h2 id="modal-title">Document Preview</h2>
+          <span id="modal-meta"></span>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close preview">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <iframe
+          id="preview-iframe"
+          src=""
+          title="Document preview"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="modal-footer">
+        <a
+          id="modal-btn-drive"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-modal-action"
+          aria-label="Open in Google Drive"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open in Drive
+        </a>
+        <a
+          id="modal-btn-download"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-modal-action"
+          aria-label="Download file"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

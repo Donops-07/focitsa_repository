@@ -1,0 +1,177 @@
+{
+  "COS101": {
+    "code": "COS 101",
+    "title": "Introduction to Computer Science",
+    "department": "Computer Science",
+    "level": 100,
+    "semester": 1
+  },
+  "COS102": {
+    "code": "COS 102",
+    "title": "Introduction to Programming",
+    "department": "Computer Science",
+    "level": 100,
+    "semester": 2
+  },
+  "COS201": {
+    "code": "COS 201",
+    "title": "Discrete Structures",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 1
+  },
+  "COS202": {
+    "code": "COS 202",
+    "title": "Computer Organization & Architecture",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 2
+  },
+  "COS204": {
+    "code": "COS 204",
+    "title": "Data Structures and Algorithms",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 2
+  },
+  "COS205": {
+    "code": "COS 205",
+    "title": "Systems Analysis and Design",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 1
+  },
+  "COS301": {
+    "code": "COS 301",
+    "title": "Operating Systems",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 1
+  },
+  "COS302": {
+    "code": "COS 302",
+    "title": "Database Management Systems",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 2
+  },
+  "COS304": {
+    "code": "COS 304",
+    "title": "Computer Networks",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 2
+  },
+  "COS305": {
+    "code": "COS 305",
+    "title": "Theory of Computation",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 1
+  },
+  "COS306": {
+    "code": "COS 306",
+    "title": "Software Engineering",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 2
+  },
+  "COS401": {
+    "code": "COS 401",
+    "title": "Artificial Intelligence",
+    "department": "Computer Science",
+    "level": 400,
+    "semester": 1
+  },
+  "COS402": {
+    "code": "COS 402",
+    "title": "Compiler Construction",
+    "department": "Computer Science",
+    "level": 400,
+    "semester": 2
+  },
+  "COS403": {
+    "code": "COS 403",
+    "title": "Distributed Systems",
+    "department": "Computer Science",
+    "level": 400,
+    "semester": 1
+  },
+  "MTH101": {
+    "code": "MTH 101",
+    "title": "Elementary Mathematics I",
+    "department": "Mathematics",
+    "level": 100,
+    "semester": 1
+  },
+  "MTH102": {
+    "code": "MTH 102",
+    "title": "Elementary Mathematics II",
+    "department": "Mathematics",
+    "level": 100,
+    "semester": 2
+  },
+  "MTH201": {
+    "code": "MTH 201",
+    "title": "Mathematical Methods",
+    "department": "Mathematics",
+    "level": 200,
+    "semester": 1
+  },
+  "MTH202": {
+    "code": "MTH 202",
+    "title": "Linear Algebra",
+    "department": "Mathematics",
+    "level": 200,
+    "semester": 2
+  },
+  "STA201": {
+    "code": "STA 201",
+    "title": "Statistics for Science Students",
+    "department": "Statistics",
+    "level": 200,
+    "semester": 1
+  },
+  "GST101": {
+    "code": "GST 101",
+    "title": "Communication in English",
+    "department": "General Studies",
+    "level": 100,
+    "semester": 1
+  },
+  "GST102": {
+    "code": "GST 102",
+    "title": "Nigerian Peoples and Culture",
+    "department": "General Studies",
+    "level": 100,
+    "semester": 2
+  },
+  "GST201": {
+    "code": "GST 201",
+    "title": "Philosophy and Logic",
+    "department": "General Studies",
+    "level": 200,
+    "semester": 1
+  },
+  "IT201": {
+    "code": "IT 201",
+    "title": "Information Systems",
+    "department": "Information Technology",
+    "level": 200,
+    "semester": 1
+  },
+  "IT301": {
+    "code": "IT 301",
+    "title": "Human-Computer Interaction",
+    "department": "Information Technology",
+    "level": 300,
+    "semester": 1
+  },
+  "SE301": {
+    "code": "SE 301",
+    "title": "Software Architecture and Design",
+    "department": "Software Engineering",
+    "level": 300,
+    "semester": 1
+  }
+}

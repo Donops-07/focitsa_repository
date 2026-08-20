@@ -1,0 +1,113 @@
+name: Refresh Search Manifest
+
+on:
+  # Daily crawl at 02:00 WAT (01:00 UTC)
+  schedule:
+    - cron: '0 1 * * *'
+
+  # Manual trigger — for committee members after a large upload batch
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual trigger (optional)'
+        required: false
+        default: 'Manual refresh requested'
+
+  # Trigger on direct pushes to main (e.g. manual courses.json edits)
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/courses.json'  # New course added to the registry
+
+permissions:
+  contents: write  # Required to commit the updated manifest back to the repo
+
+jobs:
+  crawl-and-deploy:
+    name: Crawl Drive & Update Manifest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # ── Checkout ────────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Setup Node.js ────────────────────────────────────────────────────────
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── Install crawler dependencies ─────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── Dry-run validation ───────────────────────────────────────────────────
+      - name: Validate crawler (dry run)
+        run: npm run crawl:dry
+        env:
+          GOOGLE_SA_KEY:        ${{ secrets.GOOGLE_SA_KEY }}
+          DRIVE_ROOT_FOLDER_ID: ${{ secrets.DRIVE_ROOT_FOLDER_ID }}
+
+      # ── Live crawl ────────────────────────────────────────────────────────────
+      - name: Run crawler
+        run: npm run crawl
+        env:
+          GOOGLE_SA_KEY:        ${{ secrets.GOOGLE_SA_KEY }}
+          # Baked-in folder ID — matches the shared Drive folder
+          DRIVE_ROOT_FOLDER_ID: 1CjXTm0EW9Z9rGG_f7nfHZva4JIHvp8We
+
+      # ── Diff check — skip commit if manifest unchanged ────────────────────────
+      - name: Check for manifest changes
+        id: diff
+        run: |
+          git diff --quiet public/manifest.json public/manifest.version.json \
+            && echo "changed=false" >> $GITHUB_OUTPUT \
+            || echo "changed=true"  >> $GITHUB_OUTPUT
+
+      # ── Commit updated manifest ───────────────────────────────────────────────
+      - name: Commit and push updated manifest
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "focitsa-kb-bot"
+          git config user.email "bot@focitsa.org"
+          git add public/manifest.json public/manifest.version.json public/crawl-report.json
+          git commit -m "chore: refresh search manifest [skip ci]
+
+          Triggered by: ${{ github.event_name }}
+          ${{ github.event.inputs.reason && format('Reason: {0}', github.event.inputs.reason) || '' }}"
+          git push
+
+      # ── No-op if unchanged ────────────────────────────────────────────────────
+      - name: No changes detected
+        if: steps.diff.outputs.changed == 'false'
+        run: echo "✅ Manifest is already up to date — no commit needed."
+
+      # ── Post job summary ──────────────────────────────────────────────────────
+      - name: Post crawl summary
+        if: always()
+        run: |
+          echo "## 📚 FOCITSA Knowledge Base — Crawl Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f public/crawl-report.json ]; then
+            TOTAL=$(node -p "require('./public/manifest.json').length")
+            FLAGGED=$(node -p "require('./public/crawl-report.json').flaggedCount")
+            HASH=$(node -p "require('./public/manifest.version.json').hash")
+            echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Total resources | ${TOTAL} |" >> $GITHUB_STEP_SUMMARY
+            echo "| Flagged entries | ${FLAGGED} |" >> $GITHUB_STEP_SUMMARY
+            echo "| Manifest hash   | \`${HASH}\` |" >> $GITHUB_STEP_SUMMARY
+            echo "| Changed         | ${{ steps.diff.outputs.changed }} |" >> $GITHUB_STEP_SUMMARY
+            if [ "$FLAGGED" -gt "0" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### ⚠ Flagged Entries (fix folder names)" >> $GITHUB_STEP_SUMMARY
+              echo '```json' >> $GITHUB_STEP_SUMMARY
+              node -p "JSON.stringify(require('./public/crawl-report.json').flagged.map(e=>({id:e.id,issues:e.issues})),null,2)" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
