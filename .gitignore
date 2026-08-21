@@ -7,7 +7,7 @@ service-account-key.json
 *-credentials.json
 
 # Crawl reports (generated artefacts)
-public/crawl-report.json
+!public/crawl-report.json
 
 # OS artefacts
 .DS_Store
