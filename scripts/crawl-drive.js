@@ -21,11 +21,11 @@
 
 // Load .env for local development. In GitHub Actions, secrets are injected
 // directly into process.env — dotenv is a no-op when the file is absent.
-try { require('dotenv').config(); } catch (_) {}
+try { require('dotenv').config(); } catch (_) { }
 
-const fs      = require('fs');
-const path    = require('path');
-const crypto  = require('crypto');
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
 const { google } = require('googleapis');
 
 // ── CLI Flags ─────────────────────────────────────────────────────────────────
@@ -38,16 +38,16 @@ if (DRY_RUN) {
 
 // ── Environment Validation ────────────────────────────────────────────────────
 
-const REQUIRED_ENV = ['GOOGLE_SA_KEY', 'DRIVE_ROOT_FOLDER_ID'];
-
-REQUIRED_ENV.forEach((key) => {
-  if (!process.env[key]) {
-    console.error(`❌ Missing required environment variable: ${key}`);
-    process.exit(1);
-  }
-});
+// DRIVE_ROOT_FOLDER_ID is always required.
+// GOOGLE_SA_KEY is only required for local development.
+// In GitHub Actions, WIF sets GOOGLE_APPLICATION_CREDENTIALS automatically.
+if (!process.env.DRIVE_ROOT_FOLDER_ID) {
+  console.error('❌ Missing required environment variable: DRIVE_ROOT_FOLDER_ID');
+  process.exit(1);
+}
 
 const DRIVE_ROOT_FOLDER_ID = process.env.DRIVE_ROOT_FOLDER_ID;
+const IS_LOCAL = !!process.env.GOOGLE_SA_KEY;
 
 // ── Course Registry ───────────────────────────────────────────────────────────
 
@@ -60,11 +60,11 @@ const COURSE_REGISTRY = JSON.parse(
 
 const TYPE_PATTERNS = [
   { pattern: /past[\s_\-]?q(uestion)?s?/i, type: 'Past Question' },
-  { pattern: /pq/i,                          type: 'Past Question' },
-  { pattern: /note|lecture/i,                type: 'Lecture Notes' },
-  { pattern: /tutorial|tut/i,                type: 'Tutorial'      },
-  { pattern: /syllabus|outline|course.?plan/i, type: 'Syllabus'    },
-  { pattern: /text.*book|textbook|recommended/i, type: 'Textbook'  },
+  { pattern: /pq/i, type: 'Past Question' },
+  { pattern: /note|lecture/i, type: 'Lecture Notes' },
+  { pattern: /tutorial|tut/i, type: 'Tutorial' },
+  { pattern: /syllabus|outline|course.?plan/i, type: 'Syllabus' },
+  { pattern: /text.*book|textbook|recommended/i, type: 'Textbook' },
 ];
 
 // ── Fault-Tolerant Field Extractors ──────────────────────────────────────────
@@ -90,7 +90,7 @@ function extractCourseCode(folderName) {
 function parseLevel(segment) {
   const m =
     segment.match(/(\d{3})\s*[-_]?\s*(?:level|l\b)/i) ||
-    segment.match(/(?:level|l)\s*[-_]?\s*(\d{3})/i)   ||
+    segment.match(/(?:level|l)\s*[-_]?\s*(\d{3})/i) ||
     segment.match(/^(\d{3})$/);
   return m ? parseInt(m[1], 10) : null;
 }
@@ -147,8 +147,8 @@ function buildTags(registry, rawCode, year, type) {
     tags.add(registry.department.toLowerCase());
   }
   if (rawCode) tags.add(rawCode.toLowerCase());
-  if (year)    tags.add(String(year));
-  if (type)    tags.add(type.toLowerCase());
+  if (year) tags.add(String(year));
+  if (type) tags.add(type.toLowerCase());
 
   return [...tags];
 }
@@ -174,42 +174,42 @@ function buildManifestEntry(file, pathSegments) {
   //  [3] COS_201_Discrete_Structures
   //  [4] Past_Questions  (optional — some files sit directly in course folder)
 
-  const levelSeg    = pathSegments[0] ?? '';
-  const semSeg      = pathSegments[1] ?? '';
-  const courseSeg   = pathSegments[2] ?? '';
-  const typeSeg     = pathSegments[3] ?? file.name; // fallback to filename
+  const levelSeg = pathSegments[0] ?? '';
+  const semSeg = pathSegments[1] ?? '';
+  const courseSeg = pathSegments[2] ?? '';
+  const typeSeg = pathSegments[3] ?? file.name; // fallback to filename
 
   // Course code extraction + registry lookup
-  const rawCode  = extractCourseCode(courseSeg);
+  const rawCode = extractCourseCode(courseSeg);
   const registry = rawCode ? COURSE_REGISTRY[rawCode] : null;
 
-  if (!rawCode)   issues.push(`Could not extract course code from folder: "${courseSeg}"`);
-  if (!registry)  issues.push(`Course code "${rawCode}" not found in courses.json — add it to scripts/courses.json`);
+  if (!rawCode) issues.push(`Could not extract course code from folder: "${courseSeg}"`);
+  if (!registry) issues.push(`Course code "${rawCode}" not found in courses.json — add it to scripts/courses.json`);
 
   // Field extraction (independent — each fails safely)
-  const level    = parseLevel(levelSeg)    ?? registry?.level    ?? null;
-  const semester = parseSemester(semSeg)   ?? registry?.semester ?? null;
-  const type     = parseType(typeSeg);
-  const year     = parseYear(file.name) ?? parseYear(typeSeg);
+  const level = parseLevel(levelSeg) ?? registry?.level ?? null;
+  const semester = parseSemester(semSeg) ?? registry?.semester ?? null;
+  const type = parseType(typeSeg);
+  const year = parseYear(file.name) ?? parseYear(typeSeg);
 
-  if (!level)    issues.push(`Could not parse level from: "${levelSeg}"`);
+  if (!level) issues.push(`Could not parse level from: "${levelSeg}"`);
   if (!semester) issues.push(`Could not parse semester from: "${semSeg}"`);
 
   const verified = issues.length === 0;
 
   return {
-    id:          `${(rawCode ?? 'unknown').toLowerCase()}-${type.replace(/\s/g,'-').toLowerCase()}-${year ?? 'undated'}-${file.id.slice(-6)}`,
-    courseCode:  registry?.code        ?? (rawCode ? `${rawCode.slice(0,-3)} ${rawCode.slice(-3)}` : 'UNKNOWN'),
-    courseTitle: registry?.title       ?? courseSeg.replace(/[-_]/g, ' ').trim(),
-    department:  registry?.department  ?? 'Unverified',
+    id: `${(rawCode ?? 'unknown').toLowerCase()}-${type.replace(/\s/g, '-').toLowerCase()}-${year ?? 'undated'}-${file.id.slice(-6)}`,
+    courseCode: registry?.code ?? (rawCode ? `${rawCode.slice(0, -3)} ${rawCode.slice(-3)}` : 'UNKNOWN'),
+    courseTitle: registry?.title ?? courseSeg.replace(/[-_]/g, ' ').trim(),
+    department: registry?.department ?? 'Unverified',
     level,
     semester,
     type,
-    year:        year ?? null,
-    fileId:      file.id,
-    tags:        buildTags(registry, rawCode, year, type),
+    year: year ?? null,
+    fileId: file.id,
+    tags: buildTags(registry, rawCode, year, type),
     verified,
-    uploadedAt:  file.modifiedTime,
+    uploadedAt: file.modifiedTime,
     ...(issues.length > 0 && { issues }),
   };
 }
@@ -234,10 +234,10 @@ async function crawlFolder(drive, folderId, pathSegments = [], depth = 0) {
   let files;
   try {
     const res = await drive.files.list({
-      q:         `'${folderId}' in parents and trashed = false`,
-      fields:    'files(id, name, mimeType, modifiedTime)',
-      pageSize:  1000,
-      orderBy:   'name',
+      q: `'${folderId}' in parents and trashed = false`,
+      fields: 'files(id, name, mimeType, modifiedTime)',
+      pageSize: 1000,
+      orderBy: 'name',
     });
     files = res.data.files ?? [];
   } catch (err) {
@@ -251,7 +251,7 @@ async function crawlFolder(drive, folderId, pathSegments = [], depth = 0) {
     if (file.mimeType === 'application/vnd.google-apps.folder') {
       // Recurse — strip the root folder name from path segments
       const childPath = depth === 0 ? [] : [...pathSegments, file.name];
-      const children  = await crawlFolder(drive, file.id, childPath, depth + 1);
+      const children = await crawlFolder(drive, file.id, childPath, depth + 1);
       entries.push(...children);
 
     } else if (file.mimeType === 'application/pdf') {
@@ -278,17 +278,31 @@ async function main() {
   console.log(`📅 Started: ${new Date().toISOString()}\n`);
 
   // ── Authenticate with Google Drive API ──────────────────────────────────────
+  // ── Authenticate with Google Drive API ──────────────────────────────────────
+  // Strategy 1 (local dev): GOOGLE_SA_KEY in .env → explicit service account
+  // Strategy 2 (GitHub Actions + WIF): GOOGLE_APPLICATION_CREDENTIALS is set
+  //   automatically by google-github-actions/auth@v2 → googleapis uses ADC
   let auth;
   try {
-    const saKey = JSON.parse(process.env.GOOGLE_SA_KEY);
-    auth = new google.auth.GoogleAuth({
-      credentials: saKey,
-      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-    });
+    if (IS_LOCAL) {
+      const saKey = JSON.parse(process.env.GOOGLE_SA_KEY);
+      auth = new google.auth.GoogleAuth({
+        credentials: saKey,
+        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      });
+      console.log('🔑 Auth: Service Account key (local dev)');
+    } else {
+      // Application Default Credentials — set by WIF action in CI
+      auth = new google.auth.GoogleAuth({
+        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      });
+      console.log('🔒 Auth: Workload Identity Federation (keyless)');
+    }
   } catch (err) {
-    console.error('❌ Failed to parse GOOGLE_SA_KEY:', err.message);
+    console.error('❌ Authentication setup failed:', err.message);
     process.exit(1);
   }
+
 
   const drive = google.drive({ version: 'v3', auth });
 
@@ -302,12 +316,12 @@ async function main() {
   }
 
   // ── Summary ───────────────────────────────────────────────────────────────────
-  const verified   = allEntries.filter(e => e.verified);
-  const flagged    = allEntries.filter(e => !e.verified);
-  const hash       = crypto.createHash('sha256')
-                           .update(JSON.stringify(allEntries))
-                           .digest('hex')
-                           .slice(0, 12);
+  const verified = allEntries.filter(e => e.verified);
+  const flagged = allEntries.filter(e => !e.verified);
+  const hash = crypto.createHash('sha256')
+    .update(JSON.stringify(allEntries))
+    .digest('hex')
+    .slice(0, 12);
 
   console.log('\n──────────────────────────────────────────');
   console.log(`  Total entries  : ${allEntries.length}`);
@@ -326,9 +340,9 @@ async function main() {
   }
 
   // ── Write output files ───────────────────────────────────────────────────────
-  const manifestJson      = JSON.stringify(allEntries, null, 2);
-  const versionJson       = JSON.stringify({ hash, count: allEntries.length, generatedAt: new Date().toISOString() }, null, 2);
-  const crawlReportJson   = JSON.stringify({ generatedAt: new Date().toISOString(), totalEntries: allEntries.length, verifiedCount: verified.length, flaggedCount: flagged.length, flagged }, null, 2);
+  const manifestJson = JSON.stringify(allEntries, null, 2);
+  const versionJson = JSON.stringify({ hash, count: allEntries.length, generatedAt: new Date().toISOString() }, null, 2);
+  const crawlReportJson = JSON.stringify({ generatedAt: new Date().toISOString(), totalEntries: allEntries.length, verifiedCount: verified.length, flaggedCount: flagged.length, flagged }, null, 2);
 
   if (DRY_RUN) {
     console.log('✅ Dry run complete — no files written.');
@@ -339,9 +353,9 @@ async function main() {
 
   const outDir = path.join(__dirname, '..', 'public');
 
-  fs.writeFileSync(path.join(outDir, 'manifest.json'),         manifestJson,    'utf-8');
-  fs.writeFileSync(path.join(outDir, 'manifest.version.json'), versionJson,     'utf-8');
-  fs.writeFileSync(path.join(outDir, 'crawl-report.json'),     crawlReportJson, 'utf-8');
+  fs.writeFileSync(path.join(outDir, 'manifest.json'), manifestJson, 'utf-8');
+  fs.writeFileSync(path.join(outDir, 'manifest.version.json'), versionJson, 'utf-8');
+  fs.writeFileSync(path.join(outDir, 'crawl-report.json'), crawlReportJson, 'utf-8');
 
   console.log('✅ Files written:');
   console.log(`   public/manifest.json         (${allEntries.length} entries)`);
