@@ -65,25 +65,23 @@ jobs:
         env:
           DRIVE_ROOT_FOLDER_ID: 1CjXTm0EW9Z9rGG_f7nfHZva4JIHvp8We
 
-      - name: Check for manifest changes
-        id: diff
+      - name: Force Commit and Push Manifests
         run: |
-          git diff --quiet public/manifest.json public/manifest.version.json \
-            && echo "changed=false" >> $GITHUB_OUTPUT \
-            || echo "changed=true"  >> $GITHUB_OUTPUT
-
-      - name: Commit and push updated manifest
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git config user.name  "focitsa-kb-bot"
+          # 1. Configure the bot identity
+          git config user.name "focitsa-kb-bot"
           git config user.email "bot@focitsa.org"
-          git add -f public/manifest.json public/manifest.version.json public/crawl-report.json
-          git commit -m "chore: refresh search manifest [skip ci]"
-          git push
-
-      - name: No changes detected
-        if: steps.diff.outputs.changed == 'false'
-        run: echo "Manifest is already up to date."
+          
+          # 2. Force add the specific files, overriding ALL .gitignore rules
+          git add --force public/manifest.json public/manifest.version.json public/crawl-report.json
+          
+          # 3. Check if there are staged changes. If yes, commit. If no, exit gracefully.
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: refresh search manifest [skip ci]"
+            git push
+            echo "Manifest successfully updated and pushed."
+          else
+            echo "Manifest is already up to date. No commit necessary."
+          fi
 
       - name: Post crawl summary
         if: always()
