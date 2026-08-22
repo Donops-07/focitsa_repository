@@ -1,0 +1,835 @@
+{
+  "generatedAt": "2026-08-22T02:13:43.681Z",
+  "totalEntries": 43,
+  "verifiedCount": 2,
+  "flaggedCount": 41,
+  "flagged": [
+    {
+      "id": "csc202-lecture-notes-undated-32KPgI",
+      "courseCode": "CSC 202",
+      "courseTitle": "CSC 202",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1fPnjjDdFGAe66M93QT0O2Ib3RG32KPgI",
+      "tags": [
+        "csc202",
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-07-22T10:43:49.000Z",
+      "issues": [
+        "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc202-lecture-notes-undated-h0EAYO",
+      "courseCode": "CSC 202",
+      "courseTitle": "CSC 202",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1RLwNMUKfkrsoViv8S4q9CkK6RUh0EAYO",
+      "tags": [
+        "csc202",
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-07-22T10:43:17.000Z",
+      "issues": [
+        "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc202-past-question-undated-5rBoeA",
+      "courseCode": "CSC 202",
+      "courseTitle": "CSC 202",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Past Question",
+      "year": null,
+      "fileId": "1WB8Xcj0PaA-YFqH6o9PkNR0Tmi5rBoeA",
+      "tags": [
+        "csc202",
+        "past question"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:35.000Z",
+      "issues": [
+        "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc202-lecture-notes-undated-1ugEaD",
+      "courseCode": "CSC 202",
+      "courseTitle": "CSC 202",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "12c7M4M0zPcThT21KoGKsEUhOpp1ugEaD",
+      "tags": [
+        "csc202",
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:36.000Z",
+      "issues": [
+        "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc202-resource-undated-Ry5d4z",
+      "courseCode": "CSC 202",
+      "courseTitle": "CSC 202",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1mchv5gxTBT94WC6FUe57KuLkLsRy5d4z",
+      "tags": [
+        "csc202",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:35.000Z",
+      "issues": [
+        "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-HkbY4A",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "16STcXzRT_s6Hl2opnuqi80ZAiTHkbY4A",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-YoO0cA",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1qUx85UcX0PL7QWmLguZTg0nBS0YoO0cA",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-sWT_7s",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1T3VwIEPUN0jzyUDJD7mNcJeJInsWT_7s",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-lecture-notes-undated-wVx6oQ",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1cISsTpJiFrytpsVzEJSgidTZM2wVx6oQ",
+      "tags": [
+        "csc204",
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-07-22T10:41:27.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-2024-YEkykt",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": 2024,
+      "fileId": "1TqvnIvTzMCf5f6tCt7Xb6uoGgcYEkykt",
+      "tags": [
+        "csc204",
+        "2024",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:54.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-BHLDUB",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1pReq0YsSHEtP_ixbswHnPyHikoBHLDUB",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-lecture-notes-undated-u1YQqf",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1gwBfhwg4vtaocDfoNkAB5pz2qTu1YQqf",
+      "tags": [
+        "csc204",
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-07-22T10:42:44.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-Fvkx-b",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1X-qRstfB7BfVyOMvtjtJJrNXT4Fvkx-b",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:53.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-past-question-undated-BBaeIT",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Past Question",
+      "year": null,
+      "fileId": "17zySWQGvFprd07vsyXSoJp-lTxBBaeIT",
+      "tags": [
+        "csc204",
+        "past question"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-zinZyh",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1Qz5Z44p42Jw7WIongKyPBXrLNazinZyh",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-resource-undated-Buqq52",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "12ie7ykfCMBACOKR1oEzO8k8Kt1Buqq52",
+      "tags": [
+        "csc204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:52.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-textbook-2007-E8OSsa",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Textbook",
+      "year": 2007,
+      "fileId": "1iL29vBlKUZYDRA_1QAm5DZ8arNE8OSsa",
+      "tags": [
+        "csc204",
+        "2007",
+        "textbook"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-04-14T14:26:55.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "csc204-textbook-2022-pl2WRs",
+      "courseCode": "CSC 204",
+      "courseTitle": "CSC 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Textbook",
+      "year": 2022,
+      "fileId": "1ZT1WYrSd6wb7MUazrYtIYo_iJfpl2WRs",
+      "tags": [
+        "csc204",
+        "2022",
+        "textbook"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-07-28T15:11:21.000Z",
+      "issues": [
+        "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "esi202-resource-undated-ItK-XT",
+      "courseCode": "ESI 202",
+      "courseTitle": "ESI 202",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1iYARlR6TKvzNMUY-37KKhysou-ItK-XT",
+      "tags": [
+        "esi202",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-06-14T14:55:55.000Z",
+      "issues": [
+        "Course code \"ESI202\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "gst212-resource-undated-ZSWQNe",
+      "courseCode": "GST 212",
+      "courseTitle": "GST 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1VGE1dK-GU_jsNiy2EHMV34S9EeZSWQNe",
+      "tags": [
+        "gst212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-07T10:59:43.000Z",
+      "issues": [
+        "Course code \"GST212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-resource-undated-rfRQD-",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1NOdFdp3_J-72j54iCaL9dQfhxsrfRQD-",
+      "tags": [
+        "ift212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:36.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-past-question-undated-ZVtBAw",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Past Question",
+      "year": null,
+      "fileId": "1u2u3cQ74U8tJc78iF0x7dy-0nOZVtBAw",
+      "tags": [
+        "ift212",
+        "past question"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:55.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-resource-undated-BmFKMx",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1EA3p3qU8LwF4Lo1OsftMcYaocKBmFKMx",
+      "tags": [
+        "ift212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:55.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-resource-undated-EfjrrO",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1Zefjo2RouX-vipfMoJ3TYM-xQ9EfjrrO",
+      "tags": [
+        "ift212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:54.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-resource-undated-kLm46l",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1k0-GqyvAQYEZoDYPmDJ-tF2uvykLm46l",
+      "tags": [
+        "ift212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-06-02T06:43:41.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-resource-undated-EE9O7E",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1E_UWuO2J8DW0a65s5R8ZnVCSyCEE9O7E",
+      "tags": [
+        "ift212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:55.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-lecture-notes-undated-kkOmIJ",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1bmTulxcjgY93QjQ5tbKiIqeD16kkOmIJ",
+      "tags": [
+        "ift212",
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-06-02T06:47:16.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-resource-undated-HXXlIX",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1CzkKnHnpW5pqI0zbHYlE1sK3dFHXXlIX",
+      "tags": [
+        "ift212",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-06-02T06:42:25.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ift212-textbook-undated-sClZ0h",
+      "courseCode": "IFT 212",
+      "courseTitle": "IFT 212",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Textbook",
+      "year": null,
+      "fileId": "1VOHvwKq-ybLjrRWVzs8d5UzC3vsClZ0h",
+      "tags": [
+        "ift212",
+        "textbook"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-04-14T14:20:48.000Z",
+      "issues": [
+        "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "ins204-resource-undated-9d_oFv",
+      "courseCode": "INS 204",
+      "courseTitle": "INS 204",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1SYCDEUrVhcaaj5mz-UIx0gNlYX9d_oFv",
+      "tags": [
+        "ins204",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-06-04T19:09:56.000Z",
+      "issues": [
+        "Course code \"INS204\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-2022-X5Y1cj",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Textbooks",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": 2022,
+      "fileId": "1WCIuhWx4Zd1y1dBYi9klZZlLJmX5Y1cj",
+      "tags": [
+        "2022",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:57.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Textbooks\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-OgkLE6",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1jFZCxsSi_TW9vxlZI9HJA3Me9hOgkLE6",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:46.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-XleklJ",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1nzbEnZ_3A4kVSZj8zaimXSQnL_XleklJ",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:37.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-lecture-notes-undated-oUiLin",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1FKnTi-P1ulgjWH5aiNtLHI59ESoUiLin",
+      "tags": [
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:46.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-CR9BjI",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1E-GHCPyIGFVfEp8ZC9MrSm_r7LCR9BjI",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:39.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-lecture-notes-undated-Xmlfa_",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Lecture Notes",
+      "year": null,
+      "fileId": "1ZVT4Z-BUAg2Wyo-MNHi_9UXi0qXmlfa_",
+      "tags": [
+        "lecture notes"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:40.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-uuzoBM",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1m057mhZP66oYz1IQr0p2CxVXREuuzoBM",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:38.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-dcUlgL",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "18XbLggp0p6s0B7U2kytJZ9yfsVdcUlgL",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:38.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-9sgpkZ",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:44.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-undated-EaLstq",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "Useful Resources",
+      "department": "Unverified",
+      "level": 200,
+      "semester": 2,
+      "type": "Resource",
+      "year": null,
+      "fileId": "18NxYsr-BBFZgDUmQThKNG86Z7uEaLstq",
+      "tags": [
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T08:10:38.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"Useful Resources\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
+      ]
+    },
+    {
+      "id": "unknown-resource-2023-M_aN27",
+      "courseCode": "UNKNOWN",
+      "courseTitle": "",
+      "department": "Unverified",
+      "level": null,
+      "semester": null,
+      "type": "Resource",
+      "year": 2023,
+      "fileId": "1MJkv35R3xaZeoj8X0QqZYfmM6XM_aN27",
+      "tags": [
+        "2023",
+        "resource"
+      ],
+      "verified": false,
+      "uploadedAt": "2026-08-20T09:04:05.000Z",
+      "issues": [
+        "Could not extract course code from folder: \"\"",
+        "Course code \"null\" not found in courses.json — add it to scripts/courses.json",
+        "Could not parse level from: \"Course Outline\"",
+        "Could not parse semester from: \"\""
+      ]
+    }
+  ]
+}
