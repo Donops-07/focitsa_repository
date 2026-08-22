@@ -141,7 +141,7 @@ async function init() {
   // Step 1 — Fetch version sidecar (tiny, always fresh)
   let currentHash;
   try {
-    const versionRes = await fetch('manifest.version.json', { cache: 'no-cache' });
+    const versionRes = await fetch('/manifest.version.json', { cache: 'no-cache' });
     if (!versionRes.ok) throw new Error(`Version fetch failed: ${versionRes.status}`);
     const version = await versionRes.json();
     currentHash   = version.hash;
@@ -183,7 +183,7 @@ async function init() {
 
   // ── Cache MISS — fetch the full manifest ──────────────────────────────────
   try {
-    const res = await fetch('manifest.json');
+    const res = await fetch('/manifest.json');
     if (!res.ok) throw new Error(`Manifest fetch failed: ${res.status}`);
     data = await res.json();
 
