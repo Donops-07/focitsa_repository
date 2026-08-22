@@ -76,7 +76,7 @@ jobs:
           
           # 3. Check if there are staged changes. If yes, commit. If no, exit gracefully.
           if ! git diff --staged --quiet; then
-            git commit -m "chore: refresh search manifest [skip ci]"
+            git commit -m "chore: refresh search manifest"
             git push
             echo "Manifest successfully updated and pushed."
           else
