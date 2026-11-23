@@ -13,6 +13,11 @@ on:
     branches: [main]
     paths:
       - 'scripts/courses.json'
+      - 'scripts/crawl-drive.js'
+
+concurrency:
+  group: refresh-manifest-${{ github.ref }}
+  cancel-in-progress: false
 
 # id-token: write  → GitHub generates a signed OIDC token for this specific run.
 #                    Google Cloud verifies it and issues a short-lived access pass.
@@ -55,11 +60,6 @@ jobs:
 
       # GOOGLE_APPLICATION_CREDENTIALS is set automatically by the auth step.
       # The googleapis library detects it via Application Default Credentials.
-      - name: Validate crawler (dry run)
-        run: npm run crawl:dry
-        env:
-          DRIVE_ROOT_FOLDER_ID: 1CjXTm0EW9Z9rGG_f7nfHZva4JIHvp8We
-
       - name: Run crawler
         run: npm run crawl
         env:
@@ -67,14 +67,11 @@ jobs:
 
       - name: Force Commit and Push Manifests
         run: |
-          # 1. Configure the bot identity
           git config user.name "focitsa-kb-bot"
           git config user.email "bot@focitsa.org"
-          
-          # 2. Force add the specific files, overriding ALL .gitignore rules
+
           git add --force public/manifest.json public/manifest.version.json public/crawl-report.json
-          
-          # 3. Check if there are staged changes. If yes, commit. If no, exit gracefully.
+
           if ! git diff --staged --quiet; then
             git commit -m "chore: refresh search manifest"
             git push
@@ -89,7 +86,7 @@ jobs:
           echo "## FOCITSA Knowledge Base - Crawl Summary" >> $GITHUB_STEP_SUMMARY
           if [ -f public/crawl-report.json ]; then
             TOTAL=$(node -p "require('./public/manifest.json').length")
-            FLAGGED=$(node -p "require('./public/crawl-report.json').flaggedCount")
+            FLAGGED=$(node -p "require('./public/crawl-report.json').flaggedCount ?? 0")
             HASH=$(node -p "require('./public/manifest.version.json').hash")
             echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
             echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
@@ -98,4 +95,3 @@ jobs:
             echo "| Manifest hash | \`${HASH}\` |" >> $GITHUB_STEP_SUMMARY
             echo "| Auth method | Workload Identity Federation (keyless) |" >> $GITHUB_STEP_SUMMARY
           fi
-

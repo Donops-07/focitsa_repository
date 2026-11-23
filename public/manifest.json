@@ -2,622 +2,1281 @@
   {
     "id": "csc202-lecture-notes-undated-32KPgI",
     "courseCode": "CSC 202",
-    "courseTitle": "CSC 202",
-    "department": "Unverified",
+    "aliases": [
+      "CSC202",
+      "CSC 202",
+      "COS202",
+      "COS 202"
+    ],
+    "courseTitle": "Computer Programming II",
+    "fileName": "CSC_202_Lecture_Notes.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1fPnjjDdFGAe66M93QT0O2Ib3RG32KPgI",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1fPnjjDdFGAe66M93QT0O2Ib3RG32KPgI/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1fPnjjDdFGAe66M93QT0O2Ib3RG32KPgI",
+    "driveViewUrl": "https://drive.google.com/file/d/1fPnjjDdFGAe66M93QT0O2Ib3RG32KPgI/view",
+    "isPublic": true,
     "tags": [
       "csc202",
-      "lecture notes"
+      "lecture notes",
+      "csc 202",
+      "cos202",
+      "cos 202",
+      "computer",
+      "programming",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-07-22T10:43:49.000Z",
-    "issues": [
-      "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-07-22T10:43:49.000Z"
   },
   {
     "id": "csc202-lecture-notes-undated-h0EAYO",
     "courseCode": "CSC 202",
-    "courseTitle": "CSC 202",
-    "department": "Unverified",
+    "aliases": [
+      "CSC202",
+      "CSC 202",
+      "COS202",
+      "COS 202"
+    ],
+    "courseTitle": "Computer Programming II",
+    "fileName": "CSC_202_Lecture_Notes.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1RLwNMUKfkrsoViv8S4q9CkK6RUh0EAYO",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1RLwNMUKfkrsoViv8S4q9CkK6RUh0EAYO/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1RLwNMUKfkrsoViv8S4q9CkK6RUh0EAYO",
+    "driveViewUrl": "https://drive.google.com/file/d/1RLwNMUKfkrsoViv8S4q9CkK6RUh0EAYO/view",
+    "isPublic": true,
     "tags": [
       "csc202",
-      "lecture notes"
+      "lecture notes",
+      "csc 202",
+      "cos202",
+      "cos 202",
+      "computer",
+      "programming",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-07-22T10:43:17.000Z",
-    "issues": [
-      "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-07-22T10:43:17.000Z"
   },
   {
     "id": "csc202-past-question-undated-5rBoeA",
     "courseCode": "CSC 202",
-    "courseTitle": "CSC 202",
-    "department": "Unverified",
+    "aliases": [
+      "CSC202",
+      "CSC 202",
+      "COS202",
+      "COS 202"
+    ],
+    "courseTitle": "Computer Programming II",
+    "fileName": "CSC_202_Past_Question.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Past Question",
     "year": null,
     "fileId": "1WB8Xcj0PaA-YFqH6o9PkNR0Tmi5rBoeA",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1WB8Xcj0PaA-YFqH6o9PkNR0Tmi5rBoeA/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1WB8Xcj0PaA-YFqH6o9PkNR0Tmi5rBoeA",
+    "driveViewUrl": "https://drive.google.com/file/d/1WB8Xcj0PaA-YFqH6o9PkNR0Tmi5rBoeA/view",
+    "isPublic": true,
     "tags": [
       "csc202",
-      "past question"
+      "past question",
+      "csc 202",
+      "cos202",
+      "cos 202",
+      "computer",
+      "programming",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:35.000Z",
-    "issues": [
-      "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:35.000Z"
   },
   {
     "id": "csc202-lecture-notes-undated-1ugEaD",
     "courseCode": "CSC 202",
-    "courseTitle": "CSC 202",
-    "department": "Unverified",
+    "aliases": [
+      "CSC202",
+      "CSC 202",
+      "COS202",
+      "COS 202"
+    ],
+    "courseTitle": "Computer Programming II",
+    "fileName": "CSC_202_Lecture_Notes.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "12c7M4M0zPcThT21KoGKsEUhOpp1ugEaD",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/12c7M4M0zPcThT21KoGKsEUhOpp1ugEaD/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=12c7M4M0zPcThT21KoGKsEUhOpp1ugEaD",
+    "driveViewUrl": "https://drive.google.com/file/d/12c7M4M0zPcThT21KoGKsEUhOpp1ugEaD/view",
+    "isPublic": true,
     "tags": [
       "csc202",
-      "lecture notes"
+      "lecture notes",
+      "csc 202",
+      "cos202",
+      "cos 202",
+      "computer",
+      "programming",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:36.000Z",
-    "issues": [
-      "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:36.000Z"
   },
   {
     "id": "csc202-resource-undated-Ry5d4z",
     "courseCode": "CSC 202",
-    "courseTitle": "CSC 202",
-    "department": "Unverified",
+    "aliases": [
+      "CSC202",
+      "CSC 202",
+      "COS202",
+      "COS 202"
+    ],
+    "courseTitle": "Computer Programming II",
+    "fileName": "CSC_202_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1mchv5gxTBT94WC6FUe57KuLkLsRy5d4z",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1mchv5gxTBT94WC6FUe57KuLkLsRy5d4z/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1mchv5gxTBT94WC6FUe57KuLkLsRy5d4z",
+    "driveViewUrl": "https://drive.google.com/file/d/1mchv5gxTBT94WC6FUe57KuLkLsRy5d4z/view",
+    "isPublic": true,
     "tags": [
       "csc202",
-      "resource"
+      "resource",
+      "csc 202",
+      "cos202",
+      "cos 202",
+      "computer",
+      "programming",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:35.000Z",
-    "issues": [
-      "Course code \"CSC202\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:35.000Z"
   },
   {
     "id": "csc204-resource-undated-HkbY4A",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "16STcXzRT_s6Hl2opnuqi80ZAiTHkbY4A",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/16STcXzRT_s6Hl2opnuqi80ZAiTHkbY4A/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=16STcXzRT_s6Hl2opnuqi80ZAiTHkbY4A",
+    "driveViewUrl": "https://drive.google.com/file/d/16STcXzRT_s6Hl2opnuqi80ZAiTHkbY4A/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-resource-undated-YoO0cA",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1qUx85UcX0PL7QWmLguZTg0nBS0YoO0cA",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1qUx85UcX0PL7QWmLguZTg0nBS0YoO0cA/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1qUx85UcX0PL7QWmLguZTg0nBS0YoO0cA",
+    "driveViewUrl": "https://drive.google.com/file/d/1qUx85UcX0PL7QWmLguZTg0nBS0YoO0cA/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-resource-undated-sWT_7s",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1T3VwIEPUN0jzyUDJD7mNcJeJInsWT_7s",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1T3VwIEPUN0jzyUDJD7mNcJeJInsWT_7s/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1T3VwIEPUN0jzyUDJD7mNcJeJInsWT_7s",
+    "driveViewUrl": "https://drive.google.com/file/d/1T3VwIEPUN0jzyUDJD7mNcJeJInsWT_7s/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-lecture-notes-undated-wVx6oQ",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Lecture_Notes.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1cISsTpJiFrytpsVzEJSgidTZM2wVx6oQ",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1cISsTpJiFrytpsVzEJSgidTZM2wVx6oQ/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1cISsTpJiFrytpsVzEJSgidTZM2wVx6oQ",
+    "driveViewUrl": "https://drive.google.com/file/d/1cISsTpJiFrytpsVzEJSgidTZM2wVx6oQ/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "lecture notes"
+      "lecture notes",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-07-22T10:41:27.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-07-22T10:41:27.000Z"
   },
   {
     "id": "csc204-resource-2024-YEkykt",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource_2024.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": 2024,
     "fileId": "1TqvnIvTzMCf5f6tCt7Xb6uoGgcYEkykt",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1TqvnIvTzMCf5f6tCt7Xb6uoGgcYEkykt/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1TqvnIvTzMCf5f6tCt7Xb6uoGgcYEkykt",
+    "driveViewUrl": "https://drive.google.com/file/d/1TqvnIvTzMCf5f6tCt7Xb6uoGgcYEkykt/view",
+    "isPublic": true,
     "tags": [
       "csc204",
       "2024",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:54.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:54.000Z"
   },
   {
     "id": "csc204-resource-undated-BHLDUB",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1pReq0YsSHEtP_ixbswHnPyHikoBHLDUB",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1pReq0YsSHEtP_ixbswHnPyHikoBHLDUB/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1pReq0YsSHEtP_ixbswHnPyHikoBHLDUB",
+    "driveViewUrl": "https://drive.google.com/file/d/1pReq0YsSHEtP_ixbswHnPyHikoBHLDUB/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-lecture-notes-undated-u1YQqf",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Lecture_Notes.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1gwBfhwg4vtaocDfoNkAB5pz2qTu1YQqf",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1gwBfhwg4vtaocDfoNkAB5pz2qTu1YQqf/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1gwBfhwg4vtaocDfoNkAB5pz2qTu1YQqf",
+    "driveViewUrl": "https://drive.google.com/file/d/1gwBfhwg4vtaocDfoNkAB5pz2qTu1YQqf/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "lecture notes"
+      "lecture notes",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-07-22T10:42:44.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-07-22T10:42:44.000Z"
   },
   {
     "id": "csc204-resource-undated-Fvkx-b",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1X-qRstfB7BfVyOMvtjtJJrNXT4Fvkx-b",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1X-qRstfB7BfVyOMvtjtJJrNXT4Fvkx-b/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1X-qRstfB7BfVyOMvtjtJJrNXT4Fvkx-b",
+    "driveViewUrl": "https://drive.google.com/file/d/1X-qRstfB7BfVyOMvtjtJJrNXT4Fvkx-b/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:53.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:53.000Z"
   },
   {
     "id": "csc204-past-question-undated-BBaeIT",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Past_Question.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Past Question",
     "year": null,
     "fileId": "17zySWQGvFprd07vsyXSoJp-lTxBBaeIT",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/17zySWQGvFprd07vsyXSoJp-lTxBBaeIT/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=17zySWQGvFprd07vsyXSoJp-lTxBBaeIT",
+    "driveViewUrl": "https://drive.google.com/file/d/17zySWQGvFprd07vsyXSoJp-lTxBBaeIT/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "past question"
+      "past question",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-resource-undated-zinZyh",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1Qz5Z44p42Jw7WIongKyPBXrLNazinZyh",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1Qz5Z44p42Jw7WIongKyPBXrLNazinZyh/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1Qz5Z44p42Jw7WIongKyPBXrLNazinZyh",
+    "driveViewUrl": "https://drive.google.com/file/d/1Qz5Z44p42Jw7WIongKyPBXrLNazinZyh/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-resource-undated-Buqq52",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Resource.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "12ie7ykfCMBACOKR1oEzO8k8Kt1Buqq52",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/12ie7ykfCMBACOKR1oEzO8k8Kt1Buqq52/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=12ie7ykfCMBACOKR1oEzO8k8Kt1Buqq52",
+    "driveViewUrl": "https://drive.google.com/file/d/12ie7ykfCMBACOKR1oEzO8k8Kt1Buqq52/view",
+    "isPublic": true,
     "tags": [
       "csc204",
-      "resource"
+      "resource",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:52.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:52.000Z"
   },
   {
     "id": "csc204-textbook-2007-E8OSsa",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Textbook_2007.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Textbook",
     "year": 2007,
     "fileId": "1iL29vBlKUZYDRA_1QAm5DZ8arNE8OSsa",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1iL29vBlKUZYDRA_1QAm5DZ8arNE8OSsa/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1iL29vBlKUZYDRA_1QAm5DZ8arNE8OSsa",
+    "driveViewUrl": "https://drive.google.com/file/d/1iL29vBlKUZYDRA_1QAm5DZ8arNE8OSsa/view",
+    "isPublic": true,
     "tags": [
       "csc204",
       "2007",
-      "textbook"
+      "textbook",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-04-14T14:26:55.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-04-14T14:26:55.000Z"
   },
   {
     "id": "csc204-textbook-2022-pl2WRs",
     "courseCode": "CSC 204",
-    "courseTitle": "CSC 204",
-    "department": "Unverified",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
+    "fileName": "CSC_204_Textbook_2022.pdf",
+    "department": "Computer Science",
+    "departments": [
+      "Computer Science"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Textbook",
     "year": 2022,
     "fileId": "1ZT1WYrSd6wb7MUazrYtIYo_iJfpl2WRs",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1ZT1WYrSd6wb7MUazrYtIYo_iJfpl2WRs/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1ZT1WYrSd6wb7MUazrYtIYo_iJfpl2WRs",
+    "driveViewUrl": "https://drive.google.com/file/d/1ZT1WYrSd6wb7MUazrYtIYo_iJfpl2WRs/view",
+    "isPublic": true,
     "tags": [
       "csc204",
       "2022",
-      "textbook"
+      "textbook",
+      "csc 204",
+      "cos204",
+      "cos 204",
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "computer science",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-07-28T15:11:21.000Z",
-    "issues": [
-      "Course code \"CSC204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-07-28T15:11:21.000Z"
   },
   {
     "id": "esi202-resource-undated-ItK-XT",
     "courseCode": "ESI 202",
-    "courseTitle": "ESI 202",
-    "department": "Unverified",
+    "aliases": [
+      "ESI202",
+      "ESI 202"
+    ],
+    "courseTitle": "Entrepreneurship and Innovation",
+    "fileName": "ESI_202_Resource.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1iYARlR6TKvzNMUY-37KKhysou-ItK-XT",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1iYARlR6TKvzNMUY-37KKhysou-ItK-XT/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1iYARlR6TKvzNMUY-37KKhysou-ItK-XT",
+    "driveViewUrl": "https://drive.google.com/file/d/1iYARlR6TKvzNMUY-37KKhysou-ItK-XT/view",
+    "isPublic": true,
     "tags": [
       "esi202",
-      "resource"
+      "resource",
+      "esi 202",
+      "entrepreneurship",
+      "and",
+      "innovation",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-06-14T14:55:55.000Z",
-    "issues": [
-      "Course code \"ESI202\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-06-14T14:55:55.000Z"
   },
   {
     "id": "gst212-resource-undated-ZSWQNe",
     "courseCode": "GST 212",
-    "courseTitle": "GST 212",
-    "department": "Unverified",
+    "aliases": [
+      "GST212",
+      "GST 212"
+    ],
+    "courseTitle": "Philosophy, Logic and Human Existence",
+    "fileName": "GST_212_Resource.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1VGE1dK-GU_jsNiy2EHMV34S9EeZSWQNe",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1VGE1dK-GU_jsNiy2EHMV34S9EeZSWQNe/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1VGE1dK-GU_jsNiy2EHMV34S9EeZSWQNe",
+    "driveViewUrl": "https://drive.google.com/file/d/1VGE1dK-GU_jsNiy2EHMV34S9EeZSWQNe/view",
+    "isPublic": true,
     "tags": [
       "gst212",
-      "resource"
+      "resource",
+      "gst 212",
+      "philosophy,",
+      "logic",
+      "and",
+      "human",
+      "existence",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-07T10:59:43.000Z",
-    "issues": [
-      "Course code \"GST212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-07T10:59:43.000Z"
   },
   {
     "id": "ift212-resource-undated-rfRQD-",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Resource.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1NOdFdp3_J-72j54iCaL9dQfhxsrfRQD-",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1NOdFdp3_J-72j54iCaL9dQfhxsrfRQD-/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1NOdFdp3_J-72j54iCaL9dQfhxsrfRQD-",
+    "driveViewUrl": "https://drive.google.com/file/d/1NOdFdp3_J-72j54iCaL9dQfhxsrfRQD-/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "resource"
+      "resource",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:36.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:36.000Z"
   },
   {
     "id": "ift212-past-question-undated-ZVtBAw",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Past_Question.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Past Question",
     "year": null,
     "fileId": "1u2u3cQ74U8tJc78iF0x7dy-0nOZVtBAw",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1u2u3cQ74U8tJc78iF0x7dy-0nOZVtBAw/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1u2u3cQ74U8tJc78iF0x7dy-0nOZVtBAw",
+    "driveViewUrl": "https://drive.google.com/file/d/1u2u3cQ74U8tJc78iF0x7dy-0nOZVtBAw/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "past question"
+      "past question",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:55.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:55.000Z"
   },
   {
     "id": "ift212-resource-undated-BmFKMx",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Resource.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1EA3p3qU8LwF4Lo1OsftMcYaocKBmFKMx",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1EA3p3qU8LwF4Lo1OsftMcYaocKBmFKMx/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1EA3p3qU8LwF4Lo1OsftMcYaocKBmFKMx",
+    "driveViewUrl": "https://drive.google.com/file/d/1EA3p3qU8LwF4Lo1OsftMcYaocKBmFKMx/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "resource"
+      "resource",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:55.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:55.000Z"
   },
   {
     "id": "ift212-resource-undated-EfjrrO",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Resource.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1Zefjo2RouX-vipfMoJ3TYM-xQ9EfjrrO",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1Zefjo2RouX-vipfMoJ3TYM-xQ9EfjrrO/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1Zefjo2RouX-vipfMoJ3TYM-xQ9EfjrrO",
+    "driveViewUrl": "https://drive.google.com/file/d/1Zefjo2RouX-vipfMoJ3TYM-xQ9EfjrrO/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "resource"
+      "resource",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:54.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:54.000Z"
   },
   {
     "id": "ift212-resource-undated-kLm46l",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Resource.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1k0-GqyvAQYEZoDYPmDJ-tF2uvykLm46l",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1k0-GqyvAQYEZoDYPmDJ-tF2uvykLm46l/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1k0-GqyvAQYEZoDYPmDJ-tF2uvykLm46l",
+    "driveViewUrl": "https://drive.google.com/file/d/1k0-GqyvAQYEZoDYPmDJ-tF2uvykLm46l/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "resource"
+      "resource",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-06-02T06:43:41.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-06-02T06:43:41.000Z"
   },
   {
     "id": "ift212-resource-undated-EE9O7E",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Resource.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1E_UWuO2J8DW0a65s5R8ZnVCSyCEE9O7E",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1E_UWuO2J8DW0a65s5R8ZnVCSyCEE9O7E/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1E_UWuO2J8DW0a65s5R8ZnVCSyCEE9O7E",
+    "driveViewUrl": "https://drive.google.com/file/d/1E_UWuO2J8DW0a65s5R8ZnVCSyCEE9O7E/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "resource"
+      "resource",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:55.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:55.000Z"
   },
   {
     "id": "ift212-lecture-notes-undated-kkOmIJ",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Lecture_Notes.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1bmTulxcjgY93QjQ5tbKiIqeD16kkOmIJ",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1bmTulxcjgY93QjQ5tbKiIqeD16kkOmIJ/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1bmTulxcjgY93QjQ5tbKiIqeD16kkOmIJ",
+    "driveViewUrl": "https://drive.google.com/file/d/1bmTulxcjgY93QjQ5tbKiIqeD16kkOmIJ/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "lecture notes"
+      "lecture notes",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-06-02T06:47:16.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-06-02T06:47:16.000Z"
   },
   {
     "id": "ift212-resource-undated-HXXlIX",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Resource.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1CzkKnHnpW5pqI0zbHYlE1sK3dFHXXlIX",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1CzkKnHnpW5pqI0zbHYlE1sK3dFHXXlIX/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1CzkKnHnpW5pqI0zbHYlE1sK3dFHXXlIX",
+    "driveViewUrl": "https://drive.google.com/file/d/1CzkKnHnpW5pqI0zbHYlE1sK3dFHXXlIX/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "resource"
+      "resource",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-06-02T06:42:25.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-06-02T06:42:25.000Z"
   },
   {
     "id": "ift212-textbook-undated-sClZ0h",
     "courseCode": "IFT 212",
-    "courseTitle": "IFT 212",
-    "department": "Unverified",
+    "aliases": [
+      "IFT212",
+      "IFT 212",
+      "IT212",
+      "IT 212"
+    ],
+    "courseTitle": "Computer Architecture and Organization",
+    "fileName": "IFT_212_Textbook.pdf",
+    "department": "Information Technology",
+    "departments": [
+      "Information Technology"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Textbook",
     "year": null,
     "fileId": "1VOHvwKq-ybLjrRWVzs8d5UzC3vsClZ0h",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1VOHvwKq-ybLjrRWVzs8d5UzC3vsClZ0h/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1VOHvwKq-ybLjrRWVzs8d5UzC3vsClZ0h",
+    "driveViewUrl": "https://drive.google.com/file/d/1VOHvwKq-ybLjrRWVzs8d5UzC3vsClZ0h/view",
+    "isPublic": true,
     "tags": [
       "ift212",
-      "textbook"
+      "textbook",
+      "ift 212",
+      "it212",
+      "it 212",
+      "computer",
+      "architecture",
+      "and",
+      "organization",
+      "information technology",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-04-14T14:20:48.000Z",
-    "issues": [
-      "Course code \"IFT212\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-04-14T14:20:48.000Z"
   },
   {
     "id": "ins204-resource-undated-9d_oFv",
     "courseCode": "INS 204",
-    "courseTitle": "INS 204",
-    "department": "Unverified",
+    "aliases": [
+      "INS204",
+      "INS 204",
+      "IS204",
+      "IS 204"
+    ],
+    "courseTitle": "Systems Analysis and Design",
+    "fileName": "INS_204_Resource.pdf",
+    "department": "Information Systems",
+    "departments": [
+      "Information Systems"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1SYCDEUrVhcaaj5mz-UIx0gNlYX9d_oFv",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1SYCDEUrVhcaaj5mz-UIx0gNlYX9d_oFv/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1SYCDEUrVhcaaj5mz-UIx0gNlYX9d_oFv",
+    "driveViewUrl": "https://drive.google.com/file/d/1SYCDEUrVhcaaj5mz-UIx0gNlYX9d_oFv/view",
+    "isPublic": true,
     "tags": [
       "ins204",
-      "resource"
+      "resource",
+      "ins 204",
+      "is204",
+      "is 204",
+      "systems",
+      "analysis",
+      "and",
+      "design",
+      "information systems",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-06-04T19:09:56.000Z",
-    "issues": [
-      "Course code \"INS204\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-06-04T19:09:56.000Z"
   },
   {
     "id": "mth202-resource-undated-7gBec7",
     "courseCode": "MTH 202",
+    "aliases": [
+      "MTH202",
+      "MTH 202"
+    ],
     "courseTitle": "Linear Algebra",
-    "department": "Mathematics",
+    "fileName": "MTH_202_Resource.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1Zf3fcQF7tUq526Y9Dht5CrHIxA7gBec7",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1Zf3fcQF7tUq526Y9Dht5CrHIxA7gBec7/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1Zf3fcQF7tUq526Y9Dht5CrHIxA7gBec7",
+    "driveViewUrl": "https://drive.google.com/file/d/1Zf3fcQF7tUq526Y9Dht5CrHIxA7gBec7/view",
+    "isPublic": true,
     "tags": [
       "mth202",
       "linear",
       "algebra",
       "mathematics",
-      "resource"
+      "resource",
+      "mth 202",
+      "all departments",
+      "pdf"
     ],
     "verified": true,
     "uploadedAt": "2026-04-14T14:42:08.000Z"
@@ -625,246 +1284,360 @@
   {
     "id": "mth202-resource-2017-V4Wy0z",
     "courseCode": "MTH 202",
+    "aliases": [
+      "MTH202",
+      "MTH 202"
+    ],
     "courseTitle": "Linear Algebra",
-    "department": "Mathematics",
+    "fileName": "MTH_202_Resource_2017.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": 2017,
     "fileId": "11Gh5s1EYv-Z9GvU7bRY7yZVqiHV4Wy0z",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/11Gh5s1EYv-Z9GvU7bRY7yZVqiHV4Wy0z/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=11Gh5s1EYv-Z9GvU7bRY7yZVqiHV4Wy0z",
+    "driveViewUrl": "https://drive.google.com/file/d/11Gh5s1EYv-Z9GvU7bRY7yZVqiHV4Wy0z/view",
+    "isPublic": true,
     "tags": [
       "mth202",
       "linear",
       "algebra",
       "mathematics",
       "2017",
-      "resource"
+      "resource",
+      "mth 202",
+      "all departments",
+      "pdf"
     ],
     "verified": true,
     "uploadedAt": "2026-04-14T14:37:31.000Z"
   },
   {
-    "id": "unknown-resource-2022-X5Y1cj",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-2022-X5Y1cj",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Textbooks",
-    "department": "Unverified",
+    "fileName": "Textbooks_2022.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": 2022,
     "fileId": "1WCIuhWx4Zd1y1dBYi9klZZlLJmX5Y1cj",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1WCIuhWx4Zd1y1dBYi9klZZlLJmX5Y1cj/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1WCIuhWx4Zd1y1dBYi9klZZlLJmX5Y1cj",
+    "driveViewUrl": "https://drive.google.com/file/d/1WCIuhWx4Zd1y1dBYi9klZZlLJmX5Y1cj/view",
+    "isPublic": true,
     "tags": [
       "2022",
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:57.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Textbooks\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:57.000Z"
   },
   {
-    "id": "unknown-resource-undated-OgkLE6",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-OgkLE6",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1jFZCxsSi_TW9vxlZI9HJA3Me9hOgkLE6",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1jFZCxsSi_TW9vxlZI9HJA3Me9hOgkLE6/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1jFZCxsSi_TW9vxlZI9HJA3Me9hOgkLE6",
+    "driveViewUrl": "https://drive.google.com/file/d/1jFZCxsSi_TW9vxlZI9HJA3Me9hOgkLE6/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:46.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:46.000Z"
   },
   {
-    "id": "unknown-resource-undated-XleklJ",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-XleklJ",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1nzbEnZ_3A4kVSZj8zaimXSQnL_XleklJ",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1nzbEnZ_3A4kVSZj8zaimXSQnL_XleklJ/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1nzbEnZ_3A4kVSZj8zaimXSQnL_XleklJ",
+    "driveViewUrl": "https://drive.google.com/file/d/1nzbEnZ_3A4kVSZj8zaimXSQnL_XleklJ/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:37.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:37.000Z"
   },
   {
-    "id": "unknown-lecture-notes-undated-oUiLin",
-    "courseCode": "UNKNOWN",
+    "id": "general-lecture-notes-undated-oUiLin",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1FKnTi-P1ulgjWH5aiNtLHI59ESoUiLin",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1FKnTi-P1ulgjWH5aiNtLHI59ESoUiLin/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1FKnTi-P1ulgjWH5aiNtLHI59ESoUiLin",
+    "driveViewUrl": "https://drive.google.com/file/d/1FKnTi-P1ulgjWH5aiNtLHI59ESoUiLin/view",
+    "isPublic": true,
     "tags": [
-      "lecture notes"
+      "lecture notes",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:46.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:46.000Z"
   },
   {
-    "id": "unknown-resource-undated-CR9BjI",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-CR9BjI",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1E-GHCPyIGFVfEp8ZC9MrSm_r7LCR9BjI",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1E-GHCPyIGFVfEp8ZC9MrSm_r7LCR9BjI/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1E-GHCPyIGFVfEp8ZC9MrSm_r7LCR9BjI",
+    "driveViewUrl": "https://drive.google.com/file/d/1E-GHCPyIGFVfEp8ZC9MrSm_r7LCR9BjI/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:39.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:39.000Z"
   },
   {
-    "id": "unknown-lecture-notes-undated-Xmlfa_",
-    "courseCode": "UNKNOWN",
+    "id": "general-lecture-notes-undated-Xmlfa_",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Lecture Notes",
     "year": null,
     "fileId": "1ZVT4Z-BUAg2Wyo-MNHi_9UXi0qXmlfa_",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1ZVT4Z-BUAg2Wyo-MNHi_9UXi0qXmlfa_/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1ZVT4Z-BUAg2Wyo-MNHi_9UXi0qXmlfa_",
+    "driveViewUrl": "https://drive.google.com/file/d/1ZVT4Z-BUAg2Wyo-MNHi_9UXi0qXmlfa_/view",
+    "isPublic": true,
     "tags": [
-      "lecture notes"
+      "lecture notes",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:40.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:40.000Z"
   },
   {
-    "id": "unknown-resource-undated-uuzoBM",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-uuzoBM",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1m057mhZP66oYz1IQr0p2CxVXREuuzoBM",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1m057mhZP66oYz1IQr0p2CxVXREuuzoBM/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1m057mhZP66oYz1IQr0p2CxVXREuuzoBM",
+    "driveViewUrl": "https://drive.google.com/file/d/1m057mhZP66oYz1IQr0p2CxVXREuuzoBM/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:38.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:38.000Z"
   },
   {
-    "id": "unknown-resource-undated-dcUlgL",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-dcUlgL",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "18XbLggp0p6s0B7U2kytJZ9yfsVdcUlgL",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/18XbLggp0p6s0B7U2kytJZ9yfsVdcUlgL/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=18XbLggp0p6s0B7U2kytJZ9yfsVdcUlgL",
+    "driveViewUrl": "https://drive.google.com/file/d/18XbLggp0p6s0B7U2kytJZ9yfsVdcUlgL/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:38.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:38.000Z"
   },
   {
-    "id": "unknown-resource-undated-9sgpkZ",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-9sgpkZ",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ",
+    "driveViewUrl": "https://drive.google.com/file/d/1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:44.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:44.000Z"
   },
   {
-    "id": "unknown-resource-undated-EaLstq",
-    "courseCode": "UNKNOWN",
+    "id": "general-resource-undated-EaLstq",
+    "courseCode": "GENERAL",
+    "aliases": [],
     "courseTitle": "Useful Resources",
-    "department": "Unverified",
+    "fileName": "Useful_Resources.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": 200,
     "semester": 2,
     "type": "Resource",
     "year": null,
     "fileId": "18NxYsr-BBFZgDUmQThKNG86Z7uEaLstq",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/18NxYsr-BBFZgDUmQThKNG86Z7uEaLstq/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=18NxYsr-BBFZgDUmQThKNG86Z7uEaLstq",
+    "driveViewUrl": "https://drive.google.com/file/d/18NxYsr-BBFZgDUmQThKNG86Z7uEaLstq/view",
+    "isPublic": true,
     "tags": [
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T08:10:38.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"Useful Resources\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json"
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T08:10:38.000Z"
   },
   {
-    "id": "unknown-resource-2023-M_aN27",
-    "courseCode": "UNKNOWN",
-    "courseTitle": "",
-    "department": "Unverified",
+    "id": "general-resource-2023-M_aN27",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "General Faculty Resource",
+    "fileName": "General_Faculty_Resource_2023.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
     "level": null,
     "semester": null,
     "type": "Resource",
     "year": 2023,
     "fileId": "1MJkv35R3xaZeoj8X0QqZYfmM6XM_aN27",
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1MJkv35R3xaZeoj8X0QqZYfmM6XM_aN27/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1MJkv35R3xaZeoj8X0QqZYfmM6XM_aN27",
+    "driveViewUrl": "https://drive.google.com/file/d/1MJkv35R3xaZeoj8X0QqZYfmM6XM_aN27/view",
+    "isPublic": true,
     "tags": [
       "2023",
-      "resource"
+      "resource",
+      "all departments",
+      "pdf"
     ],
-    "verified": false,
-    "uploadedAt": "2026-08-20T09:04:05.000Z",
-    "issues": [
-      "Could not extract course code from folder: \"\"",
-      "Course code \"null\" not found in courses.json — add it to scripts/courses.json",
-      "Could not parse level from: \"Course Outline\"",
-      "Could not parse semester from: \"\""
-    ]
+    "verified": true,
+    "uploadedAt": "2026-08-20T09:04:05.000Z"
   }
 ]

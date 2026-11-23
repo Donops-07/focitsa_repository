@@ -1,100 +1,333 @@
 {
   "COS101": {
     "code": "COS 101",
-    "title": "Introduction to Computer Science",
+    "title": "Introduction to Computing Sciences",
     "department": "Computer Science",
     "level": 100,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["CSC 101", "CSC101"]
   },
   "COS102": {
     "code": "COS 102",
-    "title": "Introduction to Programming",
+    "title": "Problem Solving",
     "department": "Computer Science",
     "level": 100,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 102", "CSC102"]
   },
   "COS201": {
     "code": "COS 201",
-    "title": "Discrete Structures",
+    "title": "Computer Programming I",
     "department": "Computer Science",
     "level": 200,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["CSC 201", "CSC201"]
   },
   "COS202": {
     "code": "COS 202",
-    "title": "Computer Organization & Architecture",
+    "title": "Computer Programming II",
     "department": "Computer Science",
     "level": 200,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 202", "CSC202"]
   },
   "COS204": {
     "code": "COS 204",
     "title": "Data Structures and Algorithms",
     "department": "Computer Science",
     "level": 200,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 204", "CSC204"]
   },
   "COS205": {
     "code": "COS 205",
     "title": "Systems Analysis and Design",
     "department": "Computer Science",
     "level": 200,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["CSC 205", "CSC205"]
   },
   "COS301": {
     "code": "COS 301",
     "title": "Operating Systems",
     "department": "Computer Science",
     "level": 300,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["CSC 301", "CSC301"]
   },
   "COS302": {
     "code": "COS 302",
     "title": "Database Management Systems",
     "department": "Computer Science",
     "level": 300,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 302", "CSC302"]
   },
   "COS304": {
     "code": "COS 304",
     "title": "Computer Networks",
     "department": "Computer Science",
     "level": 300,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 304", "CSC304"]
   },
   "COS305": {
     "code": "COS 305",
     "title": "Theory of Computation",
     "department": "Computer Science",
     "level": 300,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["CSC 305", "CSC305"]
   },
   "COS306": {
     "code": "COS 306",
     "title": "Software Engineering",
     "department": "Computer Science",
     "level": 300,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 306", "CSC306"]
   },
   "COS401": {
     "code": "COS 401",
     "title": "Artificial Intelligence",
     "department": "Computer Science",
     "level": 400,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["CSC 401", "CSC401"]
   },
   "COS402": {
     "code": "COS 402",
     "title": "Compiler Construction",
     "department": "Computer Science",
     "level": 400,
-    "semester": 2
+    "semester": 2,
+    "aliases": ["CSC 402", "CSC402"]
   },
   "COS403": {
     "code": "COS 403",
     "title": "Distributed Systems",
     "department": "Computer Science",
     "level": 400,
+    "semester": 1,
+    "aliases": ["CSC 403", "CSC403"]
+  },
+  "CSC101": {
+    "code": "CSC 101",
+    "title": "Introduction to Computing Sciences",
+    "department": "Computer Science",
+    "level": 100,
+    "semester": 1,
+    "aliases": ["COS 101", "COS101"]
+  },
+  "CSC102": {
+    "code": "CSC 102",
+    "title": "Problem Solving",
+    "department": "Computer Science",
+    "level": 100,
+    "semester": 2,
+    "aliases": ["COS 102", "COS102"]
+  },
+  "CSC201": {
+    "code": "CSC 201",
+    "title": "Discrete Structures",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 1,
+    "aliases": ["COS 201", "COS201"]
+  },
+  "CSC202": {
+    "code": "CSC 202",
+    "title": "Computer Programming II",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 2,
+    "aliases": ["COS 202", "COS202"]
+  },
+  "CSC204": {
+    "code": "CSC 204",
+    "title": "Data Structures and Algorithms",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 2,
+    "aliases": ["COS 204", "COS204"]
+  },
+  "CSC205": {
+    "code": "CSC 205",
+    "title": "Systems Analysis and Design",
+    "department": "Computer Science",
+    "level": 200,
+    "semester": 1,
+    "aliases": ["COS 205", "COS205"]
+  },
+  "CSC301": {
+    "code": "CSC 301",
+    "title": "Operating Systems",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 1,
+    "aliases": ["COS 301", "COS301"]
+  },
+  "CSC302": {
+    "code": "CSC 302",
+    "title": "Database Management Systems",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 2,
+    "aliases": ["COS 302", "COS302"]
+  },
+  "CSC304": {
+    "code": "CSC 304",
+    "title": "Computer Networks",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 2,
+    "aliases": ["COS 304", "COS304"]
+  },
+  "CSC305": {
+    "code": "CSC 305",
+    "title": "Theory of Computation",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 1,
+    "aliases": ["COS 305", "COS305"]
+  },
+  "CSC306": {
+    "code": "CSC 306",
+    "title": "Software Engineering",
+    "department": "Computer Science",
+    "level": 300,
+    "semester": 2,
+    "aliases": ["COS 306", "COS306"]
+  },
+  "CSC401": {
+    "code": "CSC 401",
+    "title": "Artificial Intelligence",
+    "department": "Computer Science",
+    "level": 400,
+    "semester": 1,
+    "aliases": ["COS 401", "COS401"]
+  },
+  "CSC402": {
+    "code": "CSC 402",
+    "title": "Compiler Construction",
+    "department": "Computer Science",
+    "level": 400,
+    "semester": 2,
+    "aliases": ["COS 402", "COS402"]
+  },
+  "CSC403": {
+    "code": "CSC 403",
+    "title": "Distributed Systems",
+    "department": "Computer Science",
+    "level": 400,
+    "semester": 1,
+    "aliases": ["COS 403", "COS403"]
+  },
+  "CYB201": {
+    "code": "CYB 201",
+    "title": "Introduction to Cyber Security",
+    "department": "Cyber Security",
+    "level": 200,
+    "semester": 1
+  },
+  "CYB301": {
+    "code": "CYB 301",
+    "title": "Cryptography and Network Security",
+    "department": "Cyber Security",
+    "level": 300,
+    "semester": 1
+  },
+  "DSC201": {
+    "code": "DSC 201",
+    "title": "Introduction to Data Science",
+    "department": "Data Science",
+    "level": 200,
+    "semester": 1
+  },
+  "DSC301": {
+    "code": "DSC 301",
+    "title": "Statistical Learning and Data Mining",
+    "department": "Data Science",
+    "level": 300,
+    "semester": 1
+  },
+  "ESI202": {
+    "code": "ESI 202",
+    "title": "Entrepreneurship and Innovation",
+    "department": "General Studies",
+    "level": 200,
+    "semester": 2,
+    "shared": true
+  },
+  "GST101": {
+    "code": "GST 101",
+    "title": "Communication in English",
+    "department": "General Studies",
+    "level": 100,
+    "semester": 1,
+    "shared": true
+  },
+  "GST102": {
+    "code": "GST 102",
+    "title": "Nigerian Peoples and Culture",
+    "department": "General Studies",
+    "level": 100,
+    "semester": 2,
+    "shared": true
+  },
+  "GST201": {
+    "code": "GST 201",
+    "title": "Philosophy and Logic",
+    "department": "General Studies",
+    "level": 200,
+    "semester": 1,
+    "shared": true
+  },
+  "GST212": {
+    "code": "GST 212",
+    "title": "Philosophy, Logic and Human Existence",
+    "department": "General Studies",
+    "level": 200,
+    "semester": 2,
+    "shared": true
+  },
+  "IFT212": {
+    "code": "IFT 212",
+    "title": "Computer Architecture and Organization",
+    "department": "Information Technology",
+    "level": 200,
+    "semester": 2,
+    "aliases": ["IT 212", "IT212"]
+  },
+  "INS204": {
+    "code": "INS 204",
+    "title": "Systems Analysis and Design",
+    "department": "Information Systems",
+    "level": 200,
+    "semester": 2,
+    "aliases": ["IS 204", "IS204"]
+  },
+  "IT201": {
+    "code": "IT 201",
+    "title": "Information Systems",
+    "department": "Information Technology",
+    "level": 200,
+    "semester": 1,
+    "aliases": ["IFT 201", "IFT201"]
+  },
+  "IT301": {
+    "code": "IT 301",
+    "title": "Human-Computer Interaction",
+    "department": "Information Technology",
+    "level": 300,
+    "semester": 1,
+    "aliases": ["IFT 301", "IFT301"]
+  },
+  "LIS201": {
+    "code": "LIS 201",
+    "title": "Information Organization and Retrieval",
+    "department": "Library and Information Science",
+    "level": 200,
     "semester": 1
   },
   "MTH101": {
@@ -102,76 +335,55 @@
     "title": "Elementary Mathematics I",
     "department": "Mathematics",
     "level": 100,
-    "semester": 1
+    "semester": 1,
+    "shared": true
   },
   "MTH102": {
     "code": "MTH 102",
     "title": "Elementary Mathematics II",
     "department": "Mathematics",
     "level": 100,
-    "semester": 2
+    "semester": 2,
+    "shared": true
   },
   "MTH201": {
     "code": "MTH 201",
     "title": "Mathematical Methods",
     "department": "Mathematics",
     "level": 200,
-    "semester": 1
+    "semester": 1,
+    "shared": true
   },
   "MTH202": {
     "code": "MTH 202",
     "title": "Linear Algebra",
     "department": "Mathematics",
     "level": 200,
-    "semester": 2
-  },
-  "STA201": {
-    "code": "STA 201",
-    "title": "Statistics for Science Students",
-    "department": "Statistics",
-    "level": 200,
-    "semester": 1
-  },
-  "GST101": {
-    "code": "GST 101",
-    "title": "Communication in English",
-    "department": "General Studies",
-    "level": 100,
-    "semester": 1
-  },
-  "GST102": {
-    "code": "GST 102",
-    "title": "Nigerian Peoples and Culture",
-    "department": "General Studies",
-    "level": 100,
-    "semester": 2
-  },
-  "GST201": {
-    "code": "GST 201",
-    "title": "Philosophy and Logic",
-    "department": "General Studies",
-    "level": 200,
-    "semester": 1
-  },
-  "IT201": {
-    "code": "IT 201",
-    "title": "Information Systems",
-    "department": "Information Technology",
-    "level": 200,
-    "semester": 1
-  },
-  "IT301": {
-    "code": "IT 301",
-    "title": "Human-Computer Interaction",
-    "department": "Information Technology",
-    "level": 300,
-    "semester": 1
+    "semester": 2,
+    "shared": true
   },
   "SE301": {
     "code": "SE 301",
     "title": "Software Architecture and Design",
     "department": "Software Engineering",
     "level": 300,
-    "semester": 1
+    "semester": 1,
+    "aliases": ["SEN 301", "SEN301"]
+  },
+  "SEN201": {
+    "code": "SEN 201",
+    "title": "Introduction to Software Engineering",
+    "department": "Software Engineering",
+    "level": 200,
+    "semester": 1,
+    "aliases": ["SE 201", "SE201"]
+  },
+  "STA201": {
+    "code": "STA 201",
+    "title": "Statistics for Science Students",
+    "department": "Statistics",
+    "level": 200,
+    "semester": 1,
+    "shared": true
   }
 }
