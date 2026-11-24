@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    FOCITSA Knowledge Base — Client Application Logic
    Zero-trust client: strict escaping, URL state sync, monotonic search IDs,
-   resilient error recovery, and paginated dense row rendering.
+   compact dropdown filters, course-grouped accordions, and full-height reader.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 'use strict';
@@ -9,7 +9,7 @@
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const PREF_KEY = 'focit_prefs_v2';
-const PAGE_SIZE = 50;
+const PAGE_SIZE = 100;
 const SAFE_DRIVE_ID_RE = /^[a-zA-Z0-9_-]+$/;
 const SAFE_DRIVE_URL_RE = /^https:\/\/(drive|docs)\.google\.com\//;
 const SHARED_COURSE_PREFIXES = new Set(['GST', 'MTH', 'ESI', 'STA', 'ENT', 'GNS']);
@@ -21,6 +21,22 @@ const TYPE_CLASS = {
   'Syllabus':      'syllabus',
   'Textbook':      'textbook',
   'Resource':      'resource',
+};
+
+const EXT_CLASS = {
+  PDF: 'ext-pdf',
+  DOCX: 'ext-docx',
+  DOC: 'ext-doc',
+  GDOC: 'ext-gdoc',
+  PPTX: 'ext-pptx',
+  PPT: 'ext-ppt',
+  GSLIDES: 'ext-gslides',
+  XLSX: 'ext-xlsx',
+  XLS: 'ext-xls',
+  GSHEET: 'ext-gsheet',
+  TXT: 'ext-txt',
+  MD: 'ext-md',
+  ZIP: 'ext-zip',
 };
 
 // ── Application State ─────────────────────────────────────────────────────────
@@ -36,6 +52,7 @@ const state = {
     year:  '',
   },
   query: '',
+  usingSavedPrefs: false,
   visibleLimit: PAGE_SIZE,
   indexReady: false,
   hasError: false,
@@ -55,13 +72,18 @@ const dom = {
   searchKbd:        document.getElementById('search-kbd'),
   searchClear:      document.getElementById('search-clear'),
 
-  filterPanel:      document.querySelector('.filter-panel'),
-  yearFilterRow:    document.getElementById('year-filter-row'),
+  filterBar:        document.querySelector('.filter-bar'),
+  filterDept:       document.getElementById('filter-dept'),
+  filterLevel:      document.getElementById('filter-level'),
+  filterSem:        document.getElementById('filter-sem'),
+  filterType:       document.getElementById('filter-type'),
+  filterYear:       document.getElementById('filter-year'),
+  btnResetFilters:  document.getElementById('btn-reset-filters'),
 
   statusDot:        document.getElementById('status-dot'),
   statusText:       document.getElementById('status-text'),
+  savedPrefsNotice: document.getElementById('saved-prefs-notice'),
   resultCount:      document.getElementById('result-count'),
-  btnResetFilters:  document.getElementById('btn-reset-filters'),
 
   resultsGrid:      document.getElementById('results-grid'),
   paginationBar:    document.getElementById('pagination-bar'),
@@ -69,14 +91,15 @@ const dom = {
 
   modal:            document.getElementById('preview-modal'),
   modalClose:       document.getElementById('modal-close'),
+  modalCourseCode:  document.getElementById('modal-course-code'),
+  modalFileExt:     document.getElementById('modal-file-ext'),
   modalTitle:       document.getElementById('modal-title'),
-  modalMeta:        document.getElementById('modal-meta'),
   modalIframe:      document.getElementById('preview-iframe'),
   modalBtnDrive:    document.getElementById('modal-btn-drive'),
   modalBtnDownload: document.getElementById('modal-btn-download'),
 };
 
-// ── Security & Validation Helpers ─────────────────────────────────────────────
+// ── Security & Formatting Helpers ─────────────────────────────────────────────
 
 function escHtml(str) {
   return String(str ?? '')
@@ -101,11 +124,24 @@ function getSafeDriveUrls(resource) {
   const fallbackDownload = `https://drive.google.com/uc?export=download&id=${resource.fileId}`;
   const fallbackView     = `https://drive.google.com/file/d/${resource.fileId}/view`;
 
-  const previewUrl  = SAFE_DRIVE_URL_RE.test(resource.previewUrl || '') ? resource.previewUrl : fallbackPreview;
-  const downloadUrl = SAFE_DRIVE_URL_RE.test(resource.downloadUrl || '') ? resource.downloadUrl : fallbackDownload;
+  const previewUrl   = SAFE_DRIVE_URL_RE.test(resource.previewUrl || '') ? resource.previewUrl : fallbackPreview;
+  const downloadUrl  = SAFE_DRIVE_URL_RE.test(resource.downloadUrl || '') ? resource.downloadUrl : fallbackDownload;
   const driveViewUrl = SAFE_DRIVE_URL_RE.test(resource.driveViewUrl || '') ? resource.driveViewUrl : fallbackView;
 
   return { valid: true, previewUrl, downloadUrl, driveViewUrl };
+}
+
+function formatBytes(bytes) {
+  const n = Number(bytes);
+  if (!Number.isFinite(n) || n <= 0) return null;
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(n < 10240 ? 1 : 0)} KB`;
+  return `${(n / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function cleanDisplayFileName(fileName, fallbackTitle) {
+  const raw = String(fileName || fallbackTitle || 'Untitled File').trim();
+  return raw.replace(/[_]+/g, ' ').replace(/\s+/g, ' ');
 }
 
 function debounce(fn, ms) {
@@ -126,7 +162,7 @@ function createWorker() {
   }
 
   try {
-    worker = new Worker('assets/search.worker.js?v=2026.2');
+    worker = new Worker('assets/search.worker.js?v=2026.3');
   } catch (err) {
     console.error('[App] Failed to construct Worker:', err);
     loadManifestDirectly();
@@ -143,7 +179,7 @@ function createWorker() {
 
     if (payload.type === 'RESULTS') {
       if (payload.requestId !== state.latestSearchRequestId) {
-        return; // Drop stale out-of-order response
+        return;
       }
       state.searchResults = Array.isArray(payload.results) ? payload.results : [];
       state.visibleLimit = PAGE_SIZE;
@@ -183,11 +219,11 @@ function handleIndexReady(resources) {
   state.indexReady = true;
   state.hasError = false;
 
-  dom.headerTotalBadge.textContent = `${resources.length} resources`;
-  updateStatus('ready', `${resources.length} resources indexed`);
+  dom.headerTotalBadge.textContent = `${resources.length} files`;
+  updateStatus('ready', 'Repository ready');
 
-  buildYearFilters();
-  syncFilterPillsUI();
+  buildYearOptions();
+  syncFilterControlsUI();
 
   if (state.query.trim()) {
     dispatchSearchImmediate(state.query);
@@ -216,7 +252,7 @@ function handleLoadError(message) {
   `;
 }
 
-// ── URL State & Preference Persistence ────────────────────────────────────────
+// ── URL State & Saved Preference Persistence ──────────────────────────────────
 
 function readStateFromUrlOrStorage() {
   const params = new URLSearchParams(window.location.search);
@@ -229,12 +265,18 @@ function readStateFromUrlOrStorage() {
     state.filters.type  = params.get('type') || '';
     state.filters.year  = params.get('year') || '';
     state.query         = params.get('q') || '';
+    state.usingSavedPrefs = false;
   } else {
+    state.filters = { dept: '', level: '', sem: '', type: '', year: '' };
+    state.query = '';
     try {
       const saved = JSON.parse(localStorage.getItem(PREF_KEY) || '{}');
       state.filters.dept  = typeof saved.dept === 'string' ? saved.dept : '';
       state.filters.level = typeof saved.level === 'string' ? saved.level : '';
-    } catch (_) { }
+      state.usingSavedPrefs = Boolean(state.filters.dept || state.filters.level);
+    } catch (_) {
+      state.usingSavedPrefs = false;
+    }
   }
 
   dom.searchInput.value = state.query;
@@ -257,14 +299,18 @@ function syncUrlAndPrefs() {
   } catch (_) { }
 
   try {
-    localStorage.setItem(PREF_KEY, JSON.stringify({
-      dept: state.filters.dept,
-      level: state.filters.level,
-    }));
+    if (state.filters.dept || state.filters.level) {
+      localStorage.setItem(PREF_KEY, JSON.stringify({
+        dept: state.filters.dept,
+        level: state.filters.level,
+      }));
+    } else {
+      localStorage.removeItem(PREF_KEY);
+    }
   } catch (_) { }
 }
 
-// ── Status & UI Sync ──────────────────────────────────────────────────────────
+// ── Status & Dropdown UI Sync ─────────────────────────────────────────────────
 
 function updateStatus(dotState, text) {
   dom.statusText.textContent = text;
@@ -277,44 +323,59 @@ function updateSearchDecorators() {
   dom.searchKbd.classList.toggle('hidden', hasText);
 }
 
-function syncFilterPillsUI() {
-  document.querySelectorAll('.filter-pill').forEach((pill) => {
-    const key = pill.dataset.filter;
-    const val = pill.dataset.value ?? '';
-    const isActive = (state.filters[key] ?? '') === val;
-    pill.classList.toggle('active', isActive);
-    pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-  });
+function syncFilterControlsUI() {
+  const controls = [
+    [dom.filterDept, state.filters.dept],
+    [dom.filterLevel, state.filters.level],
+    [dom.filterSem, state.filters.sem],
+    [dom.filterType, state.filters.type],
+    [dom.filterYear, state.filters.year],
+  ];
+
+  for (const [selectEl, value] of controls) {
+    if (!selectEl) continue;
+    const hasOption = [...selectEl.options].some(opt => opt.value === value);
+    selectEl.value = hasOption ? value : '';
+    selectEl.classList.toggle('is-filtered', Boolean(selectEl.value));
+  }
 
   const anyActive = Boolean(state.query.trim()) || Object.values(state.filters).some(Boolean);
   dom.btnResetFilters.classList.toggle('hidden', !anyActive);
+
+  // Show non-blocking personal default badge if loaded from saved localStorage prefs
+  if (state.usingSavedPrefs && (state.filters.dept || state.filters.level)) {
+    const parts = [];
+    if (state.filters.dept) parts.push(state.filters.dept);
+    if (state.filters.level) parts.push(`${state.filters.level}L`);
+    dom.savedPrefsNotice.innerHTML = `Showing saved: <strong>${escHtml(parts.join(' · '))}</strong> <button type="button" id="btn-show-all-prefs" class="btn-show-all">Show All</button>`;
+    dom.savedPrefsNotice.classList.remove('hidden');
+  } else {
+    dom.savedPrefsNotice.classList.add('hidden');
+    dom.savedPrefsNotice.textContent = '';
+  }
 }
 
-function buildYearFilters() {
-  // Remove previous dynamic year pills cleanly (prevent duplicate DOM nodes)
-  dom.yearFilterRow.querySelectorAll('.filter-pill:not(#pill-year-all)').forEach(el => el.remove());
+function buildYearOptions() {
+  const minValidYear = 2018;
+  const maxValidYear = new Date().getFullYear() + 1;
 
   const years = [...new Set(
-    state.allResources.map(r => r.year).filter(Boolean)
+    state.allResources
+      .map(r => Number(r.year))
+      .filter(y => Number.isInteger(y) && y >= minValidYear && y <= maxValidYear)
   )].sort((a, b) => b - a);
 
-  if (years.length === 0) {
-    dom.yearFilterRow.classList.add('hidden');
-    return;
+  // Preserve "All Years" option, rebuild dynamic options
+  dom.filterYear.querySelectorAll('option:not([value=""])').forEach(opt => opt.remove());
+
+  for (const year of years) {
+    const opt = document.createElement('option');
+    opt.value = String(year);
+    opt.textContent = String(year);
+    dom.filterYear.appendChild(opt);
   }
 
-  dom.yearFilterRow.classList.remove('hidden');
-  for (const year of years) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'filter-pill';
-    btn.dataset.filter = 'year';
-    btn.dataset.value = String(year);
-    btn.id = `pill-year-${year}`;
-    btn.setAttribute('aria-pressed', state.filters.year === String(year) ? 'true' : 'false');
-    btn.textContent = String(year);
-    dom.yearFilterRow.appendChild(btn);
-  }
+  dom.filterYear.disabled = years.length === 0;
 }
 
 // ── Filtering & Search Dispatch ───────────────────────────────────────────────
@@ -359,7 +420,6 @@ function dispatchSearchImmediate(query) {
   if (worker) {
     worker.postMessage({ type: 'SEARCH', query: trimmed, requestId });
   } else {
-    // Fallback substring match if Worker unavailable
     const q = trimmed.toLowerCase();
     state.searchResults = state.allResources
       .filter(r =>
@@ -378,38 +438,97 @@ const dispatchSearch = debounce((query) => {
   dispatchSearchImmediate(query);
 }, 180);
 
-// ── Rendering ─────────────────────────────────────────────────────────────────
+// ── Course Grouping & Rendering ───────────────────────────────────────────────
+
+function groupResourcesByCourse(items, hasActiveQuery) {
+  const groupMap = new Map();
+
+  for (const r of items) {
+    const rawCode = String(r.courseCode || '').trim().toUpperCase();
+    const isGeneral = !rawCode || rawCode === 'GENERAL' || rawCode === 'UNKNOWN';
+    const groupKey = isGeneral ? 'GENERAL' : rawCode;
+
+    if (!groupMap.has(groupKey)) {
+      const isShared = Array.isArray(r.departments) && r.departments.includes('ALL');
+      const deptText = isShared ? 'Faculty-wide' : (r.department || 'General');
+      const levelText = r.level ? `${r.level}L` : null;
+      const metaParts = [deptText, levelText].filter(Boolean);
+
+      groupMap.set(groupKey, {
+        key: groupKey,
+        isGeneral,
+        courseCode: isGeneral ? 'GENERAL' : r.courseCode,
+        title: isGeneral ? 'General Resources' : (r.courseTitle || r.courseCode),
+        meta: metaParts.join(' · '),
+        items: [],
+      });
+    }
+
+    const group = groupMap.get(groupKey);
+    group.items.push(r);
+
+    // Enrich title if first item lacked descriptive title
+    if (!group.isGeneral && group.title === group.courseCode && r.courseTitle && r.courseTitle !== r.courseCode) {
+      group.title = r.courseTitle;
+    }
+  }
+
+  const namedGroups = [];
+  let generalGroup = null;
+
+  for (const group of groupMap.values()) {
+    if (group.isGeneral) {
+      generalGroup = group;
+    } else {
+      namedGroups.push(group);
+    }
+  }
+
+  if (!hasActiveQuery) {
+    namedGroups.sort((a, b) => a.courseCode.localeCompare(b.courseCode));
+  }
+
+  if (generalGroup) {
+    namedGroups.push(generalGroup);
+  }
+
+  return namedGroups;
+}
 
 function renderResults() {
   if (!state.indexReady) return;
 
+  const hasQuery = state.query.trim().length > 0;
   const source = state.searchResults !== null
     ? state.searchResults.map(r => r.item)
     : state.allResources;
 
   const filtered = applyFilters(source);
 
-  dom.resultCount.textContent = filtered.length === 1
-    ? '1 resource'
-    : `${filtered.length} resources`;
-
   if (filtered.length === 0) {
+    dom.resultCount.textContent = '0 files';
     dom.paginationBar.classList.add('hidden');
     dom.resultsGrid.innerHTML = buildEmptyState();
     return;
   }
 
-  const slice = filtered.slice(0, state.visibleLimit);
-  const fragment = document.createDocumentFragment();
+  const visibleSlice = filtered.slice(0, state.visibleLimit);
+  const groups = groupResourcesByCourse(visibleSlice, hasQuery);
 
-  for (const resource of slice) {
-    fragment.appendChild(buildResourceRow(resource));
-  }
+  dom.resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'file' : 'files'} in ${groups.length} ${groups.length === 1 ? 'course' : 'courses'}`;
+
+  const fragment = document.createDocumentFragment();
+  const expandAll = hasQuery || groups.length <= 3;
+
+  groups.forEach((group, idx) => {
+    const isOpen = expandAll || idx < 2;
+    fragment.appendChild(buildCourseGroup(group, isOpen));
+  });
 
   dom.resultsGrid.innerHTML = '';
   dom.resultsGrid.appendChild(fragment);
 
-  const remaining = filtered.length - slice.length;
+  const remaining = filtered.length - visibleSlice.length;
   if (remaining > 0) {
     dom.paginationBar.classList.remove('hidden');
     dom.btnLoadMore.textContent = `Show more (${remaining} remaining)`;
@@ -418,34 +537,71 @@ function renderResults() {
   }
 }
 
+function buildCourseGroup(group, isOpen) {
+  const details = document.createElement('details');
+  details.className = 'course-group';
+  if (isOpen) {
+    details.setAttribute('open', '');
+  }
+
+  const fileCount = group.items.length;
+  const countLabel = `${fileCount} ${fileCount === 1 ? 'file' : 'files'}`;
+
+  const summary = document.createElement('summary');
+  summary.className = 'course-group-header';
+  summary.innerHTML = `
+    <div class="course-group-title-wrap">
+      <span class="course-code">${escHtml(group.courseCode)}</span>
+      <span class="course-group-heading">${escHtml(group.title)}</span>
+      ${group.meta ? `<span class="course-group-meta">${escHtml(group.meta)}</span>` : ''}
+    </div>
+    <div class="course-group-right">
+      <span class="group-count-badge">${escHtml(countLabel)}</span>
+      <svg class="group-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  `;
+
+  const body = document.createElement('div');
+  body.className = 'course-group-body';
+
+  for (const item of group.items) {
+    body.appendChild(buildResourceRow(item));
+  }
+
+  details.appendChild(summary);
+  details.appendChild(body);
+  return details;
+}
+
 function buildResourceRow(r) {
   const typeClass = TYPE_CLASS[r.type] ?? 'resource';
   const urls = getSafeDriveUrls(r);
-  const levelLabel = r.level ? `${r.level}L` : null;
-  const semLabel = r.semester === 1 ? 'Sem 1' : r.semester === 2 ? 'Sem 2' : null;
-  const isShared = Array.isArray(r.departments) && r.departments.includes('ALL');
-  const deptLabel = isShared ? 'Shared (All Depts)' : (r.department || 'General');
   const fileExt = String(r.fileExt || 'PDF').toUpperCase();
-  const displayTitle = r.courseTitle || r.courseCode || 'Untitled Resource';
+  const extClass = EXT_CLASS[fileExt] || '';
+  const displayFileName = cleanDisplayFileName(r.fileName, r.courseTitle || r.courseCode);
+  const isShared = Array.isArray(r.departments) && r.departments.includes('ALL');
+  const sizeLabel = formatBytes(r.fileSize);
+  const semLabel = r.semester === 1 ? 'Sem 1' : r.semester === 2 ? 'Sem 2' : null;
+  const levelLabel = r.level ? `${r.level}L` : null;
 
-  const metaParts = [deptLabel, levelLabel, semLabel, r.year ? String(r.year) : null].filter(Boolean);
+  const metaParts = [levelLabel, semLabel, r.year ? String(r.year) : null, sizeLabel].filter(Boolean);
 
   const row = document.createElement('article');
   row.className = 'resource-row';
-  row.setAttribute('aria-label', `${r.courseCode || 'Resource'} — ${displayTitle}`);
+  row.setAttribute('aria-label', `${r.courseCode || 'Resource'} — ${displayFileName}`);
 
   row.innerHTML = `
     <div class="row-main">
-      <div class="row-top">
-        <span class="course-code">${escHtml(r.courseCode || 'GENERAL')}</span>
-        <span class="ext-badge">${escHtml(fileExt)}</span>
-        <span class="type-badge ${escHtml(typeClass)}">${escHtml(r.type || 'Resource')}</span>
-        ${isShared ? '<span class="shared-badge">Faculty-wide</span>' : ''}
+      <div class="row-file-line">
+        <span class="ext-badge ${escHtml(extClass)}">${escHtml(fileExt)}</span>
+        <span class="row-filename-title" title="${escHtml(r.fileName || displayFileName)}">${escHtml(displayFileName)}</span>
       </div>
-      <h3 class="row-title">${escHtml(displayTitle)}</h3>
       <div class="row-sub">
-        <span>${metaParts.map(escHtml).join(' <span class="meta-sep">·</span> ')}</span>
-        ${r.fileName ? `<span class="meta-sep">·</span><span class="row-filename" title="${escHtml(r.fileName)}">${escHtml(r.fileName)}</span>` : ''}
+        <span class="type-badge ${escHtml(typeClass)}">${escHtml(r.type || 'Resource')}</span>
+        ${isShared ? '<span class="shared-badge">Shared</span>' : ''}
+        ${metaParts.length > 0 ? `<span class="meta-chip-mono">${metaParts.map(escHtml).join(' <span class="meta-sep">·</span> ')}</span>` : ''}
       </div>
     </div>
     <div class="row-actions">
@@ -455,23 +611,34 @@ function buildResourceRow(r) {
         data-preview-url="${escHtml(urls.previewUrl)}"
         data-download-url="${escHtml(urls.downloadUrl)}"
         data-drive-url="${escHtml(urls.driveViewUrl)}"
-        data-title="${escHtml((r.courseCode || 'Resource') + ' — ' + displayTitle)}"
-        data-meta="${escHtml(metaParts.join(' · ') + ' · ' + fileExt)}"
+        data-course-code="${escHtml(r.courseCode || 'GENERAL')}"
+        data-file-ext="${escHtml(fileExt)}"
+        data-title="${escHtml(r.fileName || displayFileName)}"
         ${urls.valid ? '' : 'disabled'}
-        aria-label="Preview ${escHtml(r.courseCode || '')} ${escHtml(r.type || 'document')}"
+        aria-label="Preview ${escHtml(displayFileName)}"
       >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        Preview
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Preview</span>
       </button>
+      <a
+        class="btn-open-tab${urls.valid ? '' : ' disabled'}"
+        href="${escHtml(urls.driveViewUrl)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open ${escHtml(displayFileName)} in new browser tab"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Open in Tab</span>
+      </a>
       <a
         class="btn-download${urls.valid ? '' : ' disabled'}"
         href="${escHtml(urls.downloadUrl)}"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Download ${escHtml(r.courseCode || '')} ${escHtml(r.fileName || 'document')}"
+        aria-label="Download ${escHtml(displayFileName)}"
       >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download</span>
       </a>
     </div>
   `;
@@ -495,7 +662,7 @@ function buildEmptyState() {
     : 'No materials uploaded for this selection yet';
 
   const subtitle = trimmedQuery
-    ? 'Try searching by course code (e.g. CSC 202 or COS 204), topic, or clear active filters.'
+    ? 'Try searching by course code (e.g. CSC 202 or COS 204), filename, or clear active filters.'
     : contextPieces.length > 0
       ? `No files are currently indexed under ${escHtml(contextPieces.join(' · '))}. New Drive uploads appear automatically after the daily sync.`
       : 'No files are currently in the repository.';
@@ -514,7 +681,7 @@ function buildEmptyState() {
   `;
 }
 
-// ── Native <dialog> Preview Modal ─────────────────────────────────────────────
+// ── Full-Height Native <dialog> Reader Modal ──────────────────────────────────
 
 function openModal(triggerBtn) {
   if (state.modalClearTimer) {
@@ -527,17 +694,23 @@ function openModal(triggerBtn) {
   const previewUrl  = triggerBtn.dataset.previewUrl;
   const downloadUrl = triggerBtn.dataset.downloadUrl;
   const driveUrl    = triggerBtn.dataset.driveUrl;
+  const courseCode  = triggerBtn.dataset.courseCode || 'GENERAL';
+  const fileExt     = (triggerBtn.dataset.fileExt || 'PDF').toUpperCase();
   const title       = triggerBtn.dataset.title || 'Document Preview';
-  const meta        = triggerBtn.dataset.meta || '';
 
   if (!SAFE_DRIVE_URL_RE.test(previewUrl || '')) return;
 
+  dom.modalCourseCode.textContent = courseCode;
+  dom.modalFileExt.textContent = fileExt;
+  dom.modalFileExt.className = `ext-badge ${EXT_CLASS[fileExt] || ''}`;
   dom.modalTitle.textContent = title;
-  dom.modalMeta.textContent = meta;
+  dom.modalTitle.title = title;
+
   dom.modalIframe.src = previewUrl;
   dom.modalBtnDownload.href = SAFE_DRIVE_URL_RE.test(downloadUrl || '') ? downloadUrl : '#';
   dom.modalBtnDrive.href = SAFE_DRIVE_URL_RE.test(driveUrl || '') ? driveUrl : '#';
 
+  document.body.style.overflow = 'hidden';
   if (!dom.modal.open) {
     dom.modal.showModal();
   }
@@ -555,13 +728,14 @@ function closeModal() {
 function clearAllFilters() {
   state.filters = { dept: '', level: '', sem: '', type: '', year: '' };
   state.query = '';
+  state.usingSavedPrefs = false;
   state.searchResults = null;
   state.visibleLimit = PAGE_SIZE;
   state.latestSearchRequestId += 1;
 
   dom.searchInput.value = '';
   updateSearchDecorators();
-  syncFilterPillsUI();
+  syncFilterControlsUI();
   syncUrlAndPrefs();
   renderResults();
 }
@@ -570,29 +744,40 @@ function clearAllFilters() {
 
 function init() {
   readStateFromUrlOrStorage();
-  syncFilterPillsUI();
+  syncFilterControlsUI();
 
-  // Delegated click handler for all filter pills (including dynamically added years)
-  dom.filterPanel.addEventListener('click', (e) => {
-    const pill = e.target.closest('.filter-pill');
-    if (!pill) return;
+  // Delegated change handler for all dropdown selects
+  dom.filterBar.addEventListener('change', (e) => {
+    const select = e.target.closest('select.filter-select');
+    if (!select) return;
 
-    const filterKey = pill.dataset.filter;
-    const filterVal = pill.dataset.value ?? '';
+    const filterKey = select.dataset.filter;
     if (!filterKey) return;
 
-    state.filters[filterKey] = filterVal;
+    state.filters[filterKey] = select.value;
+    state.usingSavedPrefs = false;
     state.visibleLimit = PAGE_SIZE;
 
-    syncFilterPillsUI();
+    syncFilterControlsUI();
     syncUrlAndPrefs();
     renderResults();
+  });
+
+  // Reset Filters button inside filter bar
+  dom.btnResetFilters.addEventListener('click', clearAllFilters);
+
+  // "Show All" button inside saved-preferences notice
+  dom.savedPrefsNotice.addEventListener('click', (e) => {
+    if (e.target.closest('#btn-show-all-prefs')) {
+      clearAllFilters();
+    }
   });
 
   // Search input
   dom.searchInput.addEventListener('input', (e) => {
     state.query = e.target.value;
     updateSearchDecorators();
+    syncFilterControlsUI();
     syncUrlAndPrefs();
     dispatchSearch(state.query);
   });
@@ -602,15 +787,13 @@ function init() {
     state.query = '';
     dom.searchInput.value = '';
     updateSearchDecorators();
+    syncFilterControlsUI();
     syncUrlAndPrefs();
     dispatchSearchImmediate('');
     dom.searchInput.focus();
   });
 
-  // Reset filters (status bar button)
-  dom.btnResetFilters.addEventListener('click', clearAllFilters);
-
-  // Results list delegated actions (Preview, Clear filters, Retry)
+  // Results delegated actions (Preview, Clear filters, Retry)
   dom.resultsGrid.addEventListener('click', (e) => {
     const previewBtn = e.target.closest('.btn-preview');
     if (previewBtn) {
@@ -629,7 +812,7 @@ function init() {
     }
   });
 
-  // Load more pagination
+  // Pagination
   dom.btnLoadMore.addEventListener('click', () => {
     state.visibleLimit += PAGE_SIZE;
     renderResults();
@@ -651,12 +834,13 @@ function init() {
     }
   });
 
-  // Native <dialog> events
+  // Native <dialog> reader modal events
   dom.modalClose.addEventListener('click', closeModal);
   dom.modal.addEventListener('click', (e) => {
     if (e.target === dom.modal) closeModal();
   });
   dom.modal.addEventListener('close', () => {
+    document.body.style.overflow = '';
     state.modalClearTimer = setTimeout(() => {
       dom.modalIframe.src = '';
     }, 250);
@@ -669,7 +853,7 @@ function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !dom.modal.open && document.activeElement !== dom.searchInput) {
       const tag = document.activeElement?.tagName;
-      if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
+      if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
         e.preventDefault();
         dom.searchInput.focus();
       }
@@ -679,7 +863,7 @@ function init() {
   // Sync browser back/forward navigation
   window.addEventListener('popstate', () => {
     readStateFromUrlOrStorage();
-    syncFilterPillsUI();
+    syncFilterControlsUI();
     dispatchSearchImmediate(state.query);
   });
 

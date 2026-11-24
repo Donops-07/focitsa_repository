@@ -275,14 +275,23 @@ function parseType(segment) {
 }
 
 /**
- * Extract a 4-digit year (20xx) from a string.
+ * Extract a valid academic year (2018 .. currentYear + 1) from a string.
+ * Ignores older publication years (e.g. 2007 textbooks).
  * @param {string} str
  * @returns {number|null}
  */
 function parseYear(str) {
   if (!str) return null;
-  const match = String(str).match(/(?:^|[^0-9])(20\d{2})(?=[^0-9]|$)/);
-  return match ? parseInt(match[1], 10) : null;
+  const minYear = 2018;
+  const maxYear = new Date().getFullYear() + 1;
+  const regex = /(?:^|[^0-9])(20\d{2})(?=[^0-9]|$)/g;
+  for (const match of String(str).matchAll(regex)) {
+    const year = parseInt(match[1], 10);
+    if (year >= minYear && year <= maxYear) {
+      return year;
+    }
+  }
+  return null;
 }
 
 /**
