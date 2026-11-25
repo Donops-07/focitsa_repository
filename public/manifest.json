@@ -1,5 +1,75 @@
 [
   {
+    "id": "chm101-resource-undated-t-orPj",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "CHM 101 . ATOMS MOLECULES AND REACTIONS",
+    "fileName": "CHM 101 . ATOMS MOLECULES AND REACTIONS.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Resource",
+    "year": null,
+    "fileId": "1AMj2zOcoBqpzGFiN6kOYNwFkU7t-orPj",
+    "fileSize": 1461114,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1AMj2zOcoBqpzGFiN6kOYNwFkU7t-orPj/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1AMj2zOcoBqpzGFiN6kOYNwFkU7t-orPj",
+    "driveViewUrl": "https://drive.google.com/file/d/1AMj2zOcoBqpzGFiN6kOYNwFkU7t-orPj/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "resource",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T12:11:47.560Z"
+  },
+  {
+    "id": "phy101-resource-undated-rvn80T",
+    "courseCode": "PHY 101",
+    "aliases": [
+      "PHY101",
+      "PHY 101"
+    ],
+    "courseTitle": "PHY 101 POWER POINT",
+    "fileName": "PHY 101 POWER POINT.pptx",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Resource",
+    "year": null,
+    "fileId": "1UBKU7Dgj85tqkxdd0sPSsiZOWorvn80T",
+    "fileSize": 535671,
+    "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "fileExt": "PPTX",
+    "previewUrl": "https://drive.google.com/file/d/1UBKU7Dgj85tqkxdd0sPSsiZOWorvn80T/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1UBKU7Dgj85tqkxdd0sPSsiZOWorvn80T",
+    "driveViewUrl": "https://drive.google.com/file/d/1UBKU7Dgj85tqkxdd0sPSsiZOWorvn80T/view",
+    "isPublic": true,
+    "tags": [
+      "phy101",
+      "phy 101",
+      "all departments",
+      "resource",
+      "pptx"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T12:11:02.204Z"
+  },
+  {
     "id": "csc202-resource-undated-vBcZp0",
     "courseCode": "CSC 202",
     "aliases": [
