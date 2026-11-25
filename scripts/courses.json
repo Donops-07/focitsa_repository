@@ -149,7 +149,8 @@
     "department": "Computer Science",
     "level": 200,
     "semester": 2,
-    "aliases": ["COS 204", "COS204"]
+    "aliases": ["CSC 204", "COS 204", "COS204"],
+    "keywords": ["data structures and algorithms", "data structure and algorithm", "data structure interview", "data structures"]
   },
   "CSC205": {
     "code": "CSC 205",
@@ -165,7 +166,8 @@
     "department": "Computer Science",
     "level": 300,
     "semester": 1,
-    "aliases": ["COS 301", "COS301"]
+    "aliases": ["COS 301", "COS301"],
+    "keywords": ["operating systems", "operating system"]
   },
   "CSC302": {
     "code": "CSC 302",
@@ -173,7 +175,8 @@
     "department": "Computer Science",
     "level": 300,
     "semester": 2,
-    "aliases": ["COS 302", "COS302"]
+    "aliases": ["COS 302", "COS302"],
+    "keywords": ["database management systems", "database management"]
   },
   "CSC304": {
     "code": "CSC 304",
@@ -181,7 +184,8 @@
     "department": "Computer Science",
     "level": 300,
     "semester": 2,
-    "aliases": ["COS 304", "COS304"]
+    "aliases": ["COS 304", "COS304"],
+    "keywords": ["computer networks", "computer networking"]
   },
   "CSC305": {
     "code": "CSC 305",
@@ -189,7 +193,8 @@
     "department": "Computer Science",
     "level": 300,
     "semester": 1,
-    "aliases": ["COS 305", "COS305"]
+    "aliases": ["COS 305", "COS305"],
+    "keywords": ["theory of computation", "automata theory"]
   },
   "CSC306": {
     "code": "CSC 306",
@@ -197,7 +202,8 @@
     "department": "Computer Science",
     "level": 300,
     "semester": 2,
-    "aliases": ["COS 306", "COS306"]
+    "aliases": ["COS 306", "COS306"],
+    "keywords": ["software engineering"]
   },
   "CSC401": {
     "code": "CSC 401",
@@ -205,7 +211,8 @@
     "department": "Computer Science",
     "level": 400,
     "semester": 1,
-    "aliases": ["COS 401", "COS401"]
+    "aliases": ["COS 401", "COS401"],
+    "keywords": ["artificial intelligence"]
   },
   "CSC402": {
     "code": "CSC 402",
@@ -213,7 +220,8 @@
     "department": "Computer Science",
     "level": 400,
     "semester": 2,
-    "aliases": ["COS 402", "COS402"]
+    "aliases": ["COS 402", "COS402"],
+    "keywords": ["compiler construction", "introducing to compiling", "introduction to compiling", "compiler design"]
   },
   "CSC403": {
     "code": "CSC 403",
@@ -221,35 +229,40 @@
     "department": "Computer Science",
     "level": 400,
     "semester": 1,
-    "aliases": ["COS 403", "COS403"]
+    "aliases": ["COS 403", "COS403"],
+    "keywords": ["distributed systems"]
   },
   "CYB201": {
     "code": "CYB 201",
     "title": "Introduction to Cyber Security",
     "department": "Cyber Security",
     "level": 200,
-    "semester": 1
+    "semester": 1,
+    "keywords": ["introduction to cyber security", "cyber security", "cybersecurity"]
   },
   "CYB301": {
     "code": "CYB 301",
     "title": "Cryptography and Network Security",
     "department": "Cyber Security",
     "level": 300,
-    "semester": 1
+    "semester": 1,
+    "keywords": ["cryptography and network security"]
   },
   "DSC201": {
     "code": "DSC 201",
     "title": "Introduction to Data Science",
     "department": "Data Science",
     "level": 200,
-    "semester": 1
+    "semester": 1,
+    "keywords": ["introduction to data science", "data science"]
   },
   "DSC301": {
     "code": "DSC 301",
     "title": "Statistical Learning and Data Mining",
     "department": "Data Science",
     "level": 300,
-    "semester": 1
+    "semester": 1,
+    "keywords": ["statistical learning", "data mining"]
   },
   "ESI202": {
     "code": "ESI 202",
@@ -257,7 +270,8 @@
     "department": "General Studies",
     "level": 200,
     "semester": 2,
-    "shared": true
+    "shared": true,
+    "keywords": ["entrepreneurship and innovation"]
   },
   "GST101": {
     "code": "GST 101",
@@ -265,7 +279,8 @@
     "department": "General Studies",
     "level": 100,
     "semester": 1,
-    "shared": true
+    "shared": true,
+    "keywords": ["communication in english"]
   },
   "GST102": {
     "code": "GST 102",
@@ -289,7 +304,8 @@
     "department": "General Studies",
     "level": 200,
     "semester": 2,
-    "shared": true
+    "shared": true,
+    "keywords": ["philosophy, logic and human existence", "philosophy and logic"]
   },
   "IFT212": {
     "code": "IFT 212",
@@ -297,7 +313,8 @@
     "department": "Information Technology",
     "level": 200,
     "semester": 2,
-    "aliases": ["IT 212", "IT212"]
+    "aliases": ["IT 212", "IT212"],
+    "keywords": ["computer architecture and organization", "computer organization and design", "computer architecture", "computer organization", "assembly language"]
   },
   "INS204": {
     "code": "INS 204",
@@ -305,7 +322,8 @@
     "department": "Information Systems",
     "level": 200,
     "semester": 2,
-    "aliases": ["IS 204", "IS204"]
+    "aliases": ["IS 204", "IS204"],
+    "keywords": ["systems analysis and design", "system analysis and design"]
   },
   "IT201": {
     "code": "IT 201",
@@ -360,7 +378,8 @@
     "department": "Mathematics",
     "level": 200,
     "semester": 2,
-    "shared": true
+    "shared": true,
+    "keywords": ["linear algebra"]
   },
   "SE301": {
     "code": "SE 301",

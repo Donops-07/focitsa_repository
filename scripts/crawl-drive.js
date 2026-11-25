@@ -130,6 +130,29 @@ const COURSE_REGISTRY = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'courses.json'), 'utf-8')
 );
 
+/**
+ * Precompiled keyword index for build-time course inference on unlabelled files.
+ * Sorted by keyword length descending so longer, more specific phrases match first.
+ */
+const COURSE_KEYWORD_INDEX = (() => {
+  const entries = [];
+  for (const [courseKey, meta] of Object.entries(COURSE_REGISTRY)) {
+    if (!Array.isArray(meta?.keywords)) continue;
+    for (const rawKw of meta.keywords) {
+      const keyword = String(rawKw || '').trim().toLowerCase().replace(/\s+/g, ' ');
+      if (!keyword) continue;
+      const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      entries.push({
+        courseKey,
+        keyword,
+        regex: new RegExp(`(?:^|[^a-z0-9])${escaped}(?=$|[^a-z0-9])`, 'i'),
+      });
+    }
+  }
+  entries.sort((a, b) => b.keyword.length - a.keyword.length);
+  return entries;
+})();
+
 // ── Field Extractors & Normalizers ────────────────────────────────────────────
 
 /**
@@ -167,6 +190,29 @@ function extractCourseCode(text) {
   const match = String(text).match(COURSE_CODE_EXTRACT);
   if (!match) return null;
   return `${match[1].toUpperCase()}${match[2]}`;
+}
+
+/**
+ * Infer a canonical course code from descriptive filename text using registry keywords.
+ * Runs only as a fallback when no explicit course code appears in folders or filenames.
+ * @param {string} text
+ * @returns {string|null}
+ */
+function inferCourseCodeFromText(text) {
+  if (typeof text !== 'string' || !text.trim()) return null;
+  const normalized = text
+    .replace(/\.[^/.]+$/, '')
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!normalized) return null;
+
+  for (const entry of COURSE_KEYWORD_INDEX) {
+    if (entry.regex.test(normalized)) {
+      return entry.courseKey;
+    }
+  }
+  return null;
 }
 
 /**
@@ -371,10 +417,10 @@ function buildFileAccessMetadata(fileId, fileName, mimeType) {
  * @returns {boolean}
  */
 function checkPublicReadable(file) {
-  const hasAnyonePerm =
-    Array.isArray(file.permissions) &&
-    file.permissions.some((p) => p.type === 'anyone');
-  return hasAnyonePerm || file.shared !== false;
+  if (Array.isArray(file.permissions)) {
+    return file.permissions.some((p) => p.type === 'anyone');
+  }
+  return Boolean(file.shared);
 }
 
 /**
@@ -474,10 +520,18 @@ function buildManifestEntry(file, pathSegments) {
     }
   }
 
-  // Extract course code: prefer course folder, fall back to filename
-  const rawCode = extractCourseCode(courseSeg) || extractCourseCode(file.name);
+  // Extract course code: prefer course folder, fall back to filename, then keyword inference
+  const explicitCode = extractCourseCode(courseSeg) || extractCourseCode(file.name);
+  const inferredCode = explicitCode ? null : inferCourseCodeFromText(file.name);
+  const rawCode = explicitCode || inferredCode;
   const registry = lookupRegistry(rawCode);
   const aliases = buildCourseAliases(rawCode, registry);
+
+  // When a file is rescued via keyword inference, backfill canonical level/semester from registry
+  if (inferredCode && registry) {
+    if (registry.level) level = registry.level;
+    if (registry.semester) semester = registry.semester;
+  }
 
   // Enrich level and semester from registry or course code digit if absent from folders
   if (!level) {
@@ -861,6 +915,7 @@ module.exports = {
   OFFICIAL_DEPARTMENTS,
   resolveDepartmentFolder,
   extractCourseCode,
+  inferCourseCodeFromText,
   formatCourseCode,
   lookupRegistry,
   buildCourseAliases,

@@ -8,9 +8,9 @@
 
 // Load vendored Fuse.js locally (eliminates jsDelivr CDN SPOF)
 try {
-  importScripts('/assets/fuse.min.js?v=2026.3');
+  importScripts('/assets/fuse.min.js?v=2026.4');
 } catch (_) {
-  importScripts('fuse.min.js?v=2026.3');
+  importScripts('fuse.min.js?v=2026.4');
 }
 
 // ── IndexedDB Configuration ───────────────────────────────────────────────────
