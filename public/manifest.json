@@ -1,5 +1,1007 @@
 [
   {
+    "id": "general-past-question-undated-_7Jcju",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Ashei maths Practice questions",
+    "fileName": "Copy of Ashei maths Practice questions.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1feWaPGuISFUCqNoaFbgHUcM4OX_7Jcju",
+    "fileSize": 25035916,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1feWaPGuISFUCqNoaFbgHUcM4OX_7Jcju/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1feWaPGuISFUCqNoaFbgHUcM4OX_7Jcju",
+    "driveViewUrl": "https://drive.google.com/file/d/1feWaPGuISFUCqNoaFbgHUcM4OX_7Jcju/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:19.760Z"
+  },
+  {
+    "id": "general-past-question-undated-T3Fwwj",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Chemistry Mcqs and answers",
+    "fileName": "Copy of Chemistry Mcqs and answers.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1VzB5WIA11BLqfpFDv6w98KnAtDT3Fwwj",
+    "fileSize": 1727246,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1VzB5WIA11BLqfpFDv6w98KnAtDT3Fwwj/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1VzB5WIA11BLqfpFDv6w98KnAtDT3Fwwj",
+    "driveViewUrl": "https://drive.google.com/file/d/1VzB5WIA11BLqfpFDv6w98KnAtDT3Fwwj/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "chm101-past-question-2020-KGZUAD",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "Copy of CHM 101 2020 Exam and test questions",
+    "fileName": "Copy of CHM 101 2020 Exam and test questions.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": 2020,
+    "fileId": "1sKcK-cRaljwUPlJnNlufKDg9YIKGZUAD",
+    "fileSize": 4799088,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1sKcK-cRaljwUPlJnNlufKDg9YIKGZUAD/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1sKcK-cRaljwUPlJnNlufKDg9YIKGZUAD",
+    "driveViewUrl": "https://drive.google.com/file/d/1sKcK-cRaljwUPlJnNlufKDg9YIKGZUAD/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "2020",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "chm101-past-question-2018-jkUkVw",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "Copy of CHM 101 Exams 2018 type B",
+    "fileName": "Copy of CHM 101 Exams 2018 type B.docx",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": 2018,
+    "fileId": "1zgveSZzTSRzxdSeYzKnrLanHfNjkUkVw",
+    "fileSize": 229802,
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "fileExt": "DOCX",
+    "previewUrl": "https://drive.google.com/file/d/1zgveSZzTSRzxdSeYzKnrLanHfNjkUkVw/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1zgveSZzTSRzxdSeYzKnrLanHfNjkUkVw",
+    "driveViewUrl": "https://drive.google.com/file/d/1zgveSZzTSRzxdSeYzKnrLanHfNjkUkVw/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "2018",
+      "past question",
+      "docx"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "chm101-past-question-2019-yuDJ7h",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "Copy of CHM 101 Exams 2019 type B",
+    "fileName": "Copy of CHM 101 Exams 2019 type B.docx",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": 2019,
+    "fileId": "1Qg-yl_LYb6l70BJmPZSlG0LLdSyuDJ7h",
+    "fileSize": 83474,
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "fileExt": "DOCX",
+    "previewUrl": "https://drive.google.com/file/d/1Qg-yl_LYb6l70BJmPZSlG0LLdSyuDJ7h/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1Qg-yl_LYb6l70BJmPZSlG0LLdSyuDJ7h",
+    "driveViewUrl": "https://drive.google.com/file/d/1Qg-yl_LYb6l70BJmPZSlG0LLdSyuDJ7h/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "2019",
+      "past question",
+      "docx"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "chm101-past-question-2019-zyxlbA",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "Copy of CHM 101 Exams 2019 type C",
+    "fileName": "Copy of CHM 101 Exams 2019 type C.docx",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": 2019,
+    "fileId": "1N7KGdFwslz4lZj8F5NHeip5KC5zyxlbA",
+    "fileSize": 229205,
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "fileExt": "DOCX",
+    "previewUrl": "https://drive.google.com/file/d/1N7KGdFwslz4lZj8F5NHeip5KC5zyxlbA/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1N7KGdFwslz4lZj8F5NHeip5KC5zyxlbA",
+    "driveViewUrl": "https://drive.google.com/file/d/1N7KGdFwslz4lZj8F5NHeip5KC5zyxlbA/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "2019",
+      "past question",
+      "docx"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "chm101-past-question-2022-c7oiIH",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "Copy of CHM 101 PQ 2022",
+    "fileName": "Copy of CHM 101 PQ 2022.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": 2022,
+    "fileId": "1vbzZ_8zZc83SpPCsSaiyecYCJyc7oiIH",
+    "fileSize": 420769,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1vbzZ_8zZc83SpPCsSaiyecYCJyc7oiIH/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1vbzZ_8zZc83SpPCsSaiyecYCJyc7oiIH",
+    "driveViewUrl": "https://drive.google.com/file/d/1vbzZ_8zZc83SpPCsSaiyecYCJyc7oiIH/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "2022",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "chm101-past-question-undated-tjTMV5",
+    "courseCode": "CHM 101",
+    "aliases": [
+      "CHM101",
+      "CHM 101"
+    ],
+    "courseTitle": "Copy of CHM 101 Practice Questions",
+    "fileName": "Copy of CHM 101 Practice Questions.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1m8eklukILsYWIyGt6MKWVla2lJtjTMV5",
+    "fileSize": 130485,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1m8eklukILsYWIyGt6MKWVla2lJtjTMV5/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1m8eklukILsYWIyGt6MKWVla2lJtjTMV5",
+    "driveViewUrl": "https://drive.google.com/file/d/1m8eklukILsYWIyGt6MKWVla2lJtjTMV5/view",
+    "isPublic": true,
+    "tags": [
+      "chm101",
+      "chm 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "general-past-question-undated-8HG2hz",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of CHM Assignment",
+    "fileName": "Copy of CHM Assignment.docx",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1I9wqKUpjUFHavD0cwtkvqW1nNV8HG2hz",
+    "fileSize": 19145,
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "fileExt": "DOCX",
+    "previewUrl": "https://drive.google.com/file/d/1I9wqKUpjUFHavD0cwtkvqW1nNV8HG2hz/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1I9wqKUpjUFHavD0cwtkvqW1nNV8HG2hz",
+    "driveViewUrl": "https://drive.google.com/file/d/1I9wqKUpjUFHavD0cwtkvqW1nNV8HG2hz/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "docx"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "general-past-question-undated-oNZHmC",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Grade 11 Answer Key Chemistry Revision sheets",
+    "fileName": "Copy of Grade-11-Answer-Key-Chemistry-Revision-sheets.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1rzwts_iq9PrK2MSqVxcd78MCkQoNZHmC",
+    "fileSize": 232284,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1rzwts_iq9PrK2MSqVxcd78MCkQoNZHmC/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1rzwts_iq9PrK2MSqVxcd78MCkQoNZHmC",
+    "driveViewUrl": "https://drive.google.com/file/d/1rzwts_iq9PrK2MSqVxcd78MCkQoNZHmC/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:20.545Z"
+  },
+  {
+    "id": "mth101-past-question-undated-yPg3Al",
+    "courseCode": "MTH 101",
+    "aliases": [
+      "MTH101",
+      "MTH 101"
+    ],
+    "courseTitle": "Elementary Mathematics I",
+    "fileName": "Copy of MTH 101 & CHM101 EXAM LIKELY QUESTION.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1QYFScV0TLlzkqULRDYFwJ3pEnoyPg3Al",
+    "fileSize": 930767,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1QYFScV0TLlzkqULRDYFwJ3pEnoyPg3Al/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1QYFScV0TLlzkqULRDYFwJ3pEnoyPg3Al",
+    "driveViewUrl": "https://drive.google.com/file/d/1QYFScV0TLlzkqULRDYFwJ3pEnoyPg3Al/view",
+    "isPublic": true,
+    "tags": [
+      "elementary",
+      "mathematics",
+      "mth101",
+      "mth 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:19.760Z"
+  },
+  {
+    "id": "mth101-past-question-undated-Pwq6Nb",
+    "courseCode": "MTH 101",
+    "aliases": [
+      "MTH101",
+      "MTH 101"
+    ],
+    "courseTitle": "Elementary Mathematics I",
+    "fileName": "Copy of MTH 101 Practice Questions (OPRALD).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1j9s8SXZXWzpTlDnVwNO35YAt7yPwq6Nb",
+    "fileSize": 732121,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1j9s8SXZXWzpTlDnVwNO35YAt7yPwq6Nb/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1j9s8SXZXWzpTlDnVwNO35YAt7yPwq6Nb",
+    "driveViewUrl": "https://drive.google.com/file/d/1j9s8SXZXWzpTlDnVwNO35YAt7yPwq6Nb/view",
+    "isPublic": true,
+    "tags": [
+      "elementary",
+      "mathematics",
+      "mth101",
+      "mth 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:19.760Z"
+  },
+  {
+    "id": "phy101-past-question-undated-U0pz77",
+    "courseCode": "PHY 101",
+    "aliases": [
+      "PHY101",
+      "PHY 101"
+    ],
+    "courseTitle": "Copy of PHY 101 PQ 2016, 17, 18 & 19",
+    "fileName": "Copy of PHY 101 PQ 2016, 17, 18 & 19.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1iG2tR1G7aRgTu2si_UJqhRL9hKU0pz77",
+    "fileSize": 9769165,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1iG2tR1G7aRgTu2si_UJqhRL9hKU0pz77/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1iG2tR1G7aRgTu2si_UJqhRL9hKU0pz77",
+    "driveViewUrl": "https://drive.google.com/file/d/1iG2tR1G7aRgTu2si_UJqhRL9hKU0pz77/view",
+    "isPublic": true,
+    "tags": [
+      "phy101",
+      "phy 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:11:27.682Z"
+  },
+  {
+    "id": "phy101-past-question-undated-nUAgAV",
+    "courseCode": "PHY 101",
+    "aliases": [
+      "PHY101",
+      "PHY 101"
+    ],
+    "courseTitle": "Copy of PHY 101 PQ 3",
+    "fileName": "Copy of PHY 101 PQ 3.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1VurCbDqgmBZsiqJ4Z79sQXNuc8nUAgAV",
+    "fileSize": 107369,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1VurCbDqgmBZsiqJ4Z79sQXNuc8nUAgAV/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1VurCbDqgmBZsiqJ4Z79sQXNuc8nUAgAV",
+    "driveViewUrl": "https://drive.google.com/file/d/1VurCbDqgmBZsiqJ4Z79sQXNuc8nUAgAV/view",
+    "isPublic": true,
+    "tags": [
+      "phy101",
+      "phy 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:11:27.682Z"
+  },
+  {
+    "id": "phy101-past-question-2018-XEbcvF",
+    "courseCode": "PHY 101",
+    "aliases": [
+      "PHY101",
+      "PHY 101"
+    ],
+    "courseTitle": "Copy of PHY101 2017 2018 Exam questions",
+    "fileName": "Copy of PHY101 2017_2018 Exam questions.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": 2018,
+    "fileId": "10qnrcdlwe-Xr_ieZoCn-nPCHssXEbcvF",
+    "fileSize": 1589654,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/10qnrcdlwe-Xr_ieZoCn-nPCHssXEbcvF/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=10qnrcdlwe-Xr_ieZoCn-nPCHssXEbcvF",
+    "driveViewUrl": "https://drive.google.com/file/d/10qnrcdlwe-Xr_ieZoCn-nPCHssXEbcvF/view",
+    "isPublic": true,
+    "tags": [
+      "phy101",
+      "phy 101",
+      "all departments",
+      "2018",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:11:27.682Z"
+  },
+  {
+    "id": "general-past-question-undated-incaXy",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Physics 101 Tutorial Questions & Solutions",
+    "fileName": "Copy of Physics 101 Tutorial Questions & Solutions.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "111mM5mF3vEjGUWzRo-uFbpPbHTincaXy",
+    "fileSize": 2171877,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/111mM5mF3vEjGUWzRo-uFbpPbHTincaXy/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=111mM5mF3vEjGUWzRo-uFbpPbHTincaXy",
+    "driveViewUrl": "https://drive.google.com/file/d/111mM5mF3vEjGUWzRo-uFbpPbHTincaXy/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:11:25.018Z"
+  },
+  {
+    "id": "general-past-question-undated-4tF01V",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Practice Questions (Surd)",
+    "fileName": "Copy of Practice Questions (Surd).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1E4mvh_2FS6U13FyP3ejXPtcoMG4tF01V",
+    "fileSize": 994127,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1E4mvh_2FS6U13FyP3ejXPtcoMG4tF01V/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1E4mvh_2FS6U13FyP3ejXPtcoMG4tF01V",
+    "driveViewUrl": "https://drive.google.com/file/d/1E4mvh_2FS6U13FyP3ejXPtcoMG4tF01V/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:19.760Z"
+  },
+  {
+    "id": "general-past-question-undated-iEUVwl",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Solved Problems in Physical Chemistry",
+    "fileName": "Copy of Solved Problems in Physical Chemistry.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1I-R_jFRMWi2XbONMWv1A5jGGwNiEUVwl",
+    "fileSize": 15617091,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1I-R_jFRMWi2XbONMWv1A5jGGwNiEUVwl/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1I-R_jFRMWi2XbONMWv1A5jGGwNiEUVwl",
+    "driveViewUrl": "https://drive.google.com/file/d/1I-R_jFRMWi2XbONMWv1A5jGGwNiEUVwl/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:16.467Z"
+  },
+  {
+    "id": "mth101-past-question-undated-41va1g",
+    "courseCode": "MTH 101",
+    "aliases": [
+      "MTH101",
+      "MTH 101"
+    ],
+    "courseTitle": "Elementary Mathematics I",
+    "fileName": "Copy of ZENITH MTH 101 LATEST PDF.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1Hi-JEUPz2bMO7H-rlOx55u8pUf41va1g",
+    "fileSize": 1185699,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1Hi-JEUPz2bMO7H-rlOx55u8pUf41va1g/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1Hi-JEUPz2bMO7H-rlOx55u8pUf41va1g",
+    "driveViewUrl": "https://drive.google.com/file/d/1Hi-JEUPz2bMO7H-rlOx55u8pUf41va1g/view",
+    "isPublic": true,
+    "tags": [
+      "elementary",
+      "mathematics",
+      "mth101",
+      "mth 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:17.080Z"
+  },
+  {
+    "id": "general-textbook-undated-cROkVf",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of B.D. Bunday, H. Mulholland Pure Mathematics",
+    "fileName": "Copy of B.D. Bunday, H. Mulholland Pure Mathematics.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1qH_lTHZfA9AV1PnyaUunzA5M3ucROkVf",
+    "fileSize": 11712871,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1qH_lTHZfA9AV1PnyaUunzA5M3ucROkVf/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1qH_lTHZfA9AV1PnyaUunzA5M3ucROkVf",
+    "driveViewUrl": "https://drive.google.com/file/d/1qH_lTHZfA9AV1PnyaUunzA5M3ucROkVf/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:58.513Z"
+  },
+  {
+    "id": "general-textbook-undated-MIad3A",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Basic Engineering Mathematics ( PDFDrive )",
+    "fileName": "Copy of Basic Engineering Mathematics ( PDFDrive ).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1pmH0nfV8yvZjkj3ifDld7Re6l6MIad3A",
+    "fileSize": 3511707,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1pmH0nfV8yvZjkj3ifDld7Re6l6MIad3A/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1pmH0nfV8yvZjkj3ifDld7Re6l6MIad3A",
+    "driveViewUrl": "https://drive.google.com/file/d/1pmH0nfV8yvZjkj3ifDld7Re6l6MIad3A/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:58.513Z"
+  },
+  {
+    "id": "general-textbook-undated-1B3aI3",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Chapter 8 Thermochemistry",
+    "fileName": "Copy of Chapter_8_Thermochemistry.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1F9CdWPI-PAPfDY53416tfEJLH-1B3aI3",
+    "fileSize": 482488,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1F9CdWPI-PAPfDY53416tfEJLH-1B3aI3/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1F9CdWPI-PAPfDY53416tfEJLH-1B3aI3",
+    "driveViewUrl": "https://drive.google.com/file/d/1F9CdWPI-PAPfDY53416tfEJLH-1B3aI3/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:54.412Z"
+  },
+  {
+    "id": "general-textbook-undated-G0H7Y4",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Colledge Chemistry",
+    "fileName": "Copy of Colledge Chemistry .pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1RRqeE2XWaEll69KxXA2LI8D_iyG0H7Y4",
+    "fileSize": 17549874,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1RRqeE2XWaEll69KxXA2LI8D_iyG0H7Y4/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1RRqeE2XWaEll69KxXA2LI8D_iyG0H7Y4",
+    "driveViewUrl": "https://drive.google.com/file/d/1RRqeE2XWaEll69KxXA2LI8D_iyG0H7Y4/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:54.412Z"
+  },
+  {
+    "id": "general-textbook-undated-2wQW1I",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Fundamental University Organic and Inorganic Chemistry (Abass Olajire)",
+    "fileName": "Copy of Fundamental University Organic and Inorganic Chemistry  (Abass Olajire).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "16bdn0-rqFlOa5IaC546w5ZssOr2wQW1I",
+    "fileSize": 12458038,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/16bdn0-rqFlOa5IaC546w5ZssOr2wQW1I/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=16bdn0-rqFlOa5IaC546w5ZssOr2wQW1I",
+    "driveViewUrl": "https://drive.google.com/file/d/16bdn0-rqFlOa5IaC546w5ZssOr2wQW1I/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:54.412Z"
+  },
+  {
+    "id": "general-textbook-undated-xGE4qa",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of GENERALCHEMISTRY For First Years of Faculties of Science, Medicine and Pharmacy",
+    "fileName": "Copy of GENERALCHEMISTRY For First Years of Faculties of Science, Medicine and Pharmacy.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1nDUwgxPNSS54wv7jfos7EvK8ypxGE4qa",
+    "fileSize": 1512137,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1nDUwgxPNSS54wv7jfos7EvK8ypxGE4qa/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1nDUwgxPNSS54wv7jfos7EvK8ypxGE4qa",
+    "driveViewUrl": "https://drive.google.com/file/d/1nDUwgxPNSS54wv7jfos7EvK8ypxGE4qa/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:54.412Z"
+  },
+  {
+    "id": "general-textbook-undated-S3y2Xi",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of H K DASS ADVANCED ENG MATH",
+    "fileName": "Copy of H K DASS ADVANCED ENG MATH.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1Zmr5PIfZgOHVRXZUCSTVo1adkdS3y2Xi",
+    "fileSize": 19272068,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1Zmr5PIfZgOHVRXZUCSTVo1adkdS3y2Xi/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1Zmr5PIfZgOHVRXZUCSTVo1adkdS3y2Xi",
+    "driveViewUrl": "https://drive.google.com/file/d/1Zmr5PIfZgOHVRXZUCSTVo1adkdS3y2Xi/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:58.513Z"
+  },
+  {
+    "id": "general-textbook-undated-goLlFn",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Higher Engineering Mathematics ( PDFDrive )",
+    "fileName": "Copy of Higher Engineering Mathematics ( PDFDrive ).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1k_rNOuJsBa9Dyd3l6dZL2IJgIdgoLlFn",
+    "fileSize": 6084601,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1k_rNOuJsBa9Dyd3l6dZL2IJgIdgoLlFn/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1k_rNOuJsBa9Dyd3l6dZL2IJgIdgoLlFn",
+    "driveViewUrl": "https://drive.google.com/file/d/1k_rNOuJsBa9Dyd3l6dZL2IJgIdgoLlFn/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:58.513Z"
+  },
+  {
+    "id": "general-textbook-undated-Fl42oe",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of John Bird Engineering Mathematics (6th edition)",
+    "fileName": "Copy of John Bird Engineering Mathematics (6th edition).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1D2g53yetsSYW42HjXarQ-bHSIcFl42oe",
+    "fileSize": 9853694,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1D2g53yetsSYW42HjXarQ-bHSIcFl42oe/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1D2g53yetsSYW42HjXarQ-bHSIcFl42oe",
+    "driveViewUrl": "https://drive.google.com/file/d/1D2g53yetsSYW42HjXarQ-bHSIcFl42oe/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:58.513Z"
+  },
+  {
+    "id": "general-textbook-undated-h5UMgU",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of K.A. Stroud Engineering Mathematics (2013, Red Globe Press)",
+    "fileName": "Copy of K.A. Stroud - Engineering Mathematics (2013, Red Globe Press).pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1h1aBYog1zrAwwcn3m591Df_JPzh5UMgU",
+    "fileSize": 8959843,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1h1aBYog1zrAwwcn3m591Df_JPzh5UMgU/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1h1aBYog1zrAwwcn3m591Df_JPzh5UMgU",
+    "driveViewUrl": "https://drive.google.com/file/d/1h1aBYog1zrAwwcn3m591Df_JPzh5UMgU/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:08:53.931Z"
+  },
+  {
+    "id": "general-textbook-undated-B-OwLO",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of LAMLAD CHEMISTRY",
+    "fileName": "Copy of LAMLAD CHEMISTRY.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1axTtj_otu1OG54zRLGxl1GGicRB-OwLO",
+    "fileSize": 40881598,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1axTtj_otu1OG54zRLGxl1GGicRB-OwLO/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1axTtj_otu1OG54zRLGxl1GGicRB-OwLO",
+    "driveViewUrl": "https://drive.google.com/file/d/1axTtj_otu1OG54zRLGxl1GGicRB-OwLO/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:54.412Z"
+  },
+  {
+    "id": "general-textbook-undated-NmzP_q",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Copy of Understanding Chemistry",
+    "fileName": "Copy of Understanding Chemistry .pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Textbook",
+    "year": null,
+    "fileId": "1KwiEc-XSmmJnVThtIG6uClviiPNmzP_q",
+    "fileSize": 60995903,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1KwiEc-XSmmJnVThtIG6uClviiPNmzP_q/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1KwiEc-XSmmJnVThtIG6uClviiPNmzP_q",
+    "driveViewUrl": "https://drive.google.com/file/d/1KwiEc-XSmmJnVThtIG6uClviiPNmzP_q/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "textbook",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:06:51.180Z"
+  },
+  {
     "id": "chm101-resource-undated-t-orPj",
     "courseCode": "CHM 101",
     "aliases": [
@@ -33,6 +1035,181 @@
     ],
     "verified": true,
     "uploadedAt": "2026-11-25T12:11:47.560Z"
+  },
+  {
+    "id": "gns101-resource-undated-mgdxc_",
+    "courseCode": "GNS 101",
+    "aliases": [
+      "GNS101",
+      "GNS 101"
+    ],
+    "courseTitle": "Copy of GNS 101 Additional Materials",
+    "fileName": "Copy of GNS 101 Additional Materials.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Resource",
+    "year": null,
+    "fileId": "1E3XEqI-lCPp6ApKXm_WHLrcNVJmgdxc_",
+    "fileSize": 1335938,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1E3XEqI-lCPp6ApKXm_WHLrcNVJmgdxc_/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1E3XEqI-lCPp6ApKXm_WHLrcNVJmgdxc_",
+    "driveViewUrl": "https://drive.google.com/file/d/1E3XEqI-lCPp6ApKXm_WHLrcNVJmgdxc_/view",
+    "isPublic": true,
+    "tags": [
+      "gns101",
+      "gns 101",
+      "all departments",
+      "resource",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:07:34.121Z"
+  },
+  {
+    "id": "gns101-lecture-notes-undated-Ntquys",
+    "courseCode": "GNS 101",
+    "aliases": [
+      "GNS101",
+      "GNS 101"
+    ],
+    "courseTitle": "Copy of GNS 101 Complete Lecture Note",
+    "fileName": "Copy of GNS 101 Complete Lecture Note.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Lecture Notes",
+    "year": null,
+    "fileId": "1oqPmsUUGungcuasXi_kK6ewQi9Ntquys",
+    "fileSize": 39328425,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1oqPmsUUGungcuasXi_kK6ewQi9Ntquys/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1oqPmsUUGungcuasXi_kK6ewQi9Ntquys",
+    "driveViewUrl": "https://drive.google.com/file/d/1oqPmsUUGungcuasXi_kK6ewQi9Ntquys/view",
+    "isPublic": true,
+    "tags": [
+      "gns101",
+      "gns 101",
+      "all departments",
+      "lecture notes",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:07:34.121Z"
+  },
+  {
+    "id": "gns101-syllabus-undated-DNAWdC",
+    "courseCode": "GNS 101",
+    "aliases": [
+      "GNS101",
+      "GNS 101"
+    ],
+    "courseTitle": "Copy of GNS 101 Course Outline",
+    "fileName": "Copy of GNS 101 Course Outline.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Syllabus",
+    "year": null,
+    "fileId": "1dSqCE9tr6g16yDH6BIFLz_HEb3DNAWdC",
+    "fileSize": 76019,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1dSqCE9tr6g16yDH6BIFLz_HEb3DNAWdC/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1dSqCE9tr6g16yDH6BIFLz_HEb3DNAWdC",
+    "driveViewUrl": "https://drive.google.com/file/d/1dSqCE9tr6g16yDH6BIFLz_HEb3DNAWdC/view",
+    "isPublic": true,
+    "tags": [
+      "gns101",
+      "gns 101",
+      "all departments",
+      "syllabus",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:07:34.121Z"
+  },
+  {
+    "id": "gns101-past-question-undated-nhI94E",
+    "courseCode": "GNS 101",
+    "aliases": [
+      "GNS101",
+      "GNS 101"
+    ],
+    "courseTitle": "Copy of GNS 101 PQ",
+    "fileName": "Copy of GNS 101 PQ.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1gm4qlKwKMqUv8sKgvhOdGfSbarnhI94E",
+    "fileSize": 2138451,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1gm4qlKwKMqUv8sKgvhOdGfSbarnhI94E/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1gm4qlKwKMqUv8sKgvhOdGfSbarnhI94E",
+    "driveViewUrl": "https://drive.google.com/file/d/1gm4qlKwKMqUv8sKgvhOdGfSbarnhI94E/view",
+    "isPublic": true,
+    "tags": [
+      "gns101",
+      "gns 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:07:34.121Z"
+  },
+  {
+    "id": "gns101-past-question-undated-KUZU6x",
+    "courseCode": "GNS 101",
+    "aliases": [
+      "GNS101",
+      "GNS 101"
+    ],
+    "courseTitle": "Copy of GNS101 Past Questions & Solutions",
+    "fileName": "Copy of GNS101 Past Questions & Solutions.pdf",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Past Question",
+    "year": null,
+    "fileId": "1NnOZCMnDPkZBmK1PK77Y_8mYH_KUZU6x",
+    "fileSize": 6762162,
+    "mimeType": "application/pdf",
+    "fileExt": "PDF",
+    "previewUrl": "https://drive.google.com/file/d/1NnOZCMnDPkZBmK1PK77Y_8mYH_KUZU6x/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1NnOZCMnDPkZBmK1PK77Y_8mYH_KUZU6x",
+    "driveViewUrl": "https://drive.google.com/file/d/1NnOZCMnDPkZBmK1PK77Y_8mYH_KUZU6x/view",
+    "isPublic": true,
+    "tags": [
+      "gns101",
+      "gns 101",
+      "all departments",
+      "past question",
+      "pdf"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-25T21:07:31.760Z"
   },
   {
     "id": "phy101-resource-undated-rvn80T",
@@ -1944,10 +3121,15 @@
     "uploadedAt": "2026-08-20T08:10:37.000Z"
   },
   {
-    "id": "general-lecture-notes-undated-oUiLin",
-    "courseCode": "GENERAL",
-    "aliases": [],
-    "courseTitle": "Data Structure and Algorithm Handwritten Notes",
+    "id": "csc204-lecture-notes-undated-oUiLin",
+    "courseCode": "CSC 204",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
     "fileName": "Data Structure and Algorithm Handwritten Notes .pdf",
     "department": "Computer Science",
     "departments": [
@@ -1966,6 +3148,14 @@
     "driveViewUrl": "https://drive.google.com/file/d/1FKnTi-P1ulgjWH5aiNtLHI59ESoUiLin/view",
     "isPublic": true,
     "tags": [
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "csc204",
+      "csc 204",
+      "cos204",
+      "cos 204",
       "computer science",
       "lecture notes",
       "pdf"
@@ -1974,10 +3164,15 @@
     "uploadedAt": "2026-08-20T08:10:46.000Z"
   },
   {
-    "id": "general-resource-undated-CR9BjI",
-    "courseCode": "GENERAL",
-    "aliases": [],
-    "courseTitle": "Data Structure Interview Questions & Answer",
+    "id": "csc204-resource-undated-CR9BjI",
+    "courseCode": "CSC 204",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
     "fileName": "Data Structure Interview Questions & Answer .pdf",
     "department": "Computer Science",
     "departments": [
@@ -1996,6 +3191,14 @@
     "driveViewUrl": "https://drive.google.com/file/d/1E-GHCPyIGFVfEp8ZC9MrSm_r7LCR9BjI/view",
     "isPublic": true,
     "tags": [
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "csc204",
+      "csc 204",
+      "cos204",
+      "cos 204",
       "computer science",
       "resource",
       "pdf"
@@ -2004,10 +3207,15 @@
     "uploadedAt": "2026-08-20T08:10:39.000Z"
   },
   {
-    "id": "general-lecture-notes-undated-Xmlfa_",
-    "courseCode": "GENERAL",
-    "aliases": [],
-    "courseTitle": "Data structures and Algorithms Handwritten Notes",
+    "id": "csc204-lecture-notes-undated-Xmlfa_",
+    "courseCode": "CSC 204",
+    "aliases": [
+      "CSC204",
+      "CSC 204",
+      "COS204",
+      "COS 204"
+    ],
+    "courseTitle": "Data Structures and Algorithms",
     "fileName": "Data structures and Algorithms Handwritten Notes.pdf",
     "department": "Computer Science",
     "departments": [
@@ -2026,6 +3234,14 @@
     "driveViewUrl": "https://drive.google.com/file/d/1ZVT4Z-BUAg2Wyo-MNHi_9UXi0qXmlfa_/view",
     "isPublic": true,
     "tags": [
+      "data",
+      "structures",
+      "and",
+      "algorithms",
+      "csc204",
+      "csc 204",
+      "cos204",
+      "cos 204",
       "computer science",
       "lecture notes",
       "pdf"
@@ -2094,17 +3310,22 @@
     "uploadedAt": "2026-08-20T08:10:38.000Z"
   },
   {
-    "id": "general-resource-undated-9sgpkZ",
-    "courseCode": "GENERAL",
-    "aliases": [],
-    "courseTitle": "operating System",
+    "id": "csc301-resource-undated-9sgpkZ",
+    "courseCode": "CSC 301",
+    "aliases": [
+      "CSC301",
+      "CSC 301",
+      "COS301",
+      "COS 301"
+    ],
+    "courseTitle": "Operating Systems",
     "fileName": "operating System .pdf",
     "department": "Computer Science",
     "departments": [
       "Computer Science"
     ],
-    "level": 200,
-    "semester": 2,
+    "level": 300,
+    "semester": 1,
     "type": "Resource",
     "year": null,
     "fileId": "1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ",
@@ -2116,6 +3337,12 @@
     "driveViewUrl": "https://drive.google.com/file/d/1-nVN3VsgOKyt3aDi7HNBUv7Tzo9sgpkZ/view",
     "isPublic": true,
     "tags": [
+      "operating",
+      "systems",
+      "csc301",
+      "csc 301",
+      "cos301",
+      "cos 301",
       "computer science",
       "resource",
       "pdf"
@@ -2124,16 +3351,21 @@
     "uploadedAt": "2026-08-20T08:10:44.000Z"
   },
   {
-    "id": "general-resource-undated-EaLstq",
-    "courseCode": "GENERAL",
-    "aliases": [],
-    "courseTitle": "Unit 1 Introducing to compiling new",
+    "id": "csc402-resource-undated-EaLstq",
+    "courseCode": "CSC 402",
+    "aliases": [
+      "CSC402",
+      "CSC 402",
+      "COS402",
+      "COS 402"
+    ],
+    "courseTitle": "Compiler Construction",
     "fileName": "Unit 1 Introducing to compiling new.pdf",
     "department": "Computer Science",
     "departments": [
       "Computer Science"
     ],
-    "level": 200,
+    "level": 400,
     "semester": 2,
     "type": "Resource",
     "year": null,
@@ -2146,6 +3378,12 @@
     "driveViewUrl": "https://drive.google.com/file/d/18NxYsr-BBFZgDUmQThKNG86Z7uEaLstq/view",
     "isPublic": true,
     "tags": [
+      "compiler",
+      "construction",
+      "csc402",
+      "csc 402",
+      "cos402",
+      "cos 402",
       "computer science",
       "resource",
       "pdf"
