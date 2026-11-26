@@ -1871,12 +1871,76 @@ html.dialog-open-lock {
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 600;
-  padding: 10px 16px;
-  border-radius: var(--r-full);
+  padding: 10px 14px;
+  border-radius: var(--r-lg);
   box-shadow: var(--shadow-md);
   z-index: 90;
-  max-width: calc(100vw - 32px);
-  text-align: center;
+  max-width: calc(100vw - 24px);
+  text-align: left;
+}
+
+.toast-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.toast-message {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.toast-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.toast-action-btn,
+.toast-dismiss-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: var(--r-md);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.toast-action-btn {
+  background: #ffffff;
+  color: var(--navy);
+  border: 1px solid #ffffff;
+}
+
+.toast-action-btn:hover {
+  background: #e2e8f0;
+}
+
+.toast-dismiss-btn {
+  min-width: 36px;
+  padding: 0 8px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.toast-dismiss-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.btn-row-icon.is-busy,
+.btn-row-icon:disabled,
+.btn-reader-tool:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .reader-toast {

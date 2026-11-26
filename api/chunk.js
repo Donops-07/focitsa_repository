@@ -25,7 +25,7 @@ const DIGIT_ONLY_RE = /^\d+$/;
 const SAFE_DRIVE_URL_RE = /^https:\/\/(drive|docs)\.google\.com\//i;
 const SAFE_REDIRECT_HOST_RE = /^([a-z0-9-]+\.)*(google\.com|googleusercontent\.com|googleapis\.com)$/i;
 const ALLOWED_CHUNK_QUERY_KEYS = new Set(['id', 'mode', 'start', 'end', 'v']);
-const ALLOWED_FULL_QUERY_KEYS = new Set(['id', 'mode', 'v']);
+const ALLOWED_FULL_QUERY_KEYS = new Set(['id', 'mode', 'v', 'download']);
 const TOKEN_TTL_FALLBACK_MS = 50 * 60 * 1000;
 
 /** @type {Map<string, object>} */
@@ -44,6 +44,37 @@ let cachedSaToken = { token: null, expiresAt: 0 };
 function computeCanonicalVersion(entry) {
   const ts = Date.parse(entry?.uploadedAt || '');
   return Number.isFinite(ts) ? String(ts) : '1';
+}
+
+function sanitizeDownloadFileName(rawName, fileExt = 'PDF') {
+  const extRaw = String(fileExt || 'PDF').trim().replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+  const effectiveExt = !extRaw || extRaw === 'GDOC' || extRaw === 'GSLIDES' ? 'PDF' : extRaw;
+  const extLower = effectiveExt.toLowerCase();
+
+  let cleaned = String(rawName || '')
+    .replace(/[\x00-\x1f\x7f"\\/:*?<>|';]+/g, ' ')
+    .replace(/\.{2,}/g, '.')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/^[.\s]+|[.\s]+$/g, '');
+
+  if (!cleaned) {
+    cleaned = 'document';
+  }
+
+  const extSuffix = `.${extLower}`;
+  if (extRaw === 'GDOC' || extRaw === 'GSLIDES') {
+    cleaned = cleaned.replace(/\.(gdoc|gslides)$/i, '');
+  }
+  if (!cleaned.toLowerCase().endsWith(extSuffix)) {
+    cleaned = `${cleaned.slice(0, Math.max(1, 140 - extSuffix.length)).replace(/[.\s]+$/g, '') || 'document'}${extSuffix}`;
+  } else if (cleaned.length > 140) {
+    const base = cleaned.slice(0, cleaned.length - extSuffix.length).slice(0, Math.max(1, 140 - extSuffix.length)).replace(/[.\s]+$/g, '') || 'document';
+    cleaned = `${base}${extSuffix}`;
+  }
+
+  const asciiName = cleaned.replace(/[^\x20-\x7e]/g, '_').replace(/["\\;]/g, '_') || `document${extSuffix}`;
+  return { asciiName, utf8Name: cleaned };
 }
 
 function setNoStoreHeaders(res) {
@@ -306,6 +337,11 @@ async function handleRequest(req, res) {
     return sendError(res, 400, 'UNEXPECTED_QUERY_PARAM', 'Unexpected or duplicate query parameters.');
   }
 
+  const isDownloadAttachment = query.has('download');
+  if (isDownloadAttachment && query.get('download') !== '1') {
+    return sendError(res, 400, 'INVALID_DOWNLOAD_PARAM', 'Query param download must be "1" when present.');
+  }
+
   const fileId = query.get('id') || '';
   if (!SAFE_DRIVE_ID_RE.test(fileId)) {
     return sendError(res, 400, 'INVALID_FILE_ID', 'Invalid or missing Drive file ID.');
@@ -549,6 +585,17 @@ async function handleRequest(req, res) {
   res.setHeader('CDN-Cache-Control', 'public, s-maxage=2592000, immutable');
   res.setHeader('Vercel-CDN-Cache-Control', 'public, s-maxage=2592000, immutable');
 
+  if (mode === 'full' && isDownloadAttachment) {
+    const { asciiName, utf8Name } = sanitizeDownloadFileName(
+      entry.fileName || entry.courseTitle || entry.fileId,
+      isWorkspaceDoc ? 'PDF' : (entry.fileExt || 'PDF')
+    );
+    res.setHeader(
+      'Content-Disposition',
+      `attachment; filename="${asciiName}"; filename*=UTF-8''${encodeURIComponent(utf8Name)}`
+    );
+  }
+
   if (mode === 'chunk') {
     const totalLabel = Number.isSafeInteger(entry.fileSize) && entry.fileSize > 0 ? String(entry.fileSize) : '*';
     const actualEnd = buffer.length > 0 ? start + buffer.length - 1 : start;
@@ -580,6 +627,7 @@ handler._internal = {
   UPSTREAM_TIMEOUT_MS,
   MAX_REDIRECT_HOPS,
   computeCanonicalVersion,
+  sanitizeDownloadFileName,
   validateQueryAllowlist,
   parseSearchParams,
   readBoundedBuffer,

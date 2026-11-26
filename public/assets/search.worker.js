@@ -8,33 +8,33 @@
 
 // Load vendored Fuse.js locally (eliminates jsDelivr CDN SPOF)
 try {
-  importScripts('/assets/fuse.min.js?v=2026.4');
+  importScripts('/assets/fuse.min.js?v=2026.5');
 } catch (_) {
-  importScripts('fuse.min.js?v=2026.4');
+  importScripts('fuse.min.js?v=2026.5');
 }
 
 // ── IndexedDB Configuration ───────────────────────────────────────────────────
 
-const IDB_DB_NAME    = 'focit_kb_v1';
+const IDB_DB_NAME = 'focit_kb_v1';
 const IDB_STORE_NAME = 'manifest_cache';
-const IDB_VERSION    = 1;
+const IDB_VERSION = 1;
 
 // ── Fuse.js Configuration ─────────────────────────────────────────────────────
 
 const FUSE_OPTIONS = {
   keys: [
-    { name: 'courseCode',  weight: 0.35 },
-    { name: 'aliases',     weight: 0.20 },
+    { name: 'courseCode', weight: 0.35 },
+    { name: 'aliases', weight: 0.20 },
     { name: 'courseTitle', weight: 0.20 },
-    { name: 'fileName',    weight: 0.15 },
-    { name: 'tags',        weight: 0.05 },
-    { name: 'year',        weight: 0.03 },
-    { name: 'type',        weight: 0.02 },
+    { name: 'fileName', weight: 0.15 },
+    { name: 'tags', weight: 0.05 },
+    { name: 'year', weight: 0.03 },
+    { name: 'type', weight: 0.02 },
   ],
-  threshold:          0.35,
-  includeScore:       true,
-  useExtendedSearch:  true,
-  ignoreLocation:     true,
+  threshold: 0.35,
+  includeScore: true,
+  useExtendedSearch: true,
+  ignoreLocation: true,
   minMatchCharLength: 2,
 };
 
@@ -67,7 +67,7 @@ function openDatabase() {
     };
 
     request.onsuccess = (event) => resolve(event.target.result);
-    request.onerror   = (event) => reject(event.target.error);
+    request.onerror = (event) => reject(event.target.error);
   });
 }
 
@@ -85,7 +85,7 @@ function dbGet(db, key) {
       .get(key);
 
     request.onsuccess = () => resolve(request.result ?? null);
-    request.onerror   = () => reject(request.error);
+    request.onerror = () => reject(request.error);
   });
 }
 
@@ -104,7 +104,7 @@ function dbPut(db, key, value) {
       .put(value, key);
 
     request.onsuccess = () => resolve();
-    request.onerror   = () => reject(request.error);
+    request.onerror = () => reject(request.error);
   });
 }
 
@@ -117,7 +117,7 @@ function dbPut(db, key, value) {
 function dbPurgeStale(db, currentKey) {
   return new Promise((resolve) => {
     try {
-      const store   = db.transaction(IDB_STORE_NAME, 'readwrite').objectStore(IDB_STORE_NAME);
+      const store = db.transaction(IDB_STORE_NAME, 'readwrite').objectStore(IDB_STORE_NAME);
       const request = store.openCursor();
 
       request.onsuccess = (event) => {
@@ -146,7 +146,7 @@ async function runInit() {
     const versionRes = await fetch('/manifest.version.json', { cache: 'no-cache' });
     if (!versionRes.ok) throw new Error(`Version fetch failed: ${versionRes.status}`);
     const version = await versionRes.json();
-    currentHash   = version && version.hash ? String(version.hash) : null;
+    currentHash = version && version.hash ? String(version.hash) : null;
   } catch (err) {
     console.warn('[Worker] Could not fetch version file, falling back to direct fetch:', err.message);
     await fetchAndIndexManifest();
@@ -214,9 +214,9 @@ async function runInit() {
 function init() {
   if (fuseIndex && manifestData.length > 0) {
     self.postMessage({
-      type:      'READY',
+      type: 'READY',
       resources: manifestData,
-      count:     manifestData.length,
+      count: manifestData.length,
     });
     return Promise.resolve();
   }
@@ -234,7 +234,7 @@ function init() {
  */
 async function fetchAndIndexManifest() {
   try {
-    const res  = await fetch('/manifest.json', { cache: 'no-cache' });
+    const res = await fetch('/manifest.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(`Manifest fetch failed: ${res.status}`);
     const data = await res.json();
     if (!Array.isArray(data)) {
@@ -252,12 +252,12 @@ async function fetchAndIndexManifest() {
  */
 function buildIndex(data) {
   manifestData = data;
-  fuseIndex    = new Fuse(data, FUSE_OPTIONS);
+  fuseIndex = new Fuse(data, FUSE_OPTIONS);
 
   self.postMessage({
-    type:      'READY',
+    type: 'READY',
     resources: data,
-    count:     data.length,
+    count: data.length,
   });
 }
 
@@ -275,9 +275,9 @@ function search(query, requestId) {
   const results = trimmed ? fuseIndex.search(trimmed, { limit: 200 }) : [];
 
   self.postMessage({
-    type:      'RESULTS',
+    type: 'RESULTS',
     results,
-    query:     trimmed,
+    query: trimmed,
     requestId,
   });
 }

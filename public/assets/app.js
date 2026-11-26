@@ -206,14 +206,158 @@ function debounce(fn, ms) {
   };
 }
 
-function showAppToast(message) {
+function showAppInteractiveToast({
+  message = '',
+  actionLabel = '',
+  actionHref = '',
+  actionDownload = '',
+  onAction = null,
+  dismissible = false,
+  durationMs = 3200,
+} = {}) {
   if (!dom.appToast) return;
-  dom.appToast.textContent = message;
-  dom.appToast.classList.remove('hidden');
   clearTimeout(state.appToastTimer);
-  state.appToastTimer = setTimeout(() => {
-    dom.appToast.classList.add('hidden');
-  }, 3200);
+  dom.appToast.innerHTML = '';
+
+  const inner = document.createElement('div');
+  inner.className = 'toast-inner';
+
+  const msgSpan = document.createElement('span');
+  msgSpan.className = 'toast-message';
+  msgSpan.textContent = String(message || '');
+  inner.appendChild(msgSpan);
+
+  if (actionLabel || dismissible) {
+    const actions = document.createElement('div');
+    actions.className = 'toast-actions';
+
+    if (actionLabel) {
+      if (actionHref) {
+        const link = document.createElement('a');
+        link.className = 'toast-action-btn';
+        link.href = actionHref;
+        if (actionDownload) link.download = actionDownload;
+        link.rel = 'noopener';
+        link.textContent = actionLabel;
+        actions.appendChild(link);
+      } else {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'toast-action-btn';
+        btn.textContent = actionLabel;
+        btn.addEventListener('click', () => {
+          onAction?.();
+        });
+        actions.appendChild(btn);
+      }
+    }
+
+    if (dismissible) {
+      const dismissBtn = document.createElement('button');
+      dismissBtn.type = 'button';
+      dismissBtn.className = 'toast-dismiss-btn';
+      dismissBtn.setAttribute('aria-label', 'Dismiss notification');
+      dismissBtn.textContent = '×';
+      dismissBtn.addEventListener('click', () => {
+        clearTimeout(state.appToastTimer);
+        dom.appToast?.classList.add('hidden');
+      });
+      actions.appendChild(dismissBtn);
+    }
+
+    inner.appendChild(actions);
+  }
+
+  dom.appToast.appendChild(inner);
+  dom.appToast.classList.remove('hidden');
+
+  if (durationMs > 0) {
+    state.appToastTimer = setTimeout(() => {
+      dom.appToast?.classList.add('hidden');
+    }, durationMs);
+  }
+}
+
+function showAppToast(message) {
+  showAppInteractiveToast({ message, durationMs: 3200 });
+}
+
+function presentDownloadToast(toastOpts) {
+  if (readerController.isOpen()) {
+    readerController.showInteractiveToast(toastOpts);
+  } else {
+    showAppInteractiveToast(toastOpts);
+  }
+}
+
+function handleResourceDownload(resource) {
+  if (!resource || !isValidFileId(resource.fileId)) return;
+  const DownloadManager = window.FocitStorage?.DownloadManager;
+  if (!DownloadManager) return;
+
+  if (DownloadManager.isDownloading(resource.fileId)) {
+    presentDownloadToast({ message: 'Download already in progress…', durationMs: 2200 });
+    return;
+  }
+
+  const versionTag = window.FocitStorage.computeVersionTag(resource);
+  const safeName = window.FocitStorage.sanitizeFileName(
+    resource.fileName || resource.courseTitle || resource.fileId,
+    resource.fileExt || 'PDF'
+  );
+  const isNative = DownloadManager.canUseNativeDirectDownload(resource);
+
+  DownloadManager.startDownload({
+    resource,
+    versionTag,
+    onStateChange: ({ active }) => {
+      patchProgressAndOfflineUI();
+      if (active && !isNative) {
+        presentDownloadToast({
+          message: `Downloading ${safeName}… 0%`,
+          actionLabel: 'Cancel',
+          onAction: () => DownloadManager.cancelDownload(resource.fileId),
+          durationMs: 0,
+        });
+      }
+    },
+    onProgress: ({ percent }) => {
+      const pctLabel = percent !== null && Number.isFinite(percent) ? ` ${percent}%` : '';
+      presentDownloadToast({
+        message: `Downloading ${safeName}…${pctLabel}`,
+        actionLabel: 'Cancel',
+        onAction: () => DownloadManager.cancelDownload(resource.fileId),
+        durationMs: 0,
+      });
+    },
+    onComplete: (result) => {
+      if (result.mode === 'native') {
+        presentDownloadToast({
+          message: `Starting download: ${result.fileName}`,
+          durationMs: 3200,
+        });
+        return;
+      }
+      presentDownloadToast({
+        message: `Ready: ${result.fileName}`,
+        actionLabel: 'Save File',
+        actionHref: result.blobUrl,
+        actionDownload: result.fileName,
+        dismissible: true,
+        durationMs: result.revokeAfterMs || 60000,
+      });
+    },
+    onError: (err, info) => {
+      if (info?.status === 'cancelled') {
+        presentDownloadToast({ message: 'Download cancelled', durationMs: 2500 });
+      } else {
+        presentDownloadToast({
+          message: `Download failed: ${err?.message || 'Check connection'}`,
+          durationMs: 4200,
+        });
+      }
+    },
+  }).catch(() => {});
 }
 
 function syncDialogLockClass() {
@@ -257,6 +401,7 @@ const readerController = new window.FocitReader.DocumentReaderController({
     patchProgressAndOfflineUI();
   },
   onCloseSyncUrl: () => clearDocFromUrl(),
+  onDownloadRequested: (resource) => handleResourceDownload(resource),
 });
 
 // ── Web Worker & Resilient Loader ─────────────────────────────────────────────
@@ -269,7 +414,7 @@ function createWorker() {
   }
 
   try {
-    worker = new Worker('assets/search.worker.js?v=2026.4');
+    worker = new Worker('assets/search.worker.js?v=2026.5');
   } catch (err) {
     console.error('[App] Failed to construct Worker:', err);
     loadManifestDirectly();
@@ -970,6 +1115,7 @@ function buildResourceRow(r, prog) {
   const extClass = EXT_CLASS[fileExt] || '';
   const displayFileName = cleanDisplayFileName(r.fileName, r.courseTitle || r.courseCode);
   const isOffline = state.offlineFileIds.has(r.fileId);
+  const isDownloading = Boolean(window.FocitStorage?.DownloadManager?.isDownloading?.(r.fileId));
   const isDone = Boolean(prog?.completed);
   const hasProgress = Boolean(prog && (prog.completed || prog.percent > 0 || (prog.unit === 'page' && prog.current > 1)));
   const readBtnLabel = isDone ? 'Review' : (hasProgress ? 'Resume' : 'Read');
@@ -1023,17 +1169,19 @@ function buildResourceRow(r, prog) {
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
       </button>
-      <a
-        class="btn-row-icon${urls.valid ? '' : ' disabled'}"
-        href="${escHtml(urls.downloadUrl)}"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
+        class="btn-row-icon${isDownloading ? ' is-busy' : ''}"
         data-action="download"
-        aria-label="Download ${escHtml(displayFileName)}"
-        title="Download file"
+        data-resource-id="${escHtml(r.id)}"
+        data-file-id="${escHtml(r.fileId)}"
+        aria-label="${isDownloading ? `Downloading ${escHtml(displayFileName)}` : `Download ${escHtml(displayFileName)}`}"
+        title="${isDownloading ? 'Downloading…' : 'Download file'}"
+        ${(!urls.valid || isDownloading) ? 'disabled' : ''}
+        ${isDownloading ? 'aria-busy="true"' : ''}
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
+      </button>
     </div>
   `;
 
@@ -1048,6 +1196,13 @@ function patchProgressAndOfflineUI() {
   renderContinueReadingShelf();
 
   const progressMap = window.FocitStorage.ProgressStore.getAllMap();
+  const DownloadManager = window.FocitStorage?.DownloadManager;
+
+  if (dom.readerBtnDownload && readerController.currentResource) {
+    const readerBusy = Boolean(DownloadManager?.isDownloading?.(readerController.currentResource.fileId));
+    dom.readerBtnDownload.disabled = readerBusy;
+    dom.readerBtnDownload.setAttribute('aria-busy', readerBusy ? 'true' : 'false');
+  }
 
   dom.resultsGrid.querySelectorAll('.resource-row[data-resource-id]').forEach((row) => {
     const resourceId = row.dataset.resourceId;
@@ -1056,6 +1211,7 @@ function patchProgressAndOfflineUI() {
 
     const prog = progressMap[resourceId];
     const isOffline = state.offlineFileIds.has(resource.fileId);
+    const isDownloading = Boolean(DownloadManager?.isDownloading?.(resource.fileId));
     const isDone = Boolean(prog?.completed);
     const hasProgress = Boolean(prog && (prog.completed || prog.percent > 0 || (prog.unit === 'page' && prog.current > 1)));
 
@@ -1082,6 +1238,20 @@ function patchProgressAndOfflineUI() {
       doneBtn.classList.toggle('is-done', isDone);
       doneBtn.setAttribute('aria-pressed', isDone ? 'true' : 'false');
       doneBtn.setAttribute('aria-label', isDone ? 'Mark as unread' : 'Mark as completed');
+    }
+
+    const downloadBtn = row.querySelector('[data-action="download"]');
+    if (downloadBtn) {
+      const displayName = cleanDisplayFileName(resource.fileName, resource.courseTitle || resource.courseCode);
+      const validId = isValidFileId(resource.fileId);
+      downloadBtn.classList.toggle('is-busy', isDownloading);
+      downloadBtn.disabled = !validId || isDownloading;
+      downloadBtn.setAttribute('aria-busy', isDownloading ? 'true' : 'false');
+      downloadBtn.setAttribute(
+        'aria-label',
+        isDownloading ? `Downloading ${displayName}` : `Download ${displayName}`
+      );
+      downloadBtn.title = isDownloading ? 'Downloading…' : 'Download file';
     }
   });
 
@@ -1225,6 +1395,12 @@ function wireReaderEvents() {
 
   dom.readerBtnDone?.addEventListener('click', () => {
     readerController.toggleMarkCompleted();
+  });
+
+  dom.readerBtnDownload?.addEventListener('click', () => {
+    if (readerController.currentResource) {
+      handleResourceDownload(readerController.currentResource);
+    }
   });
 
   dom.readerBtnDisplay?.addEventListener('click', () => {
@@ -1406,14 +1582,15 @@ function init() {
     const actionEl = e.target.closest('[data-action]');
     if (actionEl) {
       const action = actionEl.dataset.action;
-      if (action === 'download') {
-        e.stopPropagation();
-        return;
-      }
-
       const resId = actionEl.dataset.resourceId;
       const resource = state.resourceById.get(resId);
       if (!resource) return;
+
+      if (action === 'download') {
+        e.stopPropagation();
+        handleResourceDownload(resource);
+        return;
+      }
 
       if (action === 'toggle-done') {
         e.stopPropagation();

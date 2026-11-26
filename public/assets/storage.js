@@ -520,7 +520,7 @@
     mimeType = 'application/pdf',
     chunkSize = CHUNK_SIZE,
     concurrency = OFFLINE_CONCURRENCY,
-    fetchImpl = typeof fetch === 'function' ? fetch : null,
+    fetchImpl = typeof fetch === 'function' ? (url, opts) => globalThis.fetch(url, opts) : null,
     signal,
     onProgress,
   }) {
@@ -607,7 +607,7 @@
     fileSize,
     versionTag = '1',
     mimeType = 'application/octet-stream',
-    fetchImpl = typeof fetch === 'function' ? fetch : null,
+    fetchImpl = typeof fetch === 'function' ? (url, opts) => globalThis.fetch(url, opts) : null,
     signal,
     onProgress,
   }) {
@@ -805,6 +805,231 @@
     },
   };
 
+  // ── Same-Origin Hybrid Download Manager & Global Lock ───────────────────────
+
+  const BLOB_REVOKE_DELAY_MS = 60000;
+  /** @type {Map<string, AbortController>} */
+  const activeDownloads = new Map();
+  /** @type {Map<string, ReturnType<typeof setTimeout>>} */
+  const activeBlobUrlTimers = new Map();
+
+  function sanitizeFileName(rawName, fileExt = 'PDF') {
+    const extRaw = String(fileExt || 'PDF').trim().replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+    const effectiveExt = !extRaw || extRaw === 'GDOC' || extRaw === 'GSLIDES' ? 'PDF' : extRaw;
+    const extLower = effectiveExt.toLowerCase();
+
+    let cleaned = String(rawName || '')
+      .replace(/[\x00-\x1f\x7f"\\/:*?<>|';]+/g, ' ')
+      .replace(/\.{2,}/g, '.')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/^[.\s]+|[.\s]+$/g, '');
+
+    if (!cleaned) {
+      cleaned = 'document';
+    }
+
+    const extSuffix = `.${extLower}`;
+    if (extRaw === 'GDOC' || extRaw === 'GSLIDES') {
+      cleaned = cleaned.replace(/\.(gdoc|gslides)$/i, '');
+    }
+    if (!cleaned.toLowerCase().endsWith(extSuffix)) {
+      cleaned = `${cleaned.slice(0, Math.max(1, 140 - extSuffix.length)).replace(/[.\s]+$/g, '') || 'document'}${extSuffix}`;
+    } else if (cleaned.length > 140) {
+      const base = cleaned.slice(0, cleaned.length - extSuffix.length).slice(0, Math.max(1, 140 - extSuffix.length)).replace(/[.\s]+$/g, '') || 'document';
+      cleaned = `${base}${extSuffix}`;
+    }
+
+    return cleaned;
+  }
+
+  function triggerBrowserDownloadAnchor(href, fileName) {
+    if (typeof document === 'undefined' || !document.body) {
+      return { triggered: false, href, fileName };
+    }
+    const anchor = document.createElement('a');
+    anchor.href = href;
+    anchor.download = fileName;
+    anchor.rel = 'noopener';
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    return { triggered: true, href, fileName };
+  }
+
+  function scheduleBlobUrlRevoke(blobUrl, delayMs = BLOB_REVOKE_DELAY_MS) {
+    if (!blobUrl || !blobUrl.startsWith('blob:')) return;
+    if (activeBlobUrlTimers.has(blobUrl)) {
+      clearTimeout(activeBlobUrlTimers.get(blobUrl));
+    }
+    const timer = setTimeout(() => {
+      activeBlobUrlTimers.delete(blobUrl);
+      if (typeof URL !== 'undefined' && typeof URL.revokeObjectURL === 'function') {
+        try { URL.revokeObjectURL(blobUrl); } catch (_) { }
+      }
+    }, delayMs);
+    if (typeof timer.unref === 'function') {
+      timer.unref();
+    }
+    activeBlobUrlTimers.set(blobUrl, timer);
+  }
+
+  const DownloadManager = {
+    BLOB_REVOKE_DELAY_MS,
+
+    isDownloading(fileId) {
+      return Boolean(fileId && activeDownloads.has(fileId));
+    },
+
+    getActiveCount() {
+      return activeDownloads.size;
+    },
+
+    cancelDownload(fileId) {
+      const controller = activeDownloads.get(fileId);
+      if (!controller) return false;
+      activeDownloads.delete(fileId);
+      controller.abort();
+      return true;
+    },
+
+    canUseNativeDirectDownload(resource) {
+      if (!resource || !resource.fileId) return false;
+      const isWorkspaceDoc = String(resource.mimeType || '').startsWith('application/vnd.google-apps.');
+      if (isWorkspaceDoc) return true;
+      const size = Number(resource.fileSize);
+      return Number.isSafeInteger(size) && size > 0 && size <= MAX_FULL_MODE_BYTES;
+    },
+
+    getDirectDownloadUrl(resource, versionTag) {
+      const v = versionTag || computeVersionTag(resource);
+      return `/api/chunk?id=${encodeURIComponent(resource.fileId)}&mode=full&v=${encodeURIComponent(v)}&download=1`;
+    },
+
+    async startDownload({
+      resource,
+      versionTag,
+      fetchImpl,
+      cacheGetImpl,
+      onStateChange,
+      onProgress,
+      onComplete,
+      onError,
+    }) {
+      if (!resource || !resource.fileId) {
+        throw new Error('Invalid resource for download.');
+      }
+
+      const fileId = resource.fileId;
+      if (activeDownloads.has(fileId)) {
+        return { status: 'already_active', fileId };
+      }
+
+      const resolvedVersion = versionTag || computeVersionTag(resource);
+      const safeName = sanitizeFileName(
+        resource.fileName || resource.courseTitle || fileId,
+        resource.fileExt || 'PDF'
+      );
+
+      const controller = new AbortController();
+      activeDownloads.set(fileId, controller);
+      onStateChange?.({ fileId, resourceId: resource.id, fileName: safeName, active: true });
+
+      try {
+        const readCache = typeof cacheGetImpl === 'function' ? cacheGetImpl : (id) => OfflineBlobCache.get(id);
+        const cached = await readCache(fileId);
+        if (controller.signal.aborted) {
+          throw new DOMException('Aborted', 'AbortError');
+        }
+
+        if (cached?.blob) {
+          const blobUrl =
+            typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function'
+              ? URL.createObjectURL(cached.blob)
+              : 'blob:offline-mock';
+          scheduleBlobUrlRevoke(blobUrl, BLOB_REVOKE_DELAY_MS);
+          triggerBrowserDownloadAnchor(blobUrl, safeName);
+          const result = {
+            status: 'completed',
+            mode: 'blob',
+            source: 'offline-cache',
+            fileId,
+            fileName: safeName,
+            blobUrl,
+            revokeAfterMs: BLOB_REVOKE_DELAY_MS,
+          };
+          onComplete?.(result);
+          return result;
+        }
+
+        if (this.canUseNativeDirectDownload(resource)) {
+          const url = this.getDirectDownloadUrl(resource, resolvedVersion);
+          triggerBrowserDownloadAnchor(url, safeName);
+          const result = {
+            status: 'completed',
+            mode: 'native',
+            source: 'direct-proxy',
+            fileId,
+            fileName: safeName,
+            url,
+          };
+          onComplete?.(result);
+          return result;
+        }
+
+        const fileSize = Number(resource.fileSize);
+        const blob = await assembleChunksWithConcurrency({
+          fileId,
+          fileSize,
+          versionTag: resolvedVersion,
+          mimeType: resource.mimeType || 'application/octet-stream',
+          chunkSize: CHUNK_SIZE,
+          concurrency: OFFLINE_CONCURRENCY,
+          ...(typeof fetchImpl === 'function' ? { fetchImpl } : {}),
+          signal: controller.signal,
+          onProgress,
+        });
+
+        if (controller.signal.aborted) {
+          throw new DOMException('Aborted', 'AbortError');
+        }
+
+        const blobUrl =
+          typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function'
+            ? URL.createObjectURL(blob)
+            : 'blob:assembled-mock';
+        scheduleBlobUrlRevoke(blobUrl, BLOB_REVOKE_DELAY_MS);
+        triggerBrowserDownloadAnchor(blobUrl, safeName);
+
+        const result = {
+          status: 'completed',
+          mode: 'blob',
+          source: 'chunk-assembly',
+          fileId,
+          fileName: safeName,
+          blobUrl,
+          revokeAfterMs: BLOB_REVOKE_DELAY_MS,
+        };
+        onComplete?.(result);
+        return result;
+      } catch (err) {
+        if (err?.name === 'AbortError' || controller.signal.aborted) {
+          const cancelled = { status: 'cancelled', fileId, fileName: safeName };
+          onError?.(err, cancelled);
+          return cancelled;
+        }
+        onError?.(err, { status: 'error', fileId, fileName: safeName });
+        throw err;
+      } finally {
+        if (activeDownloads.get(fileId) === controller) {
+          activeDownloads.delete(fileId);
+        }
+        onStateChange?.({ fileId, resourceId: resource.id, fileName: safeName, active: false });
+      }
+    },
+  };
+
   return {
     OFFLINE_DB_VERSION,
     OFFLINE_BLOB_STORE,
@@ -814,9 +1039,11 @@
     OFFLINE_CONCURRENCY,
     MAX_FULL_MODE_BYTES,
     computeVersionTag,
+    sanitizeFileName,
     ProgressStore,
     ReaderPrefsStore,
     OfflineBlobCache,
+    DownloadManager,
     StorageQuotaError,
     _internal: {
       normalizeProgressEntry,
@@ -824,6 +1051,7 @@
       assembleChunksWithConcurrency,
       writeRecordWithQuotaRecovery,
       fetchFullModeBlob,
+      activeDownloads,
     },
   };
 });

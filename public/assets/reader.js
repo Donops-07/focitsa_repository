@@ -20,7 +20,7 @@
   const MAX_DOCX_BYTES = 5 * 1024 * 1024;
   const MAX_TEXT_BYTES = 2 * 1024 * 1024;
   const VENDOR_LOAD_TIMEOUT_MS = 15000;
-  const VENDOR_CACHE_BUST = '2026.4';
+  const VENDOR_CACHE_BUST = '2026.5';
   const SAFE_DRIVE_ID_RE = /^[a-zA-Z0-9_-]{10,64}$/;
   const SAFE_DRIVE_URL_RE = /^https:\/\/(drive|docs)\.google\.com\//i;
 
@@ -244,7 +244,7 @@
       chunkSize = CHUNK_SIZE,
       retryDelayMs = 450,
       maxTransientRetries = 1,
-      fetchImpl = typeof fetch === 'function' ? fetch : null,
+      fetchImpl = typeof fetch === 'function' ? (url, opts) => globalThis.fetch(url, opts) : null,
       signal,
       onError,
       onChunkLoaded,
@@ -299,9 +299,10 @@
         }
 
         let attempt = 0;
+        const doFetch = this.fetchImpl;
         while (true) {
           try {
-            const res = await this.fetchImpl(url, { signal: this.signal });
+            const res = await doFetch(url, { signal: this.signal });
             if (!res.ok) {
               throw await parseProxyError(res);
             }
@@ -1099,12 +1100,13 @@
   // ── Clean Degraded Slide / Office Card (Option 2B) ──────────────────────────
 
   class SlideCardSession {
-    constructor({ resource, viewportEl, savedProgress, onReady, onToggleDone }) {
+    constructor({ resource, viewportEl, savedProgress, onReady, onToggleDone, onDownload }) {
       this.resource = resource;
       this.viewportEl = viewportEl;
       this.savedProgress = savedProgress;
       this.onReady = onReady;
       this.onToggleDone = onToggleDone;
+      this.onDownload = onDownload;
       this.destroyed = false;
     }
 
@@ -1112,7 +1114,6 @@
       const ext = String(this.resource.fileExt || 'FILE').toUpperCase();
       const sizeStr = formatBytes(this.resource.fileSize) || 'Unknown size';
       const isCompleted = Boolean(this.savedProgress?.completed);
-      const downloadUrl = getSafeDownloadUrl(this.resource);
       const previewUrl = getSafePreviewUrl(this.resource);
 
       const card = document.createElement('section');
@@ -1127,9 +1128,9 @@
           PowerPoint &amp; Office binary decks open best in your device's native slide viewer or offline copy.
         </p>
         <div class="slide-card-actions">
-          <a href="${escHtml(downloadUrl)}" target="_blank" rel="noopener noreferrer" class="btn-slide-primary">
+          <button type="button" id="btn-slide-download" class="btn-slide-primary">
             Download ${escHtml(ext)} (${escHtml(sizeStr)})
-          </a>
+          </button>
           <button type="button" id="btn-slide-mark-done" class="btn-slide-secondary${isCompleted ? ' is-done' : ''}">
             ${isCompleted ? '✓ Marked as Studied' : 'Mark as Studied'}
           </button>
@@ -1142,6 +1143,11 @@
 
       this.viewportEl.innerHTML = '';
       this.viewportEl.appendChild(card);
+
+      const downloadBtn = card.querySelector('#btn-slide-download');
+      downloadBtn?.addEventListener('click', () => {
+        this.onDownload?.(this.resource, downloadBtn);
+      });
 
       const markBtn = card.querySelector('#btn-slide-mark-done');
       markBtn?.addEventListener('click', () => {
@@ -1183,6 +1189,7 @@
       this.onProgressUpdated = typeof opts.onProgressUpdated === 'function' ? opts.onProgressUpdated : () => {};
       this.onOfflineUpdated = typeof opts.onOfflineUpdated === 'function' ? opts.onOfflineUpdated : () => {};
       this.onCloseSyncUrl = typeof opts.onCloseSyncUrl === 'function' ? opts.onCloseSyncUrl : () => {};
+      this.onDownloadRequested = typeof opts.onDownloadRequested === 'function' ? opts.onDownloadRequested : null;
 
       this.activeSessionId = 0;
       this.activeController = null;
@@ -1198,14 +1205,92 @@
       return Boolean(this.dom.dialog?.open);
     }
 
-    showToast(message) {
+    showInteractiveToast({
+      message = '',
+      actionLabel = '',
+      actionHref = '',
+      actionDownload = '',
+      onAction = null,
+      dismissible = false,
+      durationMs = 2600,
+    } = {}) {
       if (!this.dom.toast) return;
-      this.dom.toast.textContent = message;
-      this.dom.toast.classList.remove('hidden');
       clearTimeout(this.toastTimer);
-      this.toastTimer = setTimeout(() => {
-        this.dom.toast?.classList.add('hidden');
-      }, 2600);
+      this.dom.toast.innerHTML = '';
+
+      const inner = document.createElement('div');
+      inner.className = 'toast-inner';
+
+      const msgSpan = document.createElement('span');
+      msgSpan.className = 'toast-message';
+      msgSpan.textContent = String(message || '');
+      inner.appendChild(msgSpan);
+
+      if (actionLabel || dismissible) {
+        const actions = document.createElement('div');
+        actions.className = 'toast-actions';
+
+        if (actionLabel) {
+          if (actionHref) {
+            const link = document.createElement('a');
+            link.className = 'toast-action-btn';
+            link.href = actionHref;
+            if (actionDownload) link.download = actionDownload;
+            link.rel = 'noopener';
+            link.textContent = actionLabel;
+            actions.appendChild(link);
+          } else {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'toast-action-btn';
+            btn.textContent = actionLabel;
+            btn.addEventListener('click', () => {
+              onAction?.();
+            });
+            actions.appendChild(btn);
+          }
+        }
+
+        if (dismissible) {
+          const dismissBtn = document.createElement('button');
+          dismissBtn.type = 'button';
+          dismissBtn.className = 'toast-dismiss-btn';
+          dismissBtn.setAttribute('aria-label', 'Dismiss notification');
+          dismissBtn.textContent = '×';
+          dismissBtn.addEventListener('click', () => {
+            clearTimeout(this.toastTimer);
+            this.dom.toast?.classList.add('hidden');
+          });
+          actions.appendChild(dismissBtn);
+        }
+
+        inner.appendChild(actions);
+      }
+
+      this.dom.toast.appendChild(inner);
+      this.dom.toast.classList.remove('hidden');
+
+      if (durationMs > 0) {
+        this.toastTimer = setTimeout(() => {
+          this.dom.toast?.classList.add('hidden');
+        }, durationMs);
+      }
+    }
+
+    showToast(message) {
+      this.showInteractiveToast({ message, durationMs: 2600 });
+    }
+
+    triggerDownload(resource = this.currentResource, triggerEl = null) {
+      if (!resource) return;
+      if (this.onDownloadRequested) {
+        this.onDownloadRequested(resource, triggerEl);
+        return;
+      }
+      FocitStorage?.DownloadManager?.startDownload({
+        resource,
+        versionTag: this.getVersionTag(),
+      }).catch(() => {});
     }
 
     setLoadingState({ title = 'Loading document…', detail = '', percent = null } = {}) {
@@ -1379,7 +1464,9 @@
         this.dom.title.title = resource.fileName || '';
       }
       if (this.dom.btnDownload) {
-        this.dom.btnDownload.href = getSafeDownloadUrl(resource);
+        const isDlBusy = Boolean(FocitStorage?.DownloadManager?.isDownloading?.(resource.fileId));
+        this.dom.btnDownload.disabled = isDlBusy;
+        this.dom.btnDownload.setAttribute('aria-busy', isDlBusy ? 'true' : 'false');
       }
 
       this.configureControls({});
@@ -1557,6 +1644,9 @@
               });
               this.syncCompletedToggleUI(done);
               this.onProgressUpdated();
+            },
+            onDownload: (res, btn) => {
+              this.triggerDownload(res, btn);
             },
           });
         }
