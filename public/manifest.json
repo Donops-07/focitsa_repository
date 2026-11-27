@@ -1212,6 +1212,36 @@
     "uploadedAt": "2026-11-25T21:07:31.760Z"
   },
   {
+    "id": "general-resource-undated-VzEcWU",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Document from Opeyemi Ogunshina",
+    "fileName": "Document from Opeyemi Ogunshina",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Resource",
+    "year": null,
+    "fileId": "1w8Jbji99u09pLj55nKjw9cj0FDVzEcWU",
+    "fileSize": 52514,
+    "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "fileExt": "PPTX",
+    "previewUrl": "https://drive.google.com/file/d/1w8Jbji99u09pLj55nKjw9cj0FDVzEcWU/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1w8Jbji99u09pLj55nKjw9cj0FDVzEcWU",
+    "driveViewUrl": "https://drive.google.com/file/d/1w8Jbji99u09pLj55nKjw9cj0FDVzEcWU/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "resource",
+      "pptx"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-27T09:26:07.231Z"
+  },
+  {
     "id": "general-resource-undated-UuF9vq",
     "courseCode": "GENERAL",
     "aliases": [],
