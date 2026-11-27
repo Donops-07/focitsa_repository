@@ -1212,6 +1212,36 @@
     "uploadedAt": "2026-11-25T21:07:31.760Z"
   },
   {
+    "id": "general-resource-undated-UuF9vq",
+    "courseCode": "GENERAL",
+    "aliases": [],
+    "courseTitle": "Document from Opeyemi Ogunshina",
+    "fileName": "Document from Opeyemi Ogunshina",
+    "department": "All Departments",
+    "departments": [
+      "ALL"
+    ],
+    "level": 100,
+    "semester": 1,
+    "type": "Resource",
+    "year": null,
+    "fileId": "1-GnycqpHakdcQiz9YsVXMQ_R7IUuF9vq",
+    "fileSize": 633344,
+    "mimeType": "application/vnd.ms-powerpoint",
+    "fileExt": "PPT",
+    "previewUrl": "https://drive.google.com/file/d/1-GnycqpHakdcQiz9YsVXMQ_R7IUuF9vq/preview",
+    "downloadUrl": "https://drive.google.com/uc?export=download&id=1-GnycqpHakdcQiz9YsVXMQ_R7IUuF9vq",
+    "driveViewUrl": "https://drive.google.com/file/d/1-GnycqpHakdcQiz9YsVXMQ_R7IUuF9vq/view",
+    "isPublic": true,
+    "tags": [
+      "all departments",
+      "resource",
+      "ppt"
+    ],
+    "verified": true,
+    "uploadedAt": "2026-11-26T09:33:15.622Z"
+  },
+  {
     "id": "phy101-resource-undated-rvn80T",
     "courseCode": "PHY 101",
     "aliases": [
