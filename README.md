@@ -181,11 +181,28 @@ npm run crawl
 
 ---
 
-## Crawl Report
+## Crawl Report & Duplicate Handling
 
-After each crawl, GitHub Actions posts a job summary showing:
+After each crawl, GitHub Actions writes `public/crawl-report.json` and posts a job summary showing:
 - Total resources indexed
 - Number of verified vs. flagged entries
-- The exact issue for each flagged folder
+- Number of duplicates suppressed (flagged)
+- The exact issue for each flagged entry or suppressed duplicate
 
-Fix flagged entries by renaming the Drive folder to match the schema, then trigger a new crawl.
+Fix flagged permission/naming entries by updating sharing settings or renaming the Drive folder to match the schema, then trigger a new crawl.
+
+### How Duplicate Materials Are Handled
+
+To keep duplicate files out of search results and course lists:
+
+1. **Drive Shortcuts (same `fileId`):** Merged silently into a single entry so all linked departments keep access without flagging a duplicate.
+2. **Binary Files (PDF, DOCX, PPTX, ZIP, images):** Matched by Google Drive checksum (`sha256Checksum` / `md5Checksum`), even if the duplicate was renamed (e.g. `CSC202_Notes (1).pdf` or `Copy of ...`).
+3. **Google Workspace Files (Docs, Slides, Sheets):** Matched by `(courseCode, normalizedFileName, mimeType)` when `courseCode` is not `GENERAL`.
+4. **Canonical Winner & Suppression:** One canonical copy is kept in `public/manifest.json` (preferring `verified` → `All Departments` → explicit course code → newer `modifiedTime` → smaller `fileId`), and cross-department departments/aliases/tags are merged onto it. All redundant copies are **excluded from `public/manifest.json`** and logged in `public/crawl-report.json` under `duplicates` (and listed in the **Suppressed Duplicate Materials** table in the GitHub Actions summary).
+
+### Cleaning Up Flagged Duplicates
+
+1. Open GitHub → **Actions** → **Refresh Search Manifest** → latest run summary (or inspect `public/crawl-report.json`).
+2. Locate the redundant file using `duplicatePath` or `https://drive.google.com/file/d/<duplicateFileId>/view`.
+3. Delete the duplicate in Google Drive (or replace it with a **Drive Shortcut** to `canonicalFileId` if it should appear in multiple Drive folders).
+4. Wait for the next scheduled crawl or click **Run workflow** in GitHub Actions.
