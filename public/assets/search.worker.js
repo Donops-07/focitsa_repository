@@ -248,16 +248,28 @@ async function fetchAndIndexManifest() {
 
 /**
  * Construct the Fuse.js in-memory search index off the main thread.
+ * Applies a defensive client-side duplicate/malformed entry filter.
  * @param {Array} data
  */
 function buildIndex(data) {
-  manifestData = data;
-  fuseIndex = new Fuse(data, FUSE_OPTIONS);
+  const seenFileIds = new Set();
+  const safeData = [];
+  for (const item of Array.isArray(data) ? data : []) {
+    if (!item || typeof item !== 'object' || item.isDuplicate === true) continue;
+    if (item.fileId) {
+      if (seenFileIds.has(item.fileId)) continue;
+      seenFileIds.add(item.fileId);
+    }
+    safeData.push(item);
+  }
+
+  manifestData = safeData;
+  fuseIndex = new Fuse(safeData, FUSE_OPTIONS);
 
   self.postMessage({
     type: 'READY',
-    resources: data,
-    count: data.length,
+    resources: safeData,
+    count: safeData.length,
   });
 }
 

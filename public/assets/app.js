@@ -467,17 +467,28 @@ async function loadManifestDirectly() {
 }
 
 function handleIndexReady(resources) {
-  state.allResources = resources;
+  const seenFileIds = new Set();
+  const safeResources = [];
+  for (const r of Array.isArray(resources) ? resources : []) {
+    if (!r || typeof r !== 'object' || r.isDuplicate === true) continue;
+    if (r.fileId) {
+      if (seenFileIds.has(r.fileId)) continue;
+      seenFileIds.add(r.fileId);
+    }
+    safeResources.push(r);
+  }
+
+  state.allResources = safeResources;
   state.resourceById = new Map();
-  for (const r of resources) {
-    if (r && r.id) {
+  for (const r of safeResources) {
+    if (r.id) {
       state.resourceById.set(r.id, r);
     }
   }
   state.indexReady = true;
   state.hasError = false;
 
-  dom.headerTotalBadge.textContent = `${resources.length} files`;
+  dom.headerTotalBadge.textContent = `${safeResources.length} files`;
   updateStatus('ready', 'Repository ready');
 
   buildYearOptions();

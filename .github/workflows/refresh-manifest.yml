@@ -87,11 +87,26 @@ jobs:
           if [ -f public/crawl-report.json ]; then
             TOTAL=$(node -p "require('./public/manifest.json').length")
             FLAGGED=$(node -p "require('./public/crawl-report.json').flaggedCount ?? 0")
+            DUPLICATES=$(node -p "require('./public/crawl-report.json').duplicateCount ?? 0")
             HASH=$(node -p "require('./public/manifest.version.json').hash")
             echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
             echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
             echo "| Total resources | ${TOTAL} |" >> $GITHUB_STEP_SUMMARY
             echo "| Flagged entries | ${FLAGGED} |" >> $GITHUB_STEP_SUMMARY
+            echo "| Duplicates suppressed (flagged) | ${DUPLICATES} |" >> $GITHUB_STEP_SUMMARY
             echo "| Manifest hash | \`${HASH}\` |" >> $GITHUB_STEP_SUMMARY
             echo "| Auth method | Workload Identity Federation (keyless) |" >> $GITHUB_STEP_SUMMARY
+            if [ "${DUPLICATES}" -gt 0 ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### Suppressed Duplicate Materials" >> $GITHUB_STEP_SUMMARY
+              echo "| Course | Duplicate File | Drive Path | Canonical Kept | Reason |" >> $GITHUB_STEP_SUMMARY
+              echo "|--------|----------------|------------|----------------|--------|" >> $GITHUB_STEP_SUMMARY
+              node -e "
+                const r = require('./public/crawl-report.json');
+                const esc = (s) => String(s ?? '').replace(/\|/g, '\\\\|').replace(/\r?\n/g, ' ');
+                for (const d of (r.duplicates || [])) {
+                  console.log('| ' + [d.duplicateCourseCode, d.duplicateFileName, d.duplicatePath, d.canonicalFileName, d.reason].map(esc).join(' | ') + ' |');
+                }
+              " >> $GITHUB_STEP_SUMMARY
+            fi
           fi

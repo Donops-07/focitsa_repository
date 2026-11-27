@@ -582,6 +582,9 @@ function buildManifestEntry(file, pathSegments) {
 
   const access = buildFileAccessMetadata(fileId, file.name, mimeType);
   const verified = issues.length === 0;
+  const rawChecksum = file.sha256Checksum || file.md5Checksum || null;
+  const checksumType = file.sha256Checksum ? 'sha256' : (file.md5Checksum ? 'md5' : null);
+  const drivePath = [...pathSegments, file.name].filter(Boolean).join(' / ');
 
   return {
     id: `${(rawCode ?? 'general').toLowerCase()}-${type.replace(/\s+/g, '-').toLowerCase()}-${year ?? 'undated'}-${fileId.slice(-6)}`,
@@ -615,6 +618,12 @@ function buildManifestEntry(file, pathSegments) {
     verified,
     uploadedAt: file.modifiedTime,
     ...(issues.length > 0 && { issues }),
+    _crawlMeta: {
+      checksum: rawChecksum ? String(rawChecksum).toLowerCase().trim() : null,
+      checksumType,
+      drivePath,
+      hasExplicitCourseCode: Boolean(explicitCode),
+    },
   };
 }
 
@@ -652,7 +661,7 @@ async function crawlFolder(drive, folderId, pathSegments = [], depth = 0, visite
     do {
       const res = await drive.files.list({
         q: `'${folderId}' in parents and trashed = false`,
-        fields: 'nextPageToken, files(id, name, mimeType, size, modifiedTime, shared, permissions(type, role), shortcutDetails(targetId, targetMimeType))',
+        fields: 'nextPageToken, files(id, name, mimeType, size, modifiedTime, md5Checksum, sha256Checksum, shared, permissions(type, role), shortcutDetails(targetId, targetMimeType))',
         pageSize: 1000,
         pageToken,
         orderBy: 'folder,name',
@@ -713,18 +722,151 @@ async function crawlFolder(drive, folderId, pathSegments = [], depth = 0, visite
 }
 
 /**
- * Deduplicate crawled manifest entries across shortcuts (same fileId) and
- * duplicate faculty-wide shared uploads (same courseCode + fileName + size).
+ * Return true if the MIME type belongs to a native Google Workspace file
+ * (Docs, Slides, Sheets, etc.) which does not expose Drive binary checksums.
+ * @param {string} mimeType
+ * @returns {boolean}
+ */
+function isGoogleWorkspaceMime(mimeType) {
+  return typeof mimeType === 'string' && mimeType.startsWith('application/vnd.google-apps.');
+}
+
+/**
+ * Normalize a file name for fallback duplicate matching by stripping copy prefixes/suffixes.
+ * @param {string} fileName
+ * @returns {string}
+ */
+function normalizeFileNameForDedup(fileName) {
+  const raw = String(fileName || '').trim().toLowerCase();
+  if (!raw) return '';
+  const dotIdx = raw.lastIndexOf('.');
+  const hasExt = dotIdx > 0;
+  const ext = hasExt ? raw.slice(dotIdx) : '';
+  let base = hasExt ? raw.slice(0, dotIdx) : raw;
+
+  while (/^copy\s+of\s+/i.test(base)) {
+    base = base.replace(/^copy\s+of\s+/i, '');
+  }
+  base = base
+    .replace(/(?:[\s_-]*copy(?:\s*\d+)?|\s*\(\d+\))+$/i, '')
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return `${base}${ext}`;
+}
+
+/**
+ * Compare two manifest entries by canonical precedence.
+ * Returns positive if `a` outranks `b`, negative if `b` outranks `a`, 0 if tied.
+ * Order: verified > All Departments > explicit course code > newer uploadedAt > smaller fileId.
+ * @param {object} a
+ * @param {object} b
+ * @returns {number}
+ */
+function compareCanonicalPriority(a, b) {
+  const aVerified = Boolean(a?.verified);
+  const bVerified = Boolean(b?.verified);
+  if (aVerified !== bVerified) return aVerified ? 1 : -1;
+
+  const aShared = a?.department === 'All Departments';
+  const bShared = b?.department === 'All Departments';
+  if (aShared !== bShared) return aShared ? 1 : -1;
+
+  const aExplicit = Boolean(a?._crawlMeta?.hasExplicitCourseCode);
+  const bExplicit = Boolean(b?._crawlMeta?.hasExplicitCourseCode);
+  if (aExplicit !== bExplicit) return aExplicit ? 1 : -1;
+
+  const aTime = Date.parse(a?.uploadedAt || '') || 0;
+  const bTime = Date.parse(b?.uploadedAt || '') || 0;
+  if (aTime !== bTime) return aTime - bTime;
+
+  // Smaller fileId wins for deterministic output across traversal orders
+  return String(b?.fileId || '').localeCompare(String(a?.fileId || ''));
+}
+
+/**
+ * Merge department, alias, and tag metadata from a duplicate/shortcut entry into a winner.
+ * @param {object} winner
+ * @param {object} loser
+ * @param {{ intersectVerified?: boolean }} [options]
+ * @returns {object}
+ */
+function mergeEntryMetadata(winner, loser, { intersectVerified = false } = {}) {
+  const winnerDepts = Array.isArray(winner?.departments) ? winner.departments : [];
+  const loserDepts = Array.isArray(loser?.departments) ? loser.departments : [];
+  const mergedDepts = (winnerDepts.includes('ALL') || loserDepts.includes('ALL'))
+    ? ['ALL']
+    : [...new Set([...winnerDepts, ...loserDepts])].sort();
+
+  const resolvedDepartment = mergedDepts.includes('ALL')
+    ? 'All Departments'
+    : (mergedDepts.length > 1 ? mergedDepts.join(', ') : (winner.department || mergedDepts[0] || 'General'));
+
+  return {
+    ...winner,
+    department: resolvedDepartment,
+    departments: mergedDepts,
+    aliases: [...new Set([...(winner.aliases || []), ...(loser.aliases || [])])],
+    tags: [...new Set([...(winner.tags || []), ...(loser.tags || [])])],
+    verified: intersectVerified ? (Boolean(winner.verified) && Boolean(loser.verified)) : Boolean(winner.verified),
+  };
+}
+
+/**
+ * Strip internal crawler metadata before serializing the public manifest.
+ * @param {object} entry
+ * @returns {object}
+ */
+function stripInternalMeta(entry) {
+  if (!entry || typeof entry !== 'object') return entry;
+  const { _crawlMeta, ...clean } = entry;
+  return clean;
+}
+
+/**
+ * Build an audit record for a suppressed duplicate entry.
+ * @param {object} loser
+ * @param {object} winner
+ * @param {string} reason
+ * @param {string} matchKey
+ * @returns {object}
+ */
+function buildDuplicateRecord(loser, winner, reason, matchKey) {
+  return {
+    reason,
+    matchKey,
+    duplicateFileId: loser.fileId,
+    duplicateFileName: loser.fileName,
+    duplicateCourseCode: loser.courseCode,
+    duplicateDepartment: loser.department,
+    duplicatePath: loser._crawlMeta?.drivePath || loser.fileName,
+    duplicateUploadedAt: loser.uploadedAt || null,
+    canonicalFileId: winner.fileId,
+    canonicalFileName: winner.fileName,
+    canonicalCourseCode: winner.courseCode,
+    canonicalDepartment: winner.department,
+    canonicalPath: winner._crawlMeta?.drivePath || winner.fileName,
+  };
+}
+
+/**
+ * Deduplicate crawled manifest entries across shortcuts (same fileId),
+ * exact binary checksums (sha256/md5), and metadata fallback for files without checksums.
+ * Shortcuts are merged silently; duplicate uploads are suppressed and returned in `duplicates`.
  *
  * @param {object[]} entries
- * @returns {object[]}
+ * @returns {{ entries: object[], duplicates: object[] }}
  */
 function deduplicateEntries(entries) {
-  if (!Array.isArray(entries) || entries.length === 0) return [];
+  if (!Array.isArray(entries) || entries.length === 0) {
+    return { entries: [], duplicates: [] };
+  }
 
   // Pass 1: Collapse same fileId (e.g. Drive shortcuts across department folders)
   const byFileId = new Map();
   for (const entry of entries) {
+    if (!entry || !entry.fileId) continue;
     const existing = byFileId.get(entry.fileId);
     if (!existing) {
       byFileId.set(entry.fileId, {
@@ -736,60 +878,104 @@ function deduplicateEntries(entries) {
       continue;
     }
 
-    const mergedDepts = (existing.departments.includes('ALL') || (entry.departments || []).includes('ALL'))
-      ? ['ALL']
-      : [...new Set([...existing.departments, ...(entry.departments || [])])];
-
     const preferIncoming = entry.department === 'All Departments' && existing.department !== 'All Departments';
-    const primary = preferIncoming ? entry : existing;
-
-    byFileId.set(entry.fileId, {
-      ...primary,
-      department: mergedDepts.includes('ALL')
-        ? 'All Departments'
-        : (mergedDepts.length > 1 ? mergedDepts.join(', ') : (primary.department || mergedDepts[0])),
-      departments: mergedDepts,
-      aliases: [...new Set([...existing.aliases, ...(entry.aliases || [])])],
-      tags: [...new Set([...existing.tags, ...(entry.tags || [])])],
-      verified: existing.verified && entry.verified,
-    });
+    const winner = preferIncoming ? entry : existing;
+    const loser = preferIncoming ? existing : entry;
+    byFileId.set(entry.fileId, mergeEntryMetadata(winner, loser, { intersectVerified: true }));
   }
 
-  // Pass 2: Collapse duplicate faculty-wide uploads (same courseCode + fileName + size)
-  const bySharedSignature = new Map();
-  const deduped = [];
+  const duplicates = [];
 
+  // Pass 2: Exact binary checksum match (sha256 / md5)
+  const checksumGroups = new Map();
+  const afterChecksum = [];
   for (const entry of byFileId.values()) {
-    const isShared = Array.isArray(entry.departments) && entry.departments.includes('ALL');
-    if (!isShared) {
-      deduped.push(entry);
+    const checksum = entry._crawlMeta?.checksum;
+    const checksumType = entry._crawlMeta?.checksumType;
+    if (!checksum || !checksumType) {
+      afterChecksum.push(entry);
       continue;
     }
-
-    const sig = `${String(entry.courseCode || '').toUpperCase()}|${String(entry.fileName || '').toLowerCase().trim()}|${entry.fileSize ?? ''}`;
-    const existingIdx = bySharedSignature.get(sig);
-    if (existingIdx === undefined) {
-      bySharedSignature.set(sig, deduped.length);
-      deduped.push(entry);
-      continue;
-    }
-
-    const current = deduped[existingIdx];
-    const entryIsCanonicalShared = entry.department === 'All Departments' && current.department !== 'All Departments';
-    const currentIsCanonicalShared = current.department === 'All Departments' && entry.department !== 'All Departments';
-
-    if (entryIsCanonicalShared) {
-      deduped[existingIdx] = entry;
-    } else if (!currentIsCanonicalShared) {
-      const entryTime = Date.parse(entry.uploadedAt || '') || 0;
-      const currentTime = Date.parse(current.uploadedAt || '') || 0;
-      if ((entry.verified && !current.verified) || (entry.verified === current.verified && entryTime > currentTime)) {
-        deduped[existingIdx] = entry;
-      }
-    }
+    const key = `${checksumType}:${checksum}`;
+    if (!checksumGroups.has(key)) checksumGroups.set(key, []);
+    checksumGroups.get(key).push(entry);
   }
 
-  return deduped;
+  for (const [matchKey, group] of checksumGroups.entries()) {
+    if (group.length === 1) {
+      afterChecksum.push(group[0]);
+      continue;
+    }
+    const sorted = [...group].sort((a, b) => compareCanonicalPriority(b, a));
+    let winner = sorted[0];
+    for (const loser of sorted.slice(1)) {
+      winner = mergeEntryMetadata(winner, loser);
+      duplicates.push(buildDuplicateRecord(loser, winner, 'exact_checksum_match', matchKey));
+    }
+    afterChecksum.push(winner);
+  }
+
+  // Pass 3: Fallback metadata match for entries without checksums (e.g. Google Workspace docs)
+  const fallbackGroups = new Map();
+  const survivors = [];
+  for (const entry of afterChecksum) {
+    if (entry._crawlMeta?.checksum) {
+      survivors.push(entry);
+      continue;
+    }
+    const courseCode = String(entry.courseCode || '').toUpperCase();
+    if (!courseCode || courseCode === 'GENERAL') {
+      survivors.push(entry);
+      continue;
+    }
+    const normName = normalizeFileNameForDedup(entry.fileName);
+    if (!normName) {
+      survivors.push(entry);
+      continue;
+    }
+
+    let key = null;
+    let reason = null;
+    if (isGoogleWorkspaceMime(entry.mimeType)) {
+      key = `workspace|${courseCode}|${normName}|${entry.mimeType}`;
+      reason = 'workspace_metadata_match';
+    } else if (entry.fileSize != null) {
+      key = `meta|${courseCode}|${normName}|${entry.fileSize}`;
+      reason = 'metadata_signature_match';
+    }
+
+    if (!key) {
+      survivors.push(entry);
+      continue;
+    }
+    if (!fallbackGroups.has(key)) fallbackGroups.set(key, { reason, items: [] });
+    fallbackGroups.get(key).items.push(entry);
+  }
+
+  for (const [matchKey, { reason, items }] of fallbackGroups.entries()) {
+    if (items.length === 1) {
+      survivors.push(items[0]);
+      continue;
+    }
+    const sorted = [...items].sort((a, b) => compareCanonicalPriority(b, a));
+    let winner = sorted[0];
+    for (const loser of sorted.slice(1)) {
+      winner = mergeEntryMetadata(winner, loser);
+      duplicates.push(buildDuplicateRecord(loser, winner, reason, matchKey));
+    }
+    survivors.push(winner);
+  }
+
+  duplicates.sort((a, b) =>
+    String(a.canonicalCourseCode || '').localeCompare(String(b.canonicalCourseCode || '')) ||
+    String(a.canonicalFileId || '').localeCompare(String(b.canonicalFileId || '')) ||
+    String(a.duplicateFileId || '').localeCompare(String(b.duplicateFileId || ''))
+  );
+
+  return {
+    entries: survivors.map(stripInternalMeta),
+    duplicates,
+  };
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -837,9 +1023,13 @@ async function main() {
 
   console.log('🔎 Crawling folder tree…\n');
   const rawEntries = await crawlFolder(drive, DRIVE_ROOT_FOLDER_ID);
-  const allEntries = deduplicateEntries(rawEntries);
-  if (rawEntries.length !== allEntries.length) {
-    console.log(`\n🧹 Deduplicated ${rawEntries.length - allEntries.length} duplicate/shortcut entries.`);
+  const { entries: allEntries, duplicates } = deduplicateEntries(rawEntries);
+  const shortcutCount = rawEntries.length - allEntries.length - duplicates.length;
+  if (shortcutCount > 0) {
+    console.log(`\n🔗 Merged ${shortcutCount} shortcut reference(s).`);
+  }
+  if (duplicates.length > 0) {
+    console.log(`\n🚫 Flagged and suppressed ${duplicates.length} duplicate upload(s).`);
   }
 
   if (allEntries.length === 0) {
@@ -858,6 +1048,7 @@ async function main() {
   console.log(`  Total entries  : ${allEntries.length}`);
   console.log(`  ✔ Verified     : ${verified.length}`);
   console.log(`  ⚠ Flagged      : ${flagged.length}`);
+  console.log(`  🚫 Duplicates  : ${duplicates.length} (suppressed)`);
   console.log(`  Content hash   : ${hash}`);
   console.log('──────────────────────────────────────────\n');
 
@@ -866,6 +1057,16 @@ async function main() {
     flagged.forEach(e => {
       console.log(`\n  📁 ${e.courseCode} — ${e.fileName}`);
       e.issues?.forEach(i => console.log(`     → ${i}`));
+    });
+    console.log('');
+  }
+
+  if (duplicates.length > 0) {
+    console.log('🚫 Flagged duplicate materials (excluded from manifest.json):');
+    duplicates.forEach(d => {
+      console.log(`\n  📄 [${d.duplicateCourseCode}] ${d.duplicateFileName} (${d.reason})`);
+      console.log(`     Duplicate : ${d.duplicatePath} [${d.duplicateFileId}]`);
+      console.log(`     Canonical : ${d.canonicalPath} [${d.canonicalFileId}]`);
     });
     console.log('');
   }
@@ -881,7 +1082,9 @@ async function main() {
     totalEntries: allEntries.length,
     verifiedCount: verified.length,
     flaggedCount: flagged.length,
+    duplicateCount: duplicates.length,
     flagged,
+    duplicates,
   }, null, 2);
 
   if (DRY_RUN) {
@@ -899,7 +1102,7 @@ async function main() {
   console.log('✅ Files written:');
   console.log(`   public/manifest.json         (${allEntries.length} entries)`);
   console.log(`   public/manifest.version.json (hash: ${hash})`);
-  console.log(`   public/crawl-report.json     (${flagged.length} flagged entries)`);
+  console.log(`   public/crawl-report.json     (${flagged.length} flagged, ${duplicates.length} duplicate(s))`);
 
   process.exit(0);
 }
@@ -927,5 +1130,9 @@ module.exports = {
   buildFileAccessMetadata,
   checkPublicReadable,
   buildManifestEntry,
+  isGoogleWorkspaceMime,
+  normalizeFileNameForDedup,
+  compareCanonicalPriority,
+  stripInternalMeta,
   deduplicateEntries,
 };
